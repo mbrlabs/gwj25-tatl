@@ -1,5 +1,7 @@
 extends Spatial
 
+const GLOWINESS_INCREASE = 1.0
+
 # ---------------------------------------------------------------------------------------
 onready var _fps_label: Label = $UI/MarginContainer/FpsLabel
 onready var _player: Player = $Player
@@ -21,3 +23,9 @@ func _process(delta: float) -> void:
 		else: 
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		_player.input_enabled = !_player.input_enabled
+	
+	if Input.is_action_just_pressed("debug_increase_glowiness"):
+		_player.glowiness += GLOWINESS_INCREASE
+	if Input.is_action_just_pressed("debug_decrease_glowiness"):
+		_player.glowiness -= GLOWINESS_INCREASE
+		

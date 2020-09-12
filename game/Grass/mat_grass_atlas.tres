@@ -4,8 +4,7 @@
 
 [sub_resource type="Shader" id=1]
 code = "shader_type spatial;
-render_mode cull_disabled, specular_disabled, diffuse_lambert_wrap;
-
+render_mode cull_disabled,blend_mix,depth_draw_opaque,diffuse_burley,specular_schlick_ggx;
 uniform vec4 grass_color : hint_color;
 uniform sampler2D atlas_texture;
 uniform float wind_strength = 1.0;
@@ -27,6 +26,8 @@ void vertex() {
 
 void fragment() {
 	vec4 c = texture(atlas_texture, UV) * grass_color; 
+	METALLIC = 1.0;
+	ROUGHNESS = 1.0;
 	ALBEDO = c.rgb;
 	ALPHA_SCISSOR = 0.75;
 	ALPHA = c.a;
@@ -34,7 +35,7 @@ void fragment() {
 
 [resource]
 shader = SubResource( 1 )
-shader_param/grass_color = Color( 0.121569, 0.176471, 0.25098, 1 )
-shader_param/wind_strength = 1.5
-shader_param/wind_speed = 0.5
+shader_param/grass_color = Color( 0.101961, 0.188235, 0.313726, 1 )
+shader_param/wind_strength = 0.5
+shader_param/wind_speed = 1.0
 shader_param/atlas_texture = ExtResource( 1 )

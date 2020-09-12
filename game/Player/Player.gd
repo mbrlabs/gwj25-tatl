@@ -7,7 +7,7 @@ const HOVER_TRESHHOLD = 0.05
 # ---------------------------------------------------------------------------------------
 export var evirorment: Environment 
 export var input_enabled := true
-export(float, 0.0, 1.0) var glowiness = 0.5
+export(float, 0.0, 1.0) var glowiness = 1.0 setget _set_glowiness
 export var mouse_sensitivity := 1.0
 export var camera_zoom_increments := 0.1
 export var camera_max_zoom_increments := 10
@@ -23,8 +23,11 @@ export var hover_height := 1.0
 onready var _gimbal: Spatial = $Gimbal
 onready var _camera: Camera = $Gimbal/Camera
 onready var _actual_orb: Spatial = $CollisionShape
+onready var _orb_mesh: Spatial = $CollisionShape/MeshInstance
 onready var _raycast_down: RayCast = $RayCastDown
 onready var _raycast_up: RayCast = $RayCastUp
+onready var _dir_light: DirectionalLight = $Gimbal/Camera/DirectionalLight
+onready var _omni_light: OmniLight = $OmniLight
 
 # ---------------------------------------------------------------------------------------
 var _mouse_movement: Vector2
@@ -32,10 +35,28 @@ var _velocity: Vector3
 var _camera_lag_velocity: Vector3
 var _camera_zoom_increments = 0
 
+var _base_ambient_light: float
+var _base_omni_light_range: float
+var _base_omni_light_energy: float
+var _base_dir_light_energy: float
+var _base_player_emission: float
+
 # ---------------------------------------------------------------------------------------
 func _ready():
 	_camera.environment = evirorment
-
+	_base_omni_light_range = _omni_light.omni_range
+	_base_omni_light_energy = _omni_light.light_energy
+	_base_dir_light_energy = _dir_light.light_energy 
+	_base_player_emission = _orb_mesh.material_override.get_shader_param("emission_energy")
+	
+# ---------------------------------------------------------------------------------------
+func _set_glowiness(new_glowiness: float) -> void:
+	glowiness = new_glowiness
+	_omni_light.omni_range = _base_omni_light_range * glowiness
+	_omni_light.light_energy = _base_omni_light_energy * glowiness
+	_dir_light.light_energy = _base_dir_light_energy * glowiness
+	_orb_mesh.material_override.set_shader_param("emission_energy", _base_player_emission*glowiness)
+	
 # ---------------------------------------------------------------------------------------
 func _physics_process(delta: float) -> void:
 	var prev_velocity = _velocity
