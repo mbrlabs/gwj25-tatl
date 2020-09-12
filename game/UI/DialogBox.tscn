@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Common/Fonts/font_dialog.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Common/Fonts/font_dialog_title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/DialogBox.gd" type="Script" id=3]
+[ext_resource path="res://UI/dialog_click.ogg" type="AudioStream" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0 )
+border_color = Color( 1, 1, 1, 1 )
+shadow_color = Color( 0, 0, 0, 0 )
+
+[node name="DialogBox" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.12244
+margin_top = -1.1225
+margin_right = -1.12244
+margin_bottom = -1.12256
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -540.0
+margin_top = -250.0
+margin_right = 540.0
+custom_constants/margin_bottom = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+margin_right = 1080.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 12
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Panel/MarginContainer"]
+margin_left = 20.0
+margin_top = 12.0
+margin_right = 1060.0
+margin_bottom = 188.0
+custom_fonts/mono_font = ExtResource( 1 )
+custom_fonts/bold_italics_font = ExtResource( 1 )
+custom_fonts/italics_font = ExtResource( 1 )
+custom_fonts/bold_font = ExtResource( 2 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+
+[node name="ReadTimer" type="Timer" parent="."]
+
+[node name="FadeOutTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="ReadSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "UISound"
+[connection signal="timeout" from="ReadTimer" to="." method="_on_ReadTimer_timeout"]
+[connection signal="timeout" from="FadeOutTimer" to="." method="_on_FadeOutTimer_timeout"]

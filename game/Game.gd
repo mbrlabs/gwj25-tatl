@@ -5,6 +5,7 @@ const GLOWINESS_INCREASE = 1.0
 # ---------------------------------------------------------------------------------------
 onready var _fps_label: Label = $UI/MarginContainer/FpsLabel
 onready var _player: Player = $Player
+onready var _dialog_box: DialogBox = $UI/DialogBox
 
 # ---------------------------------------------------------------------------------------
 func _ready():
@@ -32,4 +33,7 @@ func _process(delta: float) -> void:
 		_player.glowiness += GLOWINESS_INCREASE
 	if Input.is_action_just_pressed("debug_decrease_glowiness"):
 		_player.glowiness -= GLOWINESS_INCREASE
-		
+
+# ---------------------------------------------------------------------------------------
+func _on_DialogTestTimer_timeout():
+	_dialog_box.show_message("Tatl:", "Hello :) My name is Tatl and I am a fairy from the Godot forest. I'm lost and I'm scared! Can you help me get out of this place pleeeease?", false)
