@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Interactables/DestructibleFrontGate.gd" type="Script" id=1]
+[ext_resource path="res://Interactables/Models/CasteFrontGateDamaged.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Interactables/Models/CastleFrontGate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Interactables/Models/CastleFrontGateBroken.tscn" type="PackedScene" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 2.05368, 4.27664, 0.234457 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 2.05368, 2.46346, 0.234457 )
+
+[node name="DestructibleFrontGate" type="StaticBody"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape_ok" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703206, 4.21253, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape_broken" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703206, 5.62649, 0 )
+shape = SubResource( 2 )
+
+[node name="DesctructionParticles" type="CPUParticles" parent="."]
+
+[node name="CastleFrontGate" parent="." instance=ExtResource( 3 )]
+
+[node name="CastleFrontGateDamaged" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="CastleFrontGateBroken" parent="." instance=ExtResource( 4 )]
+visible = false

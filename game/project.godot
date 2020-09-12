@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Spatial",
+"class": "DestructibleFrontGate",
+"language": "GDScript",
+"path": "res://Interactables/DestructibleFrontGate.gd"
+}, {
 "base": "KinematicBody",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Player/Player.gd"
 } ]
 _global_script_class_icons={
+"DestructibleFrontGate": "",
 "Player": ""
 }
 

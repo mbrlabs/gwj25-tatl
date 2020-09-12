@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/castle_front_gate_broken.glb-3e0740ddfb73693d3e52fbf9935f2311.scn"
+path="res://.import/castle_front_gate.glb-05cf5f427f478de5211b988204fb0653.scn"
 
 [deps]
 
-source_file="res://Props/Models/castle_front_gate_broken.glb"
-dest_files=[ "res://.import/castle_front_gate_broken.glb-3e0740ddfb73693d3e52fbf9935f2311.scn" ]
+source_file="res://Interactables/Models/castle_front_gate.glb"
+dest_files=[ "res://.import/castle_front_gate.glb-05cf5f427f478de5211b988204fb0653.scn" ]
 
 [params]
 
