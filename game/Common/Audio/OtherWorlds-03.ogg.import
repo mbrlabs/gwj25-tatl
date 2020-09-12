@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/OtherWorlds-03.ogg-195daeb2d25cfd346ad511617f0e51c7.oggstr"
+
+[deps]
+
+source_file="res://Common/Audio/OtherWorlds-03.ogg"
+dest_files=[ "res://.import/OtherWorlds-03.ogg-195daeb2d25cfd346ad511617f0e51c7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

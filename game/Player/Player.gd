@@ -1,8 +1,16 @@
 class_name Player
 extends KinematicBody
 
+# ---------------------------------------------------------------------------------------
 const ROTATION_SPEED = 4.0
 const HOVER_TRESHHOLD = 0.05
+
+# ---------------------------------------------------------------------------------------
+enum MovementState {
+	IDLE,
+	ACCELERATING,
+	MOVING
+}
 
 # ---------------------------------------------------------------------------------------
 export var evirorment: Environment 
@@ -20,6 +28,8 @@ export var hover_strength := 4.0
 export var hover_height := 1.0
 
 # ---------------------------------------------------------------------------------------
+onready var _sound_move: AudioStreamPlayer3D = $MoveSound
+onready var _sound_turn: AudioStreamPlayer3D = $TurnSound
 onready var _gimbal: Spatial = $Gimbal
 onready var _camera: Camera = $Gimbal/Camera
 onready var _actual_orb: Spatial = $CollisionShape
@@ -30,16 +40,17 @@ onready var _dir_light: DirectionalLight = $Gimbal/Camera/DirectionalLight
 onready var _omni_light: OmniLight = $OmniLight
 
 # ---------------------------------------------------------------------------------------
-var _mouse_movement: Vector2
-var _velocity: Vector3
-var _camera_lag_velocity: Vector3
-var _camera_zoom_increments = 0
-
 var _base_ambient_light: float
 var _base_omni_light_range: float
 var _base_omni_light_energy: float
 var _base_dir_light_energy: float
 var _base_player_emission: float
+
+var _mouse_movement: Vector2
+var _velocity: Vector3
+var _camera_lag_velocity: Vector3
+var _movement_state = MovementState.IDLE
+var _turn_accumulator := 0.0
 
 # ---------------------------------------------------------------------------------------
 func _ready():
@@ -71,6 +82,22 @@ func _physics_process(delta: float) -> void:
 	
 	# move
 	_velocity = move_and_slide(move_velocity, Vector3.UP)
+	
+	# TODO: clean this up!
+	# crappy movment state management
+	if _movement_state == MovementState.IDLE && _velocity.length() > prev_velocity.length():
+		_movement_state = MovementState.ACCELERATING
+	elif _movement_state == MovementState.ACCELERATING:
+		if !_sound_move.playing: _sound_move.play()
+		_movement_state = MovementState.MOVING
+	elif _movement_state == MovementState.MOVING:
+		_turn_accumulator += (1.0 - _velocity.normalized().dot(prev_velocity.normalized()))
+		if _turn_accumulator >= 0.033 && !_sound_turn.playing:
+			_sound_turn.play()
+			_turn_accumulator = 0.0
+		var vel_length = _velocity.length()
+		if vel_length < prev_velocity.length() && vel_length <  0.5:
+			_movement_state = MovementState.IDLE
 	
 # ---------------------------------------------------------------------------------------
 func _input(e: InputEvent) -> void:
@@ -139,3 +166,7 @@ func _get_move_direction() -> Vector3:
 	if Input.is_action_pressed("move_right"):
 		direction += cam_basis.x
 	return direction.normalized()
+	
+# ---------------------------------------------------------------------------------------
+func _on_TurnAccumulatorResetTimer_timeout():
+	_turn_accumulator = 0.0

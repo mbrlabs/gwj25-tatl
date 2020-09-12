@@ -30,6 +30,14 @@ config/name="GWJ25"
 run/main_scene="res://Game.tscn"
 config/icon="res://Common/icon.png"
 
+[audio]
+
+default_bus_layout="res://Common/audio_bus_layout.tres"
+
+[autoload]
+
+Global="*res://Autoloads/Global.gd"
+
 [display]
 
 window/size/width=1920

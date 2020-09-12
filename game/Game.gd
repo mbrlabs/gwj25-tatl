@@ -9,10 +9,13 @@ onready var _player: Player = $Player
 # ---------------------------------------------------------------------------------------
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Global.play_music()
 
 # ---------------------------------------------------------------------------------------
 func _process(delta: float) -> void:
 	_fps_label.text = str(Engine.get_frames_per_second())
+	
+	# basic debug stuff
 	if Input.is_action_just_pressed("debug_reload"):
 		get_tree().reload_current_scene()
 	if Input.is_action_just_pressed("debug_exit"):
@@ -24,6 +27,7 @@ func _process(delta: float) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		_player.input_enabled = !_player.input_enabled
 	
+	# incr/decr glowiness of player
 	if Input.is_action_just_pressed("debug_increase_glowiness"):
 		_player.glowiness += GLOWINESS_INCREASE
 	if Input.is_action_just_pressed("debug_decrease_glowiness"):
