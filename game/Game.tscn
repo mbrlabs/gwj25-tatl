@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Common/mat_blue_dark.tres" type="Material" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Common/env_default.tres" type="Environment" id=3]
+[ext_resource path="res://Game.gd" type="Script" id=4]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 20, 20 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 9.97561, 1, 10.2029 )
+
+[node name="Game" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="Platform" type="StaticBody" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Platform"]
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Platform"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.965405, 0 )
+shape = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02932, 1.51668, -0.0512018 )
+evirorment = ExtResource( 3 )
