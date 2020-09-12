@@ -33,6 +33,6 @@ func _ready():
 		mm.multimesh.set_instance_custom_data(i, Color(
 			0.5+randf()*0.5, # random value; used for per-instance-randomness on x-axis wind movement
 			0.5+randf()*0.5, # random value; used for per-instance-randomness on z-axis wind movement
-			UV_MAP[uvs][0],	 # x-UV coordinate in case i use the atlas shader 
-			UV_MAP[uvs][1]	 # z-UV coordinate in case i use the atlas shader 
+			UV_MAP[uvs][0],	 # x-UV coordinate
+			UV_MAP[uvs][1]	 # z-UV coordinate
 		))

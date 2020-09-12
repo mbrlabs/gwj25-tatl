@@ -1,5 +1,7 @@
 extends Spatial
 
+# ---------------------------------------------------------------------------------------
+onready var _fps_label: Label = $UI/MarginContainer/FpsLabel
 onready var _player: Player = $Player
 
 # ---------------------------------------------------------------------------------------
@@ -8,6 +10,7 @@ func _ready():
 
 # ---------------------------------------------------------------------------------------
 func _process(delta: float) -> void:
+	_fps_label.text = str(Engine.get_frames_per_second())
 	if Input.is_action_just_pressed("debug_reload"):
 		get_tree().reload_current_scene()
 	if Input.is_action_just_pressed("debug_exit"):
