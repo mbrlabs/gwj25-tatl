@@ -29,41 +29,44 @@ onready var _continue_label_anim: AnimationPlayer = $ContinueLabel/AnimationPlay
 # ---------------------------------------------------------------------------------------
 var _state = State.IDLE
 var _confirmation_required := false
-var _next_content_index := 0
-var _next_title: String
-var _next_content: String
+var _read_index := 0
+var _title: String
+var _message: String
 
 # ---------------------------------------------------------------------------------------
 func _ready():
 	_read_timer.wait_time = read_speed
 
 # ---------------------------------------------------------------------------------------
-func show_message(title: String, content: String, confirmation_required: bool, speed: float = DEFAULT_READ_SPEED) -> void:
+func show_message(title: String, msg: String, confirmation_required: bool, speed: float = DEFAULT_READ_SPEED) -> void:
 	if _state == State.IDLE:
 		_state = State.READING_MESSAGE
 		_confirmation_required = confirmation_required
 		_label.bbcode_text = ""
-		_next_title = title
-		_next_content = content
-		_next_content_index = 0
+		_title = title
+		_message = msg
+		_read_index = 0
 		_read_timer.start()
 	else:
 		printerr("YOU should NOT do this!!!")
 
 # ---------------------------------------------------------------------------------------
 func _input(e: InputEvent) -> void:
-	if e.is_action_released("dialog_confirm") && _state == State.WAITING_FOR_CONFRIMATION:
-		_confirm_sound.play()
-		_label.bbcode_text = ""
-		_state = State.IDLE
-		_continue_label.hide()
-		emit_signal("message_confirmed")
+	if e.is_action_released("dialog_confirm"):
+		if _state == State.WAITING_FOR_CONFRIMATION:
+			_confirm_sound.play()
+			_label.bbcode_text = ""
+			_state = State.IDLE
+			_continue_label.hide()
+			emit_signal("message_confirmed")
+		elif _state == State.READING_MESSAGE:
+			_read_index = _message.length() - 1
 	
 # ---------------------------------------------------------------------------------------
 func _on_ReadTimer_timeout():
 	# increment indices n stuff
-	if _next_content_index < _next_content.length():
-		_next_content_index += 1
+	if _read_index < _message.length():
+		_read_index += 1
 	else:
 		_read_timer.stop()
 		emit_signal("message_displayed")
@@ -76,10 +79,10 @@ func _on_ReadTimer_timeout():
 	
 	# generate text
 	var final_text = ""
-	if !_next_title.empty():
-		final_text = "[b]" + _next_title + "[/b]\n\n"
-	if _next_content_index > 0:
-		final_text += _next_content.substr(0, _next_content_index+1)
+	if !_title.empty():
+		final_text = "[b]" + _title + "[/b]\n\n"
+	if _read_index > 0:
+		final_text += _message.substr(0, _read_index+1)
 	_label.bbcode_text = final_text
 	
 	# play clicking sound
