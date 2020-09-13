@@ -7,6 +7,16 @@ const AUDIOBUS_AMBIENT_SOUND = "AmbientSound"
 const AUDIOBUS_PLAYER_SOUND = "PlayerSound"
 
 # ---------------------------------------------------------------------------------------
+enum State {
+	INTRO,		# this is the tutorial with the 3-4 dialogs
+	PRE_CRYPT,	# this is time of exploration until the player gets the ability from the crypt
+	PUZZLE_1,	# this is the time before the player uses the new ability to break through the door
+}
+
+# ---------------------------------------------------------------------------------------
+var state = State.INTRO
+
+# ---------------------------------------------------------------------------------------
 var _music: AudioStreamPlayer
 
 # ---------------------------------------------------------------------------------------

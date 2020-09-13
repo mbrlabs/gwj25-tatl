@@ -1,12 +1,29 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Common/Fonts/font_dialog.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Common/Fonts/font_dialog_title.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI/DialogBox.gd" type="Script" id=3]
 [ext_resource path="res://UI/dialog_click.ogg" type="AudioStream" id=4]
 
+[sub_resource type="Animation" id=2]
+resource_name = "blink"
+length = 0.95
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.95 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.05, 1.05 ), Vector2( 1, 1 ) ]
+}
+
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0, 0, 0, 0 )
+bg_color = Color( 1, 0, 0, 0 )
 border_color = Color( 1, 1, 1, 1 )
 shadow_color = Color( 0, 0, 0, 0 )
 
@@ -22,6 +39,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ContinueLabel" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 421.101
+margin_top = -81.5
+margin_right = 540.101
+margin_bottom = -50.5
+custom_fonts/font = ExtResource( 1 )
+text = "[SPACE]"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ContinueLabel"]
+anims/blink = SubResource( 2 )
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -32,6 +68,8 @@ margin_top = -250.0
 margin_right = 540.0
 custom_constants/margin_bottom = 50
 __meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 

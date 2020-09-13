@@ -3,6 +3,6 @@
 [ext_resource path="res://Common/Fonts/JosefinSans-Bold.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 32
+size = 34
 extra_spacing_bottom = -16
 font_data = ExtResource( 1 )

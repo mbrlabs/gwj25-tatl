@@ -5,7 +5,7 @@ const DEFAULT_READ_SPEED := 0.02
 
 # ---------------------------------------------------------------------------------------
 signal message_displayed
-signal message_accepted
+signal message_confirmed
 
 # ---------------------------------------------------------------------------------------
 enum State {
@@ -22,6 +22,8 @@ onready var _label: RichTextLabel = $MarginContainer/Panel/MarginContainer/RichT
 onready var _read_timer: Timer = $ReadTimer
 onready var _fade_out_timer: Timer = $FadeOutTimer
 onready var _read_sound: AudioStreamPlayer = $ReadSound
+onready var _continue_label: Label = $ContinueLabel
+onready var _continue_label_anim: AnimationPlayer = $ContinueLabel/AnimationPlayer
 
 # ---------------------------------------------------------------------------------------
 var _state = State.IDLE
@@ -50,6 +52,14 @@ func show_message(title: String, content: String, confirmation_required: bool, s
 		printerr("YOU should NOT do this!!!")
 
 # ---------------------------------------------------------------------------------------
+func _input(e: InputEvent) -> void:
+	if e.is_action_released("dialog_confirm") && _state == State.WAITING_FOR_CONFRIMATION:
+		_label.bbcode_text = ""
+		_state = State.IDLE
+		_continue_label.hide()
+		emit_signal("message_confirmed")
+	
+# ---------------------------------------------------------------------------------------
 func _on_ReadTimer_timeout():
 	# increment indices n stuff
 	if _next_title_index < _next_title.length():
@@ -60,8 +70,9 @@ func _on_ReadTimer_timeout():
 		_read_timer.stop()
 		emit_signal("message_displayed")
 		if _confirmation_required:
-			# TODO: handle input
 			_state = State.WAITING_FOR_CONFRIMATION
+			_continue_label.show()
+			_continue_label_anim.play("blink")
 		else:
 			_fade_out_timer.start()
 	
