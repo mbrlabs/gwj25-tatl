@@ -1,5 +1,12 @@
 extends POIArea
 
+const REPLIES = [
+	"I don't want to go into THAT forest. It looks dangerous...",
+	"No, it's dangerous! There must be another way home.",
+	"I said NOOOOOOO forest :("
+]
+var _reply_index = 0
+
 # ---------------------------------------------------------------------------------------
 func _is_triggerable() -> bool:
 	return Global.state != Global.State.INTRO
@@ -10,4 +17,8 @@ func _get_dialog_title() -> String:
 
 # ---------------------------------------------------------------------------------------
 func _get_dialog_message() -> String:
-	return "Damn, it's creppy AF here..."
+	var reply = REPLIES[_reply_index]
+	_reply_index += 1
+	if _reply_index == REPLIES.size(): 
+		_reply_index = 0
+	return reply
