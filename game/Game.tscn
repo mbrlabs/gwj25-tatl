@@ -499,7 +499,7 @@ __meta__ = {
 }
 
 [node name="DestructibleFrontGate" parent="Castle" instance=ExtResource( 23 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92766, 0, 17.5297 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92766, 10.1768, 17.5297 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 
@@ -681,10 +681,10 @@ transform = Transform( 0.0980345, 0, 0.995183, 0, 1, 0, -0.995183, 0, 0.0980345,
 transform = Transform( 0.0980345, 0, 0.995183, 0.00661762, 0.999978, -0.000651896, -0.995161, 0.00664966, 0.0980323, 13.0249, 0, 28.3857 )
 
 [node name="TreeNoLeaves17" parent="Forest" instance=ExtResource( 14 )]
-transform = Transform( 0.0980345, 0, 0.995183, 0, 1, 0, -0.995183, 0, 0.0980345, 9.02488, 0, 28.3857 )
+transform = Transform( -0.854658, 0, 0.519191, 0, 1, 0, -0.519191, 0, -0.854658, 6.26669, 0, 28.3857 )
 
 [node name="TreeNoLeaves19" parent="Forest" instance=ExtResource( 14 )]
-transform = Transform( 0.0980345, 0, 0.995183, 0, 1, 0, -0.995183, 0, 0.0980345, 10.7893, 0, 29.6059 )
+transform = Transform( 0.857903, 0, 0.513811, 0, 1, 0, -0.513811, 0, 0.857903, 8.58608, 0, 32.9591 )
 
 [node name="TreeNoLeaves32" parent="Forest" instance=ExtResource( 14 )]
 transform = Transform( -0.87429, 0, 0.485405, 0, 1, 0, -0.485405, 0, -0.87429, 5.90688, 0, 22.5502 )
@@ -693,7 +693,7 @@ transform = Transform( -0.87429, 0, 0.485405, 0, 1, 0, -0.485405, 0, -0.87429, 5
 transform = Transform( 0.937008, 0, 0.349308, 0, 1, 0, -0.349308, 0, 0.937008, 15.2406, 0, 30.9204 )
 
 [node name="TreeLong8" parent="Forest" instance=ExtResource( 15 )]
-transform = Transform( 0.560263, 0, 0.828315, 0, 1, 0, -0.828315, 0, 0.560263, 2.69867, -0.580897, 19.1433 )
+transform = Transform( -0.995995, 0, -0.0894164, 0, 1, 0, 0.0894164, 0, -0.995995, 4.50133, -0.580897, 19.3127 )
 
 [node name="TreeNoLeaves28" parent="Forest" instance=ExtResource( 14 )]
 transform = Transform( 0.0980345, 0, 0.995183, 0, 1, 0, -0.995183, 0, 0.0980345, 8.43517, -1.90735e-06, 37.2861 )
@@ -708,10 +708,6 @@ transform = Transform( 0.611347, 0, 0.791362, 0, 1, 0, -0.791362, 0, 0.611347, -
 transform = Transform( 0.698028, 0, -0.716071, 0, 1, 0, 0.716071, 0, 0.698028, -16.7122, 0, 47.5961 )
 
 [node name="Graveyard" type="Spatial" parent="."]
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 
 [node name="POIGraveyard" type="Area" parent="Graveyard"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.48116, 0, 25.5019 )
@@ -725,48 +721,48 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05601, 0.163599 )
 shape = SubResource( 6 )
 
 [node name="LaughingGrave" parent="Graveyard" instance=ExtResource( 30 )]
-transform = Transform( 0.0862516, 0, 0.996273, 0, 1, 0, -0.996273, 0, 0.0862516, -20.1667, 0, 19.6437 )
+transform = Transform( 0.0862516, 0, 0.996273, 0, 1, 0, -0.996273, 0, 0.0862516, -20.1667, 0.118192, 19.6437 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 
 [node name="ReadableGrave1" parent="Graveyard" instance=ExtResource( 16 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.1963, 0.0645914, 30.4966 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.1963, 0.182783, 30.4966 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 grave_text = "RIP, Unreal."
 
 [node name="ReadableGrave4" parent="Graveyard" instance=ExtResource( 16 )]
-transform = Transform( 0.07195, 0, 0.997408, 0, 1, 0, -0.997408, 0, 0.07195, -13.4135, 0.0645914, 23.3928 )
+transform = Transform( 0.07195, 0, 0.997408, 0, 1, 0, -0.997408, 0, 0.07195, -13.4135, 0.182783, 23.3928 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 grave_text = "RIP Lumberyard."
 
 [node name="ReadableGrave6" parent="Graveyard" instance=ExtResource( 16 )]
-transform = Transform( -0.0354577, 0, 0.999371, 0, 1, 0, -0.999371, 0, -0.0354577, -20.6062, 0.0645914, 27.114 )
+transform = Transform( -0.0354577, 0, 0.999371, 0, 1, 0, -0.999371, 0, -0.0354577, -20.6062, 0.182783, 27.114 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 grave_text = "RIP, CryEngine."
 
 [node name="ReadableGrave5" parent="Graveyard" instance=ExtResource( 16 )]
-transform = Transform( 0.07195, 0, 0.997408, 0, 1, 0, -0.997408, 0, 0.07195, -20.3964, 0.0645914, 22.6935 )
+transform = Transform( 0.07195, 0, 0.997408, 0, 1, 0, -0.997408, 0, 0.07195, -20.3964, 0.182783, 22.6935 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 grave_text = "RIP, GameMaker."
 
 [node name="ReadableGrave" parent="Graveyard" instance=ExtResource( 18 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.9718, 9.53674e-07, 30.3445 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.9718, 0.118193, 30.3445 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 grave_text = "RIP, RPG Maker."
 
 [node name="ReadableGrave2" parent="Graveyard" instance=ExtResource( 18 )]
-transform = Transform( -0.0285846, 0, 0.999591, 0, 1, 0, -0.999591, 0, -0.0285846, -12.938, 9.53674e-07, 20.0747 )
+transform = Transform( -0.0285846, 0, 0.999591, 0, 1, 0, -0.999591, 0, -0.0285846, -12.938, 0.118193, 20.0747 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 grave_text = "RIP, Construct."
 
 [node name="ReadableGrave3" parent="Graveyard" instance=ExtResource( 18 )]
-transform = Transform( -0.0238215, 0, 0.999716, 0, 1, 0, -0.999716, 0, -0.0238215, -13.1523, 9.53674e-07, 26.9953 )
+transform = Transform( -0.0238215, 0, 0.999716, 0, 1, 0, -0.999716, 0, -0.0238215, -13.1523, 0.118193, 26.9953 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 grave_text = "RIP, Unity."

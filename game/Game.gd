@@ -1,6 +1,6 @@
 extends Spatial
 
-const GLOWINESS_INCREASE = 1.0
+const GLOWINESS_INCREASE = 0.25
 
 # ---------------------------------------------------------------------------------------
 enum IntroLevel {

@@ -5,9 +5,8 @@
 [resource]
 params_specular_mode = 4
 albedo_texture = ExtResource( 1 )
-metallic = 0.94
+metallic = 0.6
 metallic_specular = 0.0
-roughness = 0.0
 rim_enabled = true
 rim = 0.12
 rim_tint = 0.6

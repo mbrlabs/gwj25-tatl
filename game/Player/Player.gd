@@ -37,12 +37,9 @@ onready var _orb_mesh: Spatial = $CollisionShape/MeshInstance
 onready var _raycast_down: RayCast = $RayCastDown
 onready var _raycast_up: RayCast = $RayCastUp
 onready var _dir_light: DirectionalLight = $Gimbal/Camera/DirectionalLight
-onready var _omni_light: OmniLight = $OmniLight
 
 # ---------------------------------------------------------------------------------------
 var _base_ambient_light: float
-var _base_omni_light_range: float
-var _base_omni_light_energy: float
 var _base_dir_light_energy: float
 var _base_player_emission: float
 
@@ -55,16 +52,12 @@ var _turn_accumulator := 0.0
 # ---------------------------------------------------------------------------------------
 func _ready():
 	_camera.environment = evirorment
-	_base_omni_light_range = _omni_light.omni_range
-	_base_omni_light_energy = _omni_light.light_energy
 	_base_dir_light_energy = _dir_light.light_energy 
 	_base_player_emission = _orb_mesh.material_override.get_shader_param("emission_energy")
 	
 # ---------------------------------------------------------------------------------------
 func _set_glowiness(new_glowiness: float) -> void:
 	glowiness = new_glowiness
-	_omni_light.omni_range = _base_omni_light_range * glowiness
-	_omni_light.light_energy = _base_omni_light_energy * glowiness
 	_dir_light.light_energy = _base_dir_light_energy * glowiness
 	_orb_mesh.material_override.set_shader_param("emission_energy", _base_player_emission*glowiness)
 	
