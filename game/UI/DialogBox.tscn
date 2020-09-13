@@ -4,9 +4,9 @@
 [ext_resource path="res://Common/Fonts/font_dialog_title.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI/DialogBox.gd" type="Script" id=3]
 [ext_resource path="res://UI/dialog_click.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Common/Audio/majora.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Common/Audio/dialog_confirm.ogg" type="AudioStream" id=5]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "blink"
 length = 0.95
 loop = true
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.05, 1.05 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 0, 0, 0 )
 border_color = Color( 1, 1, 1, 1 )
 shadow_color = Color( 0, 0, 0, 0 )
@@ -57,7 +57,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ContinueLabel"]
-anims/blink = SubResource( 2 )
+anims/blink = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_left = 0.5
@@ -78,7 +78,7 @@ __meta__ = {
 margin_right = 1080.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 0, 200 )
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
 anchor_right = 1.0
@@ -115,6 +115,7 @@ bus = "UISound"
 
 [node name="ConfirmSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = -5.0
 bus = "UISound"
 [connection signal="timeout" from="ReadTimer" to="." method="_on_ReadTimer_timeout"]
 [connection signal="timeout" from="FadeOutTimer" to="." method="_on_FadeOutTimer_timeout"]
