@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://mat_white_glow.tres" type="Material" id=1]
+[ext_resource path="res://Props/Models/godot.glb" type="PackedScene" id=2]
+
+[node name="Godot" instance=ExtResource( 2 )]
+
+[node name="godot" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 1 )

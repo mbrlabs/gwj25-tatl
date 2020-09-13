@@ -41,10 +41,10 @@ extents = Vector3( 5.46344, 7.36716, 16.1573 )
 extents = Vector3( 5.46344, 7.36716, 11.6754 )
 
 [sub_resource type="BoxShape" id=4]
-extents = Vector3( 6.32131, 7.36716, 7.32354 )
+extents = Vector3( 6.32131, 6.60333, 7.32354 )
 
 [sub_resource type="BoxShape" id=5]
-extents = Vector3( 5.46344, 7.36716, 3.53492 )
+extents = Vector3( 5.46344, 5.03565, 4.49733 )
 
 [sub_resource type="BoxShape" id=7]
 extents = Vector3( 22.6408, 6.95472, 0.41265 )
@@ -534,10 +534,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6004, 0, 15.4231 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6286, 3.63103, 18.2481 )
 
 [node name="Forest" type="Spatial" parent="."]
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 
 [node name="StaticBody" type="StaticBody" parent="Forest"]
 
@@ -558,11 +554,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.7343, 4.44814, 28.2095 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape5" type="CollisionShape" parent="Forest/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.0044, 4.44814, 35.557 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0722, 6.06619, 34.4766 )
 shape = SubResource( 4 )
 
 [node name="CollisionShape6" type="CollisionShape" parent="Forest/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.0044, 4.44814, 17.9524 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4839, 4.79944, 18.1649 )
 shape = SubResource( 5 )
 
 [node name="POIForestWarning" type="Area" parent="Forest"]
@@ -578,11 +574,11 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.5145,
 shape = SubResource( 8 )
 
 [node name="CollisionShape3" type="CollisionShape" parent="Forest/POIForestWarning"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.6947, 7.11463, 31.0075 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.8956, 7.11463, 31.0075 )
 shape = SubResource( 9 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="Forest/POIForestWarning"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.7938, 7.11463, 18.5826 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.9432, 7.11463, 18.5826 )
 shape = SubResource( 9 )
 
 [node name="TreeNoLeaves4" parent="Forest" instance=ExtResource( 12 )]
@@ -729,96 +725,93 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05601, 0.163599 )
 shape = SubResource( 6 )
 
 [node name="LaughingGrave" parent="Graveyard" instance=ExtResource( 30 )]
-transform = Transform( 0.0862516, 0, 0.996273, 0, 1, 0, -0.996273, 0, 0.0862516, -20.1667, 0, 19.9128 )
+transform = Transform( 0.0862516, 0, 0.996273, 0, 1, 0, -0.996273, 0, 0.0862516, -20.1667, 0, 19.6437 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 
 [node name="ReadableGrave1" parent="Graveyard" instance=ExtResource( 16 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.1963, 0.0645914, 31.2662 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.1963, 0.0645914, 30.4966 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 grave_text = "RIP, Unreal."
 
 [node name="ReadableGrave4" parent="Graveyard" instance=ExtResource( 16 )]
-transform = Transform( 0.07195, 0, 0.997408, 0, 1, 0, -0.997408, 0, 0.07195, -13.4135, 0.0645914, 23.9478 )
+transform = Transform( 0.07195, 0, 0.997408, 0, 1, 0, -0.997408, 0, 0.07195, -13.4135, 0.0645914, 23.3928 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 grave_text = "RIP Lumberyard."
 
 [node name="ReadableGrave6" parent="Graveyard" instance=ExtResource( 16 )]
-transform = Transform( -0.0354577, 0, 0.999371, 0, 1, 0, -0.999371, 0, -0.0354577, -20.0321, 0.0645914, 27.4021 )
+transform = Transform( -0.0354577, 0, 0.999371, 0, 1, 0, -0.999371, 0, -0.0354577, -20.6062, 0.0645914, 27.114 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 grave_text = "RIP, CryEngine."
 
 [node name="ReadableGrave5" parent="Graveyard" instance=ExtResource( 16 )]
-transform = Transform( 0.07195, 0, 0.997408, 0, 1, 0, -0.997408, 0, 0.07195, -20.1396, 0.0645914, 23.2782 )
+transform = Transform( 0.07195, 0, 0.997408, 0, 1, 0, -0.997408, 0, 0.07195, -20.3964, 0.0645914, 22.6935 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 grave_text = "RIP, GameMaker."
 
 [node name="ReadableGrave" parent="Graveyard" instance=ExtResource( 18 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.7061, 9.53674e-07, 31.1331 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.9718, 9.53674e-07, 30.3445 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 grave_text = "RIP, RPG Maker."
 
 [node name="ReadableGrave2" parent="Graveyard" instance=ExtResource( 18 )]
-transform = Transform( -0.0285846, 0, 0.999591, 0, 1, 0, -0.999591, 0, -0.0285846, -12.938, 9.53674e-07, 20.3438 )
+transform = Transform( -0.0285846, 0, 0.999591, 0, 1, 0, -0.999591, 0, -0.0285846, -12.938, 9.53674e-07, 20.0747 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 grave_text = "RIP, Construct."
 
 [node name="ReadableGrave3" parent="Graveyard" instance=ExtResource( 18 )]
-transform = Transform( -0.101473, 0, 0.994838, 0, 1, 0, -0.994838, 0, -0.101473, -13.1523, 9.53674e-07, 27.5209 )
+transform = Transform( -0.0238215, 0, 0.999716, 0, 1, 0, -0.999716, 0, -0.0238215, -13.1523, 9.53674e-07, 26.9953 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 grave_text = "RIP, Unity."
 
 [node name="FenceStraight" parent="Graveyard" instance=ExtResource( 19 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.3322, 0.0864053, 19.4868 )
-
-[node name="FenceStraight2" parent="Graveyard" instance=ExtResource( 19 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.90109, 0.0864053, 19.2241 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.3322, 0.0864053, 18.936 )
 
 [node name="FenceStraight4" parent="Graveyard" instance=ExtResource( 19 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.4014, 0.0864053, 28.2241 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.4014, 0.0864053, 27.3777 )
 
 [node name="FenceStraight6" parent="Graveyard" instance=ExtResource( 19 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -14.6961, 0.0735464, 33.4618 )
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -14.656, 0.0735464, 32.0673 )
 
 [node name="FenceStraight7" parent="Graveyard" instance=ExtResource( 19 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -20.6816, 0.0727777, 33.4617 )
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -20.6415, 0.0727777, 32.0672 )
 
 [node name="FenceStraight9" parent="Graveyard" instance=ExtResource( 19 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.6853, 0.0735464, 33.4618 )
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.6452, 0.0735464, 32.0673 )
 
 [node name="FenceStraight5" parent="Graveyard" instance=ExtResource( 19 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.3384, 0.0864053, 31.2241 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.3384, 0.0864053, 29.3734 )
 
 [node name="FenceStraight3" parent="Graveyard" instance=ExtResource( 19 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.3556, 0.110134, 22.488 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.3556, 0.110134, 21.9372 )
+
+[node name="FenceStraight8" parent="Graveyard" instance=ExtResource( 19 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.89319, 0.110134, 19.1522 )
 
 [node name="FenceCurve" parent="Graveyard" instance=ExtResource( 20 )]
-transform = Transform( -0.0376902, 0, 0.999289, 0, 1, 0, -0.999289, 0, -0.0376902, -23.4824, 0.0585638, 33.1686 )
+transform = Transform( -0.0376902, 0, 0.999289, 0, 1, 0, -0.999289, 0, -0.0376902, -23.4423, 0.0585638, 31.7741 )
 
 [node name="FenceCurve2" parent="Graveyard" instance=ExtResource( 20 )]
-transform = Transform( -0.999289, 0, -0.0376903, 0, 1, 0, 0.0376903, 0, -0.999289, -9.27272, 0.0585638, 32.6217 )
+transform = Transform( -0.999289, 0, -0.0376903, 0, 1, 0, 0.0376903, 0, -0.999289, -9.27272, 0.0585638, 31.2423 )
 
 [node name="FenceWithHole" parent="Graveyard" instance=ExtResource( 21 )]
-transform = Transform( -0.00837753, 0, -0.999965, 0, 1, 0, 0.999965, 0, -0.00837753, -24.3512, 0.142362, 25.4391 )
+transform = Transform( -0.00837753, 0, -0.999965, 0, 1, 0, 0.999965, 0, -0.00837753, -24.3512, 0.142362, 24.8883 )
 
 [node name="FenceWithHole2" parent="Graveyard" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8318, 0, 33.6027 )
-
-[node name="FenceWithHole3" parent="Graveyard" instance=ExtResource( 21 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.95497, 0.0507754, 29.8583 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7917, 0, 32.2082 )
 
 [node name="FenceWithHole4" parent="Graveyard" instance=ExtResource( 21 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.93371, 0, 22.1685 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.93371, 0.0800126, 22.082 )
 
 [node name="FenceBentBack" parent="Graveyard" instance=ExtResource( 22 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.98137, 0.00965631, 26.8686 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.98137, 0.0851482, 28.4786 )
 
 [node name="AwesomeCrypt" parent="." instance=ExtResource( 26 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30.4109, 0.258159, 24.9455 )

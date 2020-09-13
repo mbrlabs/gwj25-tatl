@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Interactables/Models/Crypt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Props/TriforceWithGlow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Interactables/HolyCrypt.gd" type="Script" id=3]
+[ext_resource path="res://Props/Godot.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_unshaded = true
@@ -26,11 +27,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0187826, -0.0441623, 0.01838
 
 [node name="TriforceWithGlow" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1.768, 0, 0, 0, 1.75218, -0.533938, 0, 0.236001, 3.9642, 0, 3.75852, -1.41307 )
+visible = false
 
-[node name="CPUParticles" type="CPUParticles" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0270879, 3.75621, -1.19063 )
-amount = 42
-lifetime = 1.8
+[node name="Godot" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1.25, 0, 0, 0, -0.149716, -1.241, 0, 1.241, -0.149716, 0.0380462, 3.85511, -1.43668 )
+
+[node name="CPUParticles" type="CPUParticles" parent="Godot"]
+transform = Transform( 0.8, 0, 0, 0, -0.0958185, 0.794241, 0, -0.794241, -0.0958185, 0.0216703, 0.173705, 0.00452995 )
+amount = 120
+lifetime = 2.0
 preprocess = 1.0
 mesh = SubResource( 2 )
 emission_shape = 3
