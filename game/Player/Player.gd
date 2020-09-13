@@ -4,6 +4,7 @@ extends KinematicBody
 # ---------------------------------------------------------------------------------------
 const ROTATION_SPEED = 4.0
 const HOVER_TRESHHOLD = 0.05
+const SUPERSPEED_SOUND_TRESHHOLD = 6.0
 
 # ---------------------------------------------------------------------------------------
 enum Mode {
@@ -36,6 +37,7 @@ export var hover_height := 1.0
 # ---------------------------------------------------------------------------------------
 onready var _sound_move: AudioStreamPlayer3D = $MoveSound
 onready var _sound_turn: AudioStreamPlayer3D = $TurnSound
+onready var _sound_superspeed: AudioStreamPlayer3D = $SuperspeedSound
 onready var _gimbal: Spatial = $Gimbal
 onready var _camera: Camera = $Gimbal/Camera
 onready var _actual_orb: Spatial = $CollisionShape
@@ -73,6 +75,7 @@ func _physics_process(delta: float) -> void:
 	var prev_velocity = _velocity
 	
 	# do input and calc move velocity
+	_handle_mode()
 	var move_velocity: Vector3
 	if input_enabled:
 		_aim_camera(delta)
@@ -90,6 +93,18 @@ func _input(e: InputEvent) -> void:
 		_mouse_movement += e.relative
 
 # ---------------------------------------------------------------------------------------
+func _handle_mode() -> void:
+	if _mode == Mode.NORMAL:
+		# player just moves faster
+		if Input.is_action_pressed("special_ability"):
+			speed_scale = 2.0 # TODO: cleanup magic number
+		else:
+			speed_scale = 1.0
+	elif _mode == Mode.BUFFED:
+		# player moves slower; the execution of the tackle attack will take place somewhere else
+		speed_scale = 0.5 # TODO: cleanup magic number
+
+# ---------------------------------------------------------------------------------------
 func _handle_movement_state(pre_move_velocity: Vector3) -> void:
 	match _movement_state:
 		MovementState.IDLE:
@@ -100,6 +115,7 @@ func _handle_movement_state(pre_move_velocity: Vector3) -> void:
 				_sound_move.play()
 			_movement_state = MovementState.MOVING
 		MovementState.MOVING:
+			# turn sound logic
 			_turn_accumulator += (1.0 - _velocity.normalized().dot(pre_move_velocity.normalized()))
 			if _turn_accumulator >= 0.033 && !_sound_turn.playing:
 				_sound_turn.play()
@@ -107,6 +123,13 @@ func _handle_movement_state(pre_move_velocity: Vector3) -> void:
 			var vel_length = _velocity.length()
 			if vel_length < pre_move_velocity.length() && vel_length <  0.5:
 				_movement_state = MovementState.IDLE
+
+			# superspeed sound logic
+			var sound_scale = SUPERSPEED_SOUND_TRESHHOLD - _velocity.length()
+			if sound_scale < 0:
+				_sound_superspeed.unit_db = 0
+			else:
+				_sound_superspeed.unit_db = -SUPERSPEED_SOUND_TRESHHOLD * sound_scale
 
 # ---------------------------------------------------------------------------------------
 func _get_move_velocity(delta: float) -> Vector3:
