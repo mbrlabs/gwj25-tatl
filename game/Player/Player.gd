@@ -2,18 +2,19 @@ class_name Player
 extends KinematicBody
 
 # ---------------------------------------------------------------------------------------
-const ANIM_IDLE = "idle"
-const ANIM_BUFFED_TO_NORMAL = "buffed_to_normal"
-const ANIM_NORMAL_TO_BUFFED = "normal_to_buffed"
-const ROTATION_SPEED = 4.0
-const HOVER_TRESHHOLD = 0.05
-const SUPERSPEED_SOUND_TRESHHOLD = 6.0
-const HOVER_HEIGHT_NORMAL = 1.0
-const HOVER_HEIGHT_NORMAL_SUPERSPEED = 2.0
-const HOVER_HEIGHT_BUFFED = 1.5
-const SPEED_SCALE_NORMAL = 1.0
-const SPEED_SCALE_NORMAL_SUPERSPEED = 2.0
-const SPEED_SCALE_BUFFED = 0.5
+const ANIM_IDLE := "idle"
+const ANIM_BUFFED_TO_NORMAL := "buffed_to_normal"
+const ANIM_NORMAL_TO_BUFFED := "normal_to_buffed"
+const ROTATION_SPEED := 4.0
+const HOVER_TRESHHOLD := 0.05
+const SUPERSPEED_SOUND_TRESHHOLD := 6.0
+const HOVER_HEIGHT_NORMAL := 1.0
+const HOVER_HEIGHT_NORMAL_SUPERSPEED := 2.0
+const HOVER_HEIGHT_BUFFED := 1.5
+const SPEED_SCALE_NORMAL := 1.0
+const SPEED_SCALE_NORMAL_SUPERSPEED := 2.0
+const SPEED_SCALE_BUFFED := 0.5
+const MAX_SUPERSPEED_POWER := 100
 
 # ---------------------------------------------------------------------------------------
 enum Form {
@@ -26,6 +27,21 @@ enum MovementState {
 	ACCELERATING,
 	MOVING
 }
+
+# ---------------------------------------------------------------------------------------
+onready var _sound_move: AudioStreamPlayer3D = $MoveSound
+onready var _sound_turn: AudioStreamPlayer3D = $TurnSound
+onready var _superhover_cooldown_timer: Timer = $SuperhoverCooldownTimer
+onready var _sound_superspeed: AudioStreamPlayer3D = $SuperspeedSound
+onready var _gimbal: Spatial = $Gimbal
+onready var _camera: Camera = $Gimbal/Camera
+onready var _orb_mesh: MeshInstance = $MeshInstance
+onready var _raycast_down: RayCast = $RayCastDown
+onready var _raycast_up: RayCast = $RayCastUp
+onready var _dir_light: DirectionalLight = $Gimbal/Camera/DirectionalLight
+onready var _transformation_anim_player: AnimationPlayer = $AnimationPlayerTransformation
+onready var _collision_shape_normal: CollisionShape = $CollisionShapeNorrmal
+onready var _collision_shape_buffed: CollisionShape = $CollisionShapeBuffed
 
 # ---------------------------------------------------------------------------------------
 export var evirorment: Environment 
@@ -44,24 +60,9 @@ export var hover_strength := 4.0
 export var hover_height := 1.0
 
 # ---------------------------------------------------------------------------------------
-onready var _sound_move: AudioStreamPlayer3D = $MoveSound
-onready var _sound_turn: AudioStreamPlayer3D = $TurnSound
-onready var _sound_superspeed: AudioStreamPlayer3D = $SuperspeedSound
-onready var _gimbal: Spatial = $Gimbal
-onready var _camera: Camera = $Gimbal/Camera
-onready var _orb_mesh: MeshInstance = $MeshInstance
-onready var _raycast_down: RayCast = $RayCastDown
-onready var _raycast_up: RayCast = $RayCastUp
-onready var _dir_light: DirectionalLight = $Gimbal/Camera/DirectionalLight
-onready var _transformation_anim_player: AnimationPlayer = $AnimationPlayerTransformation
-onready var _collision_shape_normal: CollisionShape = $CollisionShapeNorrmal
-onready var _collision_shape_buffed: CollisionShape = $CollisionShapeBuffed
-
-# ---------------------------------------------------------------------------------------
 var _base_ambient_light: float
 var _base_dir_light_energy: float
 var _base_player_emission: float
-
 var _form = Form.NORMAL
 var _mouse_movement: Vector2
 var _velocity: Vector3
@@ -69,6 +70,8 @@ var _camera_lag_velocity: Vector3
 var _movement_state = MovementState.IDLE
 var _turn_accumulator := 0.0
 var _is_transforming := false
+var _superspeed_power := MAX_SUPERSPEED_POWER
+var _is_in_superhover_cooldown := false
 
 # ---------------------------------------------------------------------------------------
 func _ready():
@@ -81,7 +84,11 @@ func _set_glowiness(new_glowiness: float) -> void:
 	glowiness = new_glowiness
 	_dir_light.light_energy = _base_dir_light_energy * glowiness
 	_orb_mesh.material_override.set_shader_param("emission_energy", _base_player_emission*glowiness)
-	
+
+# ---------------------------------------------------------------------------------------
+func get_superhover_power() -> int:
+	return _superspeed_power
+
 # ---------------------------------------------------------------------------------------
 func _physics_process(delta: float) -> void:
 	var prev_velocity = _velocity
@@ -113,12 +120,25 @@ func _input(e: InputEvent) -> void:
 func _handle_mode() -> void:
 	if _form == Form.NORMAL:
 		# player just moves faster
-		if Input.is_action_pressed("special_ability"):
+		if Input.is_action_pressed("special_ability") && _superspeed_power > 0:
 			speed_scale = SPEED_SCALE_NORMAL_SUPERSPEED
 			hover_height = HOVER_HEIGHT_NORMAL_SUPERSPEED
+			_superspeed_power -= 1
+			if _superspeed_power == 0:
+				_is_in_superhover_cooldown = true
+				_superhover_cooldown_timer.start()
+		elif Input.is_action_just_released("special_ability"):
+			_is_in_superhover_cooldown = true
+			_superhover_cooldown_timer.start()
 		else:
 			speed_scale = SPEED_SCALE_NORMAL
 			hover_height = HOVER_HEIGHT_NORMAL
+			if !_is_in_superhover_cooldown:
+				_superspeed_power = min(_superspeed_power+1, MAX_SUPERSPEED_POWER)
+	if _form == Form.BUFFED:
+		_superspeed_power = MAX_SUPERSPEED_POWER
+		_is_in_superhover_cooldown = false
+		_superhover_cooldown_timer.stop()
 
 # ---------------------------------------------------------------------------------------
 func _handle_movement_state(pre_move_velocity: Vector3) -> void:
@@ -244,3 +264,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 # ---------------------------------------------------------------------------------------
 func _on_TurnAccumulatorResetTimer_timeout():
 	_turn_accumulator = 0.0
+
+# ---------------------------------------------------------------------------------------
+func _on_SuperhoverCooldownTimer_timeout():
+	_is_in_superhover_cooldown = false

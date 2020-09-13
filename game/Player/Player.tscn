@@ -148,6 +148,10 @@ script = ExtResource( 1 )
 wait_time = 0.1
 autostart = true
 
+[node name="SuperhoverCooldownTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="AnimationPlayerTransformation" type="AnimationPlayer" parent="."]
 anims/buffed_to_normal = SubResource( 16 )
 anims/normal_to_buffed = SubResource( 17 )
@@ -234,5 +238,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000320584, 0.209172, -0.0062
 enabled = true
 cast_to = Vector3( 0, 1, 0 )
 [connection signal="timeout" from="TurnAccumulatorResetTimer" to="." method="_on_TurnAccumulatorResetTimer_timeout"]
+[connection signal="timeout" from="SuperhoverCooldownTimer" to="." method="_on_SuperhoverCooldownTimer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayerTransformation" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayerIdle" to="." method="_on_AnimationPlayer_animation_finished"]
