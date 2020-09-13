@@ -22,6 +22,7 @@ onready var _label: RichTextLabel = $MarginContainer/Panel/MarginContainer/RichT
 onready var _read_timer: Timer = $ReadTimer
 onready var _fade_out_timer: Timer = $FadeOutTimer
 onready var _read_sound: AudioStreamPlayer = $ReadSound
+onready var _confirm_sound: AudioStreamPlayer = $ConfirmSound
 onready var _continue_label: Label = $ContinueLabel
 onready var _continue_label_anim: AnimationPlayer = $ContinueLabel/AnimationPlayer
 
@@ -52,6 +53,7 @@ func show_message(title: String, content: String, confirmation_required: bool, s
 # ---------------------------------------------------------------------------------------
 func _input(e: InputEvent) -> void:
 	if e.is_action_released("dialog_confirm") && _state == State.WAITING_FOR_CONFRIMATION:
+		_confirm_sound.play()
 		_label.bbcode_text = ""
 		_state = State.IDLE
 		_continue_label.hide()
