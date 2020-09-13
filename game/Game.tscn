@@ -499,7 +499,7 @@ __meta__ = {
 }
 
 [node name="DestructibleFrontGate" parent="Castle" instance=ExtResource( 23 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92766, 10.1768, 17.5297 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.928, 0, 17.53 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 

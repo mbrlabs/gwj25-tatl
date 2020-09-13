@@ -27,7 +27,7 @@ func _ready():
 		var x = rand_range(min_x, max_x)
 		var z = rand_range(min_z, max_z)
 		var scl = rand_range(0.66, 1.0)
-		var uvs: int = rand_range(0, UV_MAP.size())
+		var uvs := int(rand_range(0, UV_MAP.size()))
 		var basis = mm.transform.scaled(Vector3(scl, scl, scl)).rotated(Vector3.UP, rand_range(-1, 1)*PI2).basis
 		mm.multimesh.set_instance_transform(i, Transform(basis, Vector3(x, 0, z)))
 		mm.multimesh.set_instance_custom_data(i, Color(
