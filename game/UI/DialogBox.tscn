@@ -106,7 +106,7 @@ bbcode_enabled = true
 [node name="ReadTimer" type="Timer" parent="."]
 
 [node name="FadeOutTimer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 3.0
 one_shot = true
 
 [node name="ReadSound" type="AudioStreamPlayer" parent="."]

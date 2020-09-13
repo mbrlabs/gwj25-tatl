@@ -12,7 +12,7 @@ uniform float wind_speed = 1.0;
 
 void vertex() {
 	UV = UV/2.0 + vec2(INSTANCE_CUSTOM.z, INSTANCE_CUSTOM.w);
-	if (VERTEX.y > 0.0) {
+	if (VERTEX.y > 0.0 && false) {
 		float x = cos(INSTANCE_CUSTOM.x + VERTEX.z*TIME);
 		float z = cos(INSTANCE_CUSTOM.y + VERTEX.x*TIME);
 		vec3 offset = normalize(vec3(x, 0.0, z));

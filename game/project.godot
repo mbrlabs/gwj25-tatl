@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Spatial",
+"base": "Interactable",
 "class": "DestructibleFrontGate",
 "language": "GDScript",
 "path": "res://Interactables/DestructibleFrontGate.gd"
@@ -18,6 +18,16 @@ _global_script_classes=[ {
 "class": "DialogBox",
 "language": "GDScript",
 "path": "res://UI/DialogBox.gd"
+}, {
+"base": "Area",
+"class": "Interactable",
+"language": "GDScript",
+"path": "res://Interactable.gd"
+}, {
+"base": "Control",
+"class": "InteractableOverlay",
+"language": "GDScript",
+"path": "res://UI/InteractableOverlay.gd"
 }, {
 "base": "Area",
 "class": "POIArea",
@@ -32,6 +42,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "DestructibleFrontGate": "",
 "DialogBox": "",
+"Interactable": "",
+"InteractableOverlay": "",
 "POIArea": "",
 "Player": ""
 }
@@ -117,9 +129,13 @@ dialog_confirm={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
+interact={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [rendering]
 
 quality/driver/driver_name="GLES2"
-quality/filters/msaa=2
 environment/default_environment="res://Common/env_default.tres"

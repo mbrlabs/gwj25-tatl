@@ -1,17 +1,13 @@
 extends POIArea
 
 # ---------------------------------------------------------------------------------------
-func _is_dialog_confirmation_required() -> bool:
-	return false
-
-# ---------------------------------------------------------------------------------------
 func _is_triggerable() -> bool:
 	return Global.state != Global.State.INTRO
 
 # ---------------------------------------------------------------------------------------
 func _get_dialog_title() -> String:
-	return "Gandalf"
+	return "Tatl:"
 
 # ---------------------------------------------------------------------------------------
 func _get_dialog_message() -> String:
-	return "You shall not pass!"
+	return "Damn, it's creppy AF here..."

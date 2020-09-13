@@ -2,6 +2,7 @@ class_name DialogBox
 extends Control
 
 const DEFAULT_READ_SPEED := 0.02
+const DEFAULT_FADE_OUT_TIME := 3.0
 
 # ---------------------------------------------------------------------------------------
 signal message_displayed
@@ -38,17 +39,18 @@ func _ready():
 	_read_timer.wait_time = read_speed
 
 # ---------------------------------------------------------------------------------------
-func show_message(title: String, msg: String, confirmation_required: bool, speed: float = DEFAULT_READ_SPEED) -> void:
-	if _state == State.IDLE:
+func show_message(title: String, msg: String, confirmation_required: bool, wait_time: float = DEFAULT_FADE_OUT_TIME) -> void:
+	if _state != State.WAITING_FOR_CONFRIMATION:
+		_fade_out_timer.stop()
 		_state = State.READING_MESSAGE
 		_confirmation_required = confirmation_required
 		_label.bbcode_text = ""
 		_title = title
 		_message = msg
 		_read_index = 0
+		_fade_out_timer.wait_time = wait_time
 		_read_timer.start()
-	else:
-		printerr("YOU should NOT do this!!!")
+	#printerr("Called show_message while not in IDLE state. Check it in DialogBox.gd!")
 
 # ---------------------------------------------------------------------------------------
 func _input(e: InputEvent) -> void:
