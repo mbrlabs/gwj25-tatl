@@ -131,6 +131,8 @@ bus = "AmbientSounds"
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.871102, 7.74847, 31.4062 )
 evirorment = ExtResource( 3 )
+speed = 4.0
+speed_scale = 1.0
 
 [node name="Gimbal" parent="Player" index="3"]
 transform = Transform( 0.77426, 0, 0.632868, 0, 1, 0, -0.632868, 0, 0.77426, 0, 0, 0 )
@@ -534,6 +536,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6004, 0, 15.4231 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6286, 3.63103, 18.2481 )
 
 [node name="Forest" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="StaticBody" type="StaticBody" parent="Forest"]
 
@@ -593,6 +599,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9811, 0.0144217, 35.9044 )
 [node name="TreeLong" parent="Forest" instance=ExtResource( 15 )]
 transform = Transform( 0.439484, 0, -0.89825, 0, 1, 0, 0.89825, 0, 0.439484, -31.0191, 0, 37.5944 )
 
+[node name="TreeLong12" parent="Forest" instance=ExtResource( 15 )]
+transform = Transform( 0.439484, 0, -0.89825, 0, 1, 0, 0.89825, 0, 0.439484, -13.5685, -0.652672, 47.1181 )
+
 [node name="TreeLong9" parent="Forest" instance=ExtResource( 15 )]
 transform = Transform( 0.439484, 0, -0.89825, 0, 1, 0, 0.89825, 0, 0.439484, -19.4884, 0, 41.9546 )
 
@@ -628,6 +637,9 @@ transform = Transform( 0.847122, 0, -0.531399, 0, 1, 0, 0.531399, 0, 0.847122, -
 
 [node name="TreeLong2" parent="Forest" instance=ExtResource( 15 )]
 transform = Transform( 0.95657, 0, -0.291504, 0, 1, 0, 0.291504, 0, 0.95657, -13.2125, 0, 39.9368 )
+
+[node name="TreeLong11" parent="Forest" instance=ExtResource( 15 )]
+transform = Transform( -0.551311, 0, -0.8343, 0, 1, 0, 0.8343, 0, -0.551311, -3.40948, 0, 47.2535 )
 
 [node name="TreeLong6" parent="Forest" instance=ExtResource( 15 )]
 transform = Transform( 0.604432, 0, 0.796657, 0, 1, 0, -0.796657, 0, 0.604432, -7.55286, 0, 37.233 )
@@ -669,7 +681,7 @@ transform = Transform( 0.770691, 0, 0.637209, 0, 1, 0, -0.637209, 0, 0.770691, 2
 transform = Transform( 0.794489, 0, 0.607279, 0, 1, 0, -0.607279, 0, 0.794489, 20.6811, 0, 34.5241 )
 
 [node name="TreeNoLeaves22" parent="Forest" instance=ExtResource( 14 )]
-transform = Transform( 0.229013, 0, 0.973423, 0, 1, 0, -0.973423, 0, 0.229013, 22.7334, 0, 24.8681 )
+transform = Transform( 0.17176, 0, 0.730068, 0, 0.75, 0, -0.730068, 0, 0.17176, 7.23012, 0, 27.7002 )
 
 [node name="TreeLong3" parent="Forest" instance=ExtResource( 15 )]
 transform = Transform( -0.975542, 0, 0.219812, 0, 1, 0, -0.219812, 0, -0.975542, 10.4744, 0, 21.8007 )
@@ -681,7 +693,7 @@ transform = Transform( 0.0980345, 0, 0.995183, 0, 1, 0, -0.995183, 0, 0.0980345,
 transform = Transform( 0.0980345, 0, 0.995183, 0.00661762, 0.999978, -0.000651896, -0.995161, 0.00664966, 0.0980323, 13.0249, 0, 28.3857 )
 
 [node name="TreeNoLeaves17" parent="Forest" instance=ExtResource( 14 )]
-transform = Transform( -0.854658, 0, 0.519191, 0, 1, 0, -0.519191, 0, -0.854658, 6.26669, 0, 28.3857 )
+transform = Transform( -0.854658, 0, 0.519191, 0, 1, 0, -0.519191, 0, -0.854658, 21.3257, 0, 28.3857 )
 
 [node name="TreeNoLeaves19" parent="Forest" instance=ExtResource( 14 )]
 transform = Transform( 0.857903, 0, 0.513811, 0, 1, 0, -0.513811, 0, 0.857903, 8.58608, 0, 32.9591 )
@@ -705,9 +717,13 @@ transform = Transform( 0.937008, 0, 0.349308, 0, 1, 0, -0.349308, 0, 0.937008, 1
 transform = Transform( 0.611347, 0, 0.791362, 0, 1, 0, -0.791362, 0, 0.611347, -27.3475, 0, 44.7891 )
 
 [node name="TreeNoLeaves26" parent="Forest" instance=ExtResource( 14 )]
-transform = Transform( 0.698028, 0, -0.716071, 0, 1, 0, 0.716071, 0, 0.698028, -16.7122, 0, 47.5961 )
+transform = Transform( 0.098399, 0, -0.995147, 0, 1, 0, 0.995147, 0, 0.098399, -16.7291, 0, 39.4562 )
 
 [node name="Graveyard" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="POIGraveyard" type="Area" parent="Graveyard"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.48116, 0, 25.5019 )

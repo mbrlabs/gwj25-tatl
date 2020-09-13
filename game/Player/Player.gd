@@ -6,6 +6,11 @@ const ROTATION_SPEED = 4.0
 const HOVER_TRESHHOLD = 0.05
 
 # ---------------------------------------------------------------------------------------
+enum Mode {
+	NORMAL,
+	BUFFED
+}
+
 enum MovementState {
 	IDLE,
 	ACCELERATING,
@@ -21,6 +26,7 @@ export var camera_zoom_increments := 0.1
 export var camera_max_zoom_increments := 10
 export var camera_lag := 8.0
 export var speed := 5.0
+export var speed_scale := 1.0
 export var acceleration_factor := 20.0
 export var deceleration_factor := 4.0
 export var gravity := 1.5
@@ -43,6 +49,7 @@ var _base_ambient_light: float
 var _base_dir_light_energy: float
 var _base_player_emission: float
 
+var _mode = Mode.NORMAL
 var _mouse_movement: Vector2
 var _velocity: Vector3
 var _camera_lag_velocity: Vector3
@@ -75,22 +82,7 @@ func _physics_process(delta: float) -> void:
 	
 	# move
 	_velocity = move_and_slide(move_velocity, Vector3.UP)
-	
-	# TODO: clean this up!
-	# crappy movment state management
-	if _movement_state == MovementState.IDLE && _velocity.length() > prev_velocity.length():
-		_movement_state = MovementState.ACCELERATING
-	elif _movement_state == MovementState.ACCELERATING:
-		if !_sound_move.playing: _sound_move.play()
-		_movement_state = MovementState.MOVING
-	elif _movement_state == MovementState.MOVING:
-		_turn_accumulator += (1.0 - _velocity.normalized().dot(prev_velocity.normalized()))
-		if _turn_accumulator >= 0.033 && !_sound_turn.playing:
-			_sound_turn.play()
-			_turn_accumulator = 0.0
-		var vel_length = _velocity.length()
-		if vel_length < prev_velocity.length() && vel_length <  0.5:
-			_movement_state = MovementState.IDLE
+	_handle_movement_state(prev_velocity)
 	
 # ---------------------------------------------------------------------------------------
 func _input(e: InputEvent) -> void:
@@ -98,9 +90,28 @@ func _input(e: InputEvent) -> void:
 		_mouse_movement += e.relative
 
 # ---------------------------------------------------------------------------------------
+func _handle_movement_state(pre_move_velocity: Vector3) -> void:
+	match _movement_state:
+		MovementState.IDLE:
+			if _velocity.length() > pre_move_velocity.length():
+				_movement_state = MovementState.ACCELERATING
+		MovementState.ACCELERATING:
+			if !_sound_move.playing:
+				_sound_move.play()
+			_movement_state = MovementState.MOVING
+		MovementState.MOVING:
+			_turn_accumulator += (1.0 - _velocity.normalized().dot(pre_move_velocity.normalized()))
+			if _turn_accumulator >= 0.033 && !_sound_turn.playing:
+				_sound_turn.play()
+				_turn_accumulator = 0.0
+			var vel_length = _velocity.length()
+			if vel_length < pre_move_velocity.length() && vel_length <  0.5:
+				_movement_state = MovementState.IDLE
+
+# ---------------------------------------------------------------------------------------
 func _get_move_velocity(delta: float) -> Vector3:
 	var direction := _get_move_direction()
-	var target := direction * speed
+	var target := direction * speed * speed_scale
 	var move_velocity = Vector3(_velocity.x, 0, _velocity.z)
 	var acceleration = deceleration_factor
 	if direction.dot(move_velocity) > 0:
