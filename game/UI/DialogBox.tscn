@@ -4,7 +4,7 @@
 [ext_resource path="res://Common/Fonts/font_dialog_title.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI/DialogBox.gd" type="Script" id=3]
 [ext_resource path="res://UI/dialog_click.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Common/Audio/dialog_confirm.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Common/Audio/placeholder.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "blink"
@@ -115,7 +115,7 @@ bus = "UISound"
 
 [node name="ConfirmSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = -5.0
+volume_db = 10.0
 bus = "UISound"
 [connection signal="timeout" from="ReadTimer" to="." method="_on_ReadTimer_timeout"]
 [connection signal="timeout" from="FadeOutTimer" to="." method="_on_FadeOutTimer_timeout"]

@@ -31,8 +31,8 @@ enum MovementState {
 # ---------------------------------------------------------------------------------------
 onready var _sound_move: AudioStreamPlayer3D = $MoveSound
 onready var _sound_turn: AudioStreamPlayer3D = $TurnSound
-onready var _superhover_cooldown_timer: Timer = $SuperhoverCooldownTimer
 onready var _sound_superspeed: AudioStreamPlayer3D = $SuperspeedSound
+onready var _superhover_cooldown_timer: Timer = $SuperhoverCooldownTimer
 onready var _gimbal: Spatial = $Gimbal
 onready var _camera: Camera = $Gimbal/Camera
 onready var _orb_mesh: MeshInstance = $MeshInstance
