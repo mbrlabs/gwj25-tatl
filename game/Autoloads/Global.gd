@@ -15,6 +15,8 @@ enum State {
 
 # ---------------------------------------------------------------------------------------
 var state = State.INTRO
+var buffed_form_unlocked := true
+var god_mode_enabled := false
 
 # ---------------------------------------------------------------------------------------
 var _music: AudioStreamPlayer

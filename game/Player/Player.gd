@@ -2,12 +2,21 @@ class_name Player
 extends KinematicBody
 
 # ---------------------------------------------------------------------------------------
+const ANIM_IDLE = "idle"
+const ANIM_BUFFED_TO_NORMAL = "buffed_to_normal"
+const ANIM_NORMAL_TO_BUFFED = "normal_to_buffed"
 const ROTATION_SPEED = 4.0
 const HOVER_TRESHHOLD = 0.05
 const SUPERSPEED_SOUND_TRESHHOLD = 6.0
+const HOVER_HEIGHT_NORMAL = 1.0
+const HOVER_HEIGHT_NORMAL_SUPERSPEED = 2.0
+const HOVER_HEIGHT_BUFFED = 1.5
+const SPEED_SCALE_NORMAL = 1.0
+const SPEED_SCALE_NORMAL_SUPERSPEED = 2.0
+const SPEED_SCALE_BUFFED = 0.5
 
 # ---------------------------------------------------------------------------------------
-enum Mode {
+enum Form {
 	NORMAL,
 	BUFFED
 }
@@ -40,23 +49,26 @@ onready var _sound_turn: AudioStreamPlayer3D = $TurnSound
 onready var _sound_superspeed: AudioStreamPlayer3D = $SuperspeedSound
 onready var _gimbal: Spatial = $Gimbal
 onready var _camera: Camera = $Gimbal/Camera
-onready var _actual_orb: Spatial = $CollisionShape
-onready var _orb_mesh: Spatial = $CollisionShape/MeshInstance
+onready var _orb_mesh: MeshInstance = $MeshInstance
 onready var _raycast_down: RayCast = $RayCastDown
 onready var _raycast_up: RayCast = $RayCastUp
 onready var _dir_light: DirectionalLight = $Gimbal/Camera/DirectionalLight
+onready var _transformation_anim_player: AnimationPlayer = $AnimationPlayerTransformation
+onready var _collision_shape_normal: CollisionShape = $CollisionShapeNorrmal
+onready var _collision_shape_buffed: CollisionShape = $CollisionShapeBuffed
 
 # ---------------------------------------------------------------------------------------
 var _base_ambient_light: float
 var _base_dir_light_energy: float
 var _base_player_emission: float
 
-var _mode = Mode.NORMAL
+var _form = Form.NORMAL
 var _mouse_movement: Vector2
 var _velocity: Vector3
 var _camera_lag_velocity: Vector3
 var _movement_state = MovementState.IDLE
 var _turn_accumulator := 0.0
+var _is_transforming := false
 
 # ---------------------------------------------------------------------------------------
 func _ready():
@@ -79,13 +91,18 @@ func _physics_process(delta: float) -> void:
 	var move_velocity: Vector3
 	if input_enabled:
 		_aim_camera(delta)
-		move_velocity = _get_move_velocity(delta)
-	_apply_camera_lag(delta)
+		if !_is_transforming:
+			move_velocity = _get_move_velocity(delta)
+			_apply_camera_lag(delta)
 	move_velocity = _apply_hover(move_velocity)
 	
 	# move
 	_velocity = move_and_slide(move_velocity, Vector3.UP)
 	_handle_movement_state(prev_velocity)
+	
+	# form transformation
+	if input_enabled && !_is_transforming && Global.buffed_form_unlocked:
+		_handle_transformation()
 	
 # ---------------------------------------------------------------------------------------
 func _input(e: InputEvent) -> void:
@@ -94,15 +111,14 @@ func _input(e: InputEvent) -> void:
 
 # ---------------------------------------------------------------------------------------
 func _handle_mode() -> void:
-	if _mode == Mode.NORMAL:
+	if _form == Form.NORMAL:
 		# player just moves faster
 		if Input.is_action_pressed("special_ability"):
-			speed_scale = 2.0 # TODO: cleanup magic number
+			speed_scale = SPEED_SCALE_NORMAL_SUPERSPEED
+			hover_height = HOVER_HEIGHT_NORMAL_SUPERSPEED
 		else:
-			speed_scale = 1.0
-	elif _mode == Mode.BUFFED:
-		# player moves slower; the execution of the tackle attack will take place somewhere else
-		speed_scale = 0.5 # TODO: cleanup magic number
+			speed_scale = SPEED_SCALE_NORMAL
+			hover_height = HOVER_HEIGHT_NORMAL
 
 # ---------------------------------------------------------------------------------------
 func _handle_movement_state(pre_move_velocity: Vector3) -> void:
@@ -127,7 +143,7 @@ func _handle_movement_state(pre_move_velocity: Vector3) -> void:
 			# superspeed sound logic
 			var sound_scale = SUPERSPEED_SOUND_TRESHHOLD - _velocity.length()
 			if sound_scale < 0:
-				_sound_superspeed.unit_db = 0
+				_sound_superspeed.unit_db = 4
 			else:
 				_sound_superspeed.unit_db = -SUPERSPEED_SOUND_TRESHHOLD * sound_scale
 
@@ -193,6 +209,37 @@ func _get_move_direction() -> Vector3:
 	if Input.is_action_pressed("move_right"):
 		direction += cam_basis.x
 	return direction.normalized()
+
+# ---------------------------------------------------------------------------------------
+func _handle_transformation() -> void:
+	if Input.is_action_just_pressed("change_form"):
+		_is_transforming = true
+		if _form == Form.NORMAL:
+			_form = Form.BUFFED
+			if Global.god_mode_enabled:
+				speed_scale = 2.5
+				hover_height = 8.0
+			else:
+				speed_scale = SPEED_SCALE_BUFFED
+				hover_height = HOVER_HEIGHT_BUFFED
+			_transformation_anim_player.play(ANIM_NORMAL_TO_BUFFED)
+		else:
+			_form = Form.NORMAL
+			speed_scale = SPEED_SCALE_NORMAL
+			hover_height = HOVER_HEIGHT_NORMAL
+			_transformation_anim_player.play(ANIM_BUFFED_TO_NORMAL)
+
+# ---------------------------------------------------------------------------------------
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	match anim_name:
+		ANIM_NORMAL_TO_BUFFED:
+			_collision_shape_normal.disabled = true
+			_collision_shape_buffed.disabled = false
+			_is_transforming = false
+		ANIM_BUFFED_TO_NORMAL:
+			_collision_shape_normal.disabled = false
+			_collision_shape_buffed.disabled = true
+			_is_transforming = false
 	
 # ---------------------------------------------------------------------------------------
 func _on_TurnAccumulatorResetTimer_timeout():
