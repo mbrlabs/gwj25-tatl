@@ -4,6 +4,7 @@ extends Area
 # ---------------------------------------------------------------------------------------
 export var dialog_box: NodePath
 export var one_shot: bool = false
+export var disabled: bool = false
 
 # ---------------------------------------------------------------------------------------
 var _already_triggered_once := false
@@ -26,7 +27,7 @@ func _get_dialog_title() -> String:
 
 # ---------------------------------------------------------------------------------------
 func _on_body_entered(body) -> void:
-	if _is_triggerable() && body is KinematicBody:
+	if _is_triggerable() && !disabled && body is Player:
 		if !one_shot || (one_shot && !_already_triggered_once):
 			_already_triggered_once = true
 			var box := get_node(dialog_box) as DialogBox

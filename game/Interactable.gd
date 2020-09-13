@@ -6,6 +6,7 @@ export var dialog_box: NodePath
 export var interact_overlay: NodePath
 export var interaction_prompt: String = "Press [E] to interact"
 export var one_shot: bool = false
+export var disabled: bool = false
 
 # ---------------------------------------------------------------------------------------
 var _already_interacted_once := false
@@ -23,7 +24,7 @@ func _is_interactable() -> bool:
 
 # ---------------------------------------------------------------------------------------
 func _on_body_entered(body) -> void:
-	if body is Player:
+	if !disabled && body is Player:
 		_player_in_interactable_area = true
 		if _is_interactable():
 			if !one_shot || (one_shot && !_already_interacted_once):
@@ -33,14 +34,14 @@ func _on_body_entered(body) -> void:
 
 # ---------------------------------------------------------------------------------------
 func _on_body_exited(body) -> void:
-	if body is Player:
+	if !disabled && body is Player:
 		_player_in_interactable_area = false
 		_interacted_by_player_without_leaving_area = false
 		get_node(interact_overlay).hide()
 
 # ---------------------------------------------------------------------------------------
 func _input(event: InputEvent) -> void:
-	if _is_interactable() && _player_in_interactable_area && !_interacted_by_player_without_leaving_area:
+	if _is_interactable() && !disabled && _player_in_interactable_area && !_interacted_by_player_without_leaving_area:
 		if event.is_action_released("interact"):
 			if !one_shot || (one_shot && !_already_interacted_once):
 				get_node(interact_overlay).hide()

@@ -722,6 +722,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.48116, 0, 25.5019 )
 script = ExtResource( 28 )
 dialog_box = NodePath("../../UI/DialogBox")
 one_shot = true
+disabled = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Graveyard/POIGraveyard"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05601, 0.163599 )
