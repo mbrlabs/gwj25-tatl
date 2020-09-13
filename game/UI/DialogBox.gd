@@ -28,7 +28,6 @@ onready var _continue_label_anim: AnimationPlayer = $ContinueLabel/AnimationPlay
 # ---------------------------------------------------------------------------------------
 var _state = State.IDLE
 var _confirmation_required := false
-var _next_title_index := 0
 var _next_content_index := 0
 var _next_title: String
 var _next_content: String
@@ -45,7 +44,6 @@ func show_message(title: String, content: String, confirmation_required: bool, s
 		_label.bbcode_text = ""
 		_next_title = title
 		_next_content = content
-		_next_title_index = 0
 		_next_content_index = 0
 		_read_timer.start()
 	else:
@@ -62,9 +60,7 @@ func _input(e: InputEvent) -> void:
 # ---------------------------------------------------------------------------------------
 func _on_ReadTimer_timeout():
 	# increment indices n stuff
-	if _next_title_index < _next_title.length():
-		_next_title_index += 1
-	elif _next_content_index < _next_content.length():
+	if _next_content_index < _next_content.length():
 		_next_content_index += 1
 	else:
 		_read_timer.stop()
@@ -78,8 +74,8 @@ func _on_ReadTimer_timeout():
 	
 	# generate text
 	var final_text = ""
-	if _next_title_index > 0:
-		final_text = "[b]" + _next_title.substr(0, _next_title_index+1) + "[/b]\n\n"
+	if !_next_title.empty():
+		final_text = "[b]" + _next_title + "[/b]\n\n"
 	if _next_content_index > 0:
 		final_text += _next_content.substr(0, _next_content_index+1)
 	_label.bbcode_text = final_text

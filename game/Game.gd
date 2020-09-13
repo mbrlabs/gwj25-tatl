@@ -18,9 +18,9 @@ onready var _dialog_box: DialogBox = $UI/DialogBox
 
 # ---------------------------------------------------------------------------------------
 var _intro_dialogs = {
-	IntroLevel.HELLO: "Hello, my name is Tatl! :) I am a fairy from the Godot forest and i think i'm lost! Can you help me get out of this dark place?",
-	IntroLevel.MOVEMENT: "Thanks! You can control me with WASD or Arrow Keys. Use your mouse to look around.",
-	IntroLevel.ABILITIES: "I can also push myself pretty high into the air if you hold your left mouse button. Try it!",
+	IntroLevel.HELLO: "Hello, my name is Tatl ;) I am a fairy from the Godot forest and i think i'm lost! Can you help me get out of this dark place?",
+	IntroLevel.MOVEMENT: "Thanks! You can control me with WASD or Arrow Keys. Use your Mouse to look around.",
+	IntroLevel.ABILITIES: "I can also push myself pretty high into the air if you hold down your left mouse button. Try it!",
 	IntroLevel.GOOD_LUCK: "Great! So go on now and save my ass :)" 
 }
 var _intro_lvl = IntroLevel.HELLO
