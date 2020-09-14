@@ -3,7 +3,7 @@ extends POIArea
 const REPLIES = [
 	"I don't want to go into THAT forest. It looks dangerous...",
 	"No, it's dangerous! There must be another way home.",
-	"I said NOOOOOOO forest :("
+	"Nope, still not going in there."
 ]
 var _reply_index = 0
 

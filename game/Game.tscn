@@ -33,10 +33,10 @@
 [ext_resource path="res://UI/AbilityOverlay.tscn" type="PackedScene" id=31]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 21.3831, 7.36716, 2.78075 )
+extents = Vector3( 21.3831, 5.12716, 2.78075 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 5.46344, 7.36716, 16.1573 )
+extents = Vector3( 5.46344, 4.58472, 10.8725 )
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 1.85568, 6.03647, 11.5226 )
@@ -551,11 +551,11 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape" type="CollisionShape" parent="Forest/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00835, 0, 38.0071 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00835, 5.11113, 38.0071 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Forest/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0021, 0, 20.4415 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0021, 4.60303, 28.5475 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="Forest/StaticBody"]

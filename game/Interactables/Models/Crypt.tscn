@@ -1,22 +1,19 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Interactables/Models/crypt.glb" type="PackedScene" id=1]
 [ext_resource path="res://Common/mat_palette.tres" type="Material" id=2]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 2.11427, 0.634059, 1.86021 )
+extents = Vector3( 1.07245, 2.77539, 2.20323 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.355915, 1.92778, 1.86021 )
+extents = Vector3( 0.428254, 0.461938, 2.02832 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.776062, 0.12609, 2.02832 )
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 1.11486, 1.86517, 1.35256 )
-
-[sub_resource type="BoxShape" id=6]
-extents = Vector3( 0.188068, 2.01222, 2.02744 )
-
-[sub_resource type="BoxShape" id=5]
-extents = Vector3( 2.1652, 0.368267, 0.37679 )
+extents = Vector3( 1.34636, 2.77539, 0.385454 )
 
 [node name="Crypt" instance=ExtResource( 1 )]
 
@@ -28,26 +25,22 @@ material_override = ExtResource( 2 )
 collision_layer = 2
 collision_mask = 5
 
-[node name="CollisionShape" type="CollisionShape" parent="crypt/StaticBody" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.330397, -0.396102 )
+[node name="CollisionShape5" type="CollisionShape" parent="crypt/StaticBody" index="0"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0628912, 2.45913, -1.12139 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape3" type="CollisionShape" parent="crypt/StaticBody" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72842, 2.88956, -0.396102 )
+[node name="CollisionShape8" type="CollisionShape" parent="crypt/StaticBody" index="1"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0479821, -0.180698, 1.62767 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape4" type="CollisionShape" parent="crypt/StaticBody" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78765, 2.88956, -0.396102 )
-shape = SubResource( 2 )
+[node name="CollisionShape9" type="CollisionShape" parent="crypt/StaticBody" index="2"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0479821, 0.784795, 0.664736 )
+shape = SubResource( 4 )
 
-[node name="CollisionShape5" type="CollisionShape" parent="crypt/StaticBody" index="3"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.00207162, 2.82818, -0.963485 )
+[node name="CollisionShape6" type="CollisionShape" parent="crypt/StaticBody" index="3"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.80516, 2.45913, 1.19274 )
 shape = SubResource( 3 )
 
-[node name="CollisionShape6" type="CollisionShape" parent="crypt/StaticBody" index="4"]
-transform = Transform( 1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -0.0237565, 4.94808, -0.0791877 )
-shape = SubResource( 6 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="crypt/StaticBody" index="5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0402567, -0.0282387, 1.76531 )
-shape = SubResource( 5 )
+[node name="CollisionShape7" type="CollisionShape" parent="crypt/StaticBody" index="4"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.77524, 2.45913, 1.19274 )
+shape = SubResource( 3 )
