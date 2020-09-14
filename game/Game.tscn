@@ -33,13 +33,13 @@
 [ext_resource path="res://UI/AbilityOverlay.tscn" type="PackedScene" id=31]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 30.6502, 7.36716, 6.19276 )
+extents = Vector3( 21.3831, 7.36716, 2.78075 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 5.46344, 7.36716, 16.1573 )
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 5.46344, 7.36716, 11.6754 )
+extents = Vector3( 1.85568, 6.03647, 11.5226 )
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 6.32131, 6.60333, 7.32354 )
@@ -48,13 +48,13 @@ extents = Vector3( 6.32131, 6.60333, 7.32354 )
 extents = Vector3( 5.46344, 5.03565, 4.49733 )
 
 [sub_resource type="BoxShape" id=6]
-extents = Vector3( 22.6408, 6.95472, 0.41265 )
+extents = Vector3( 22.6408, 5.23025, 0.41265 )
 
 [sub_resource type="BoxShape" id=7]
-extents = Vector3( 8.73184, 6.95472, 0.41265 )
+extents = Vector3( 8.73184, 5.14599, 0.41265 )
 
 [sub_resource type="BoxShape" id=8]
-extents = Vector3( 3.95302, 6.95472, 0.41265 )
+extents = Vector3( 3.95302, 5.34473, 0.41265 )
 
 [sub_resource type="BoxShape" id=9]
 extents = Vector3( 1, 2.14882, 3.31791 )
@@ -138,7 +138,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.871102, 7.74847, 31.4062 )
 evirorment = ExtResource( 3 )
 speed = 4.0
 
-[node name="Gimbal" parent="Player" index="14"]
+[node name="Gimbal" parent="Player" index="15"]
 transform = Transform( 0.77426, 0, 0.632868, 0, 1, 0, -0.632868, 0, 0.77426, 0, 0, 0 )
 
 [node name="Grass" type="Spatial" parent="."]
@@ -551,7 +551,7 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape" type="CollisionShape" parent="Forest/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.38105, 0, 41.5715 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00835, 0, 38.0071 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Forest/StaticBody"]
@@ -559,12 +559,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0021, 0, 20.4415 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="Forest/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6064, 0, 30.8018 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53104, 1.69372, 29.2005 )
 shape = SubResource( 3 )
-
-[node name="CollisionShape3" type="CollisionShape" parent="Forest/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.7343, 4.44814, 28.2095 )
-shape = SubResource( 2 )
 
 [node name="CollisionShape5" type="CollisionShape" parent="Forest/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0722, 6.06619, 34.4766 )
@@ -580,19 +576,19 @@ script = ExtResource( 17 )
 dialog_box = NodePath("../../UI/DialogBox")
 
 [node name="CollisionShape" type="CollisionShape" parent="Forest/POIForestWarning"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6343, 7.11463, 35.1173 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6343, 5.25615, 35.1173 )
 shape = SubResource( 6 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Forest/POIForestWarning"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.5145, 7.11463, 26.5632 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.5145, 5.15974, 26.5632 )
 shape = SubResource( 7 )
 
 [node name="CollisionShape3" type="CollisionShape" parent="Forest/POIForestWarning"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.8956, 7.11463, 31.0075 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.8956, 5.15131, 31.0075 )
 shape = SubResource( 8 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="Forest/POIForestWarning"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.9432, 7.11463, 18.5826 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.9432, 5.44339, 18.5826 )
 shape = SubResource( 8 )
 
 [node name="TreeNoLeaves4" parent="Forest" instance=ExtResource( 12 )]

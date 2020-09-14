@@ -17,7 +17,7 @@ const HOVER_HEIGHT_BUFFED := 1.5
 const SPEED_SCALE_NORMAL := 1.0
 const SPEED_SCALE_NORMAL_SUPERSPEED := 2.0
 const SPEED_SCALE_BUFFED := 0.5
-const MAX_ABILITY_POWER := 100
+const MAX_ABILITY_POWER := 120
 
 # ---------------------------------------------------------------------------------------
 enum Form {
@@ -35,6 +35,7 @@ enum MovementState {
 onready var _sound_move: AudioStreamPlayer3D = $MoveSound
 onready var _sound_turn: AudioStreamPlayer3D = $TurnSound
 onready var _sound_superspeed: AudioStreamPlayer3D = $SuperspeedSound
+onready var _sound_cannon: AudioStreamPlayer = $GodotCannonmSound
 onready var _ability_cooldown_timer: Timer = $AbilityCooldownTimer
 onready var _gimbal: Spatial = $Gimbal
 onready var _camera: Camera = $Gimbal/Camera
@@ -178,15 +179,20 @@ func _handle_mode() -> void:
 				_gun_impact_particles.emitting = false
 				
 			# decrease power
-			_ability_power -= 2
+			_ability_power -= 1
 			if _ability_power <= 0:
 				_is_ability_cooldown_active = true
 				_ability_cooldown_timer.start()
+			
+			if !_sound_cannon.playing:
+				_sound_cannon.play()
 		elif Input.is_action_just_released("special_ability"):
 			_gun_impact_particles.emitting = false
 			_is_ability_cooldown_active = true
 			_ability_cooldown_timer.start()
+			_sound_cannon.stop()
 		else:
+			_sound_cannon.stop()
 			_gun_impact_particles.emitting = false
 			if !_is_ability_cooldown_active:
 				_ability_power = min(_ability_power+1, MAX_ABILITY_POWER)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Common/Audio/superspeed.ogg" type="AudioStream" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Player/GunImpactParticles.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Crosshair.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Common/Audio/transformation_to_normal.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Common/Audio/godot_cannon2.ogg" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "buffed_to_normal"
@@ -170,6 +171,11 @@ bus = "PlayerSound"
 
 [node name="TransformationSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+bus = "PlayerSound"
+
+[node name="GodotCannonmSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -12.0
 bus = "PlayerSound"
 
 [node name="Projectiles" type="Node" parent="."]
