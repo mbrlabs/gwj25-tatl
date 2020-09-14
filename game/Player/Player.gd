@@ -2,6 +2,9 @@ class_name Player
 extends KinematicBody
 
 # ---------------------------------------------------------------------------------------
+const ProjectileFactory = preload("res://Projectile.tscn")
+
+# ---------------------------------------------------------------------------------------
 const ANIM_IDLE := "idle"
 const ANIM_BUFFED_TO_NORMAL := "buffed_to_normal"
 const ANIM_NORMAL_TO_BUFFED := "normal_to_buffed"
@@ -42,6 +45,7 @@ onready var _dir_light: DirectionalLight = $Gimbal/Camera/DirectionalLight
 onready var _transformation_anim_player: AnimationPlayer = $AnimationPlayerTransformation
 onready var _collision_shape_normal: CollisionShape = $CollisionShapeNorrmal
 onready var _collision_shape_buffed: CollisionShape = $CollisionShapeBuffed
+onready var _projectiles_container: Node = $Projectiles
 
 # ---------------------------------------------------------------------------------------
 export var evirorment: Environment 
@@ -139,7 +143,26 @@ func _handle_mode() -> void:
 		_superspeed_power = MAX_SUPERSPEED_POWER
 		_is_in_superhover_cooldown = false
 		_superhover_cooldown_timer.stop()
-
+		if Input.is_action_pressed("special_ability") && randf() < 0.5:
+			var projectile := ProjectileFactory.instance() as Projectile
+			
+			var offset = 0.2
+			var pos_offset = Vector3(
+				rand_range(-offset, offset), 
+				0.5 + rand_range(-offset, offset), 
+				rand_range(-offset, offset)
+			)
+			projectile.direction = -_camera.get_global_transform().basis.z
+			
+			# this rotates the rotation vector of the camera around it's x axis for 15 deg. If you look at the
+			# godot gizmo in the 3d editor you can see, that (because z is forward, it must rotate around the x
+			# axis to align approx. with the center of the screen.
+			# man it's late. i should reall sleep now....
+			projectile.direction = projectile.direction.rotated(_camera.get_global_transform().basis.x, deg2rad(15))
+			
+			projectile.start_position = global_transform.origin + pos_offset
+			_projectiles_container.add_child(projectile)
+			
 # ---------------------------------------------------------------------------------------
 func _handle_movement_state(pre_move_velocity: Vector3) -> void:
 	match _movement_state:
@@ -209,6 +232,10 @@ func _aim_camera(delta: float) -> void:
 		_gimbal.rotate_y(-deg2rad(_mouse_movement.x * delta * mouse_sensitivity * ROTATION_SPEED))
 		_gimbal.rotate_object_local(Vector3(1, 0, 0), deg2rad(-_mouse_movement.y * delta * mouse_sensitivity * ROTATION_SPEED))
 	_mouse_movement = Vector2()
+
+# ---------------------------------------------------------------------------------------
+func _custom_tackle_movement_along_camera_axis(length: float) -> void:
+	pass
 
 # ---------------------------------------------------------------------------------------
 func _ray_col_dist(ray: RayCast) -> float:

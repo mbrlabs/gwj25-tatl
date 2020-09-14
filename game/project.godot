@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Area",
 "class": "Interactable",
 "language": "GDScript",
-"path": "res://Interactable.gd"
+"path": "res://Interactables/Interactable.gd"
 }, {
 "base": "Control",
 "class": "InteractableOverlay",
@@ -38,6 +38,11 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://Player/Player.gd"
+}, {
+"base": "Area",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://Projectile.gd"
 } ]
 _global_script_class_icons={
 "DestructibleFrontGate": "",
@@ -45,7 +50,8 @@ _global_script_class_icons={
 "Interactable": "",
 "InteractableOverlay": "",
 "POIArea": "",
-"Player": ""
+"Player": "",
+"Projectile": ""
 }
 
 [application]
