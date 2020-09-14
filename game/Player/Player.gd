@@ -47,6 +47,7 @@ onready var _transformation_anim_player: AnimationPlayer = $AnimationPlayerTrans
 onready var _collision_shape_normal: CollisionShape = $CollisionShapeNorrmal
 onready var _collision_shape_buffed: CollisionShape = $CollisionShapeBuffed
 onready var _projectiles_container: Node = $Projectiles
+onready var _gun_impact_particles: CPUParticles = $Node/RaygunImpactParticles
 
 # ---------------------------------------------------------------------------------------
 export var evirorment: Environment 
@@ -148,20 +149,28 @@ func _handle_mode() -> void:
 			var projectile := ProjectileFactory.instance() as Projectile
 			
 			# projectile start position
+			projectile.start_position = _raycast_gun.global_transform.origin
+			#projectile.start_position -= _raycast_gun.global_transform.basis.z * 2.0
 			var offset = 0.2
 			var pos_offset = Vector3(
 				rand_range(-offset, offset), 
-				0.5 + rand_range(-offset, offset), 
+				rand_range(-offset, offset), 
 				rand_range(-offset, offset)
 			)
-			projectile.start_position = global_transform.origin + pos_offset
+			projectile.start_position += pos_offset
 			
-			# shoot direction
+			# aim and fire
 			projectile.direction = -_raycast_gun.global_transform.basis.z
-			
-			# fire!
 			_projectiles_container.add_child(projectile)
 			
+			# check for collsion and show impact effect
+			if _raycast_gun.is_colliding():
+				_gun_impact_particles.emitting = true
+				_gun_impact_particles.global_transform.origin = _raycast_gun.get_collision_point()
+				_gun_impact_particles.global_transform.basis = _raycast_gun.global_transform.basis
+		elif Input.is_action_just_released("special_ability"):
+			_gun_impact_particles.emitting = false
+				
 # ---------------------------------------------------------------------------------------
 func _handle_movement_state(pre_move_velocity: Vector3) -> void:
 	match _movement_state:

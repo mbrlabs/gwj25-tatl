@@ -138,7 +138,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.871102, 7.74847, 31.4062 )
 evirorment = ExtResource( 3 )
 speed = 4.0
 
-[node name="Gimbal" parent="Player" index="12"]
+[node name="Gimbal" parent="Player" index="13"]
 transform = Transform( 0.77426, 0, 0.632868, 0, 1, 0, -0.632868, 0, 0.77426, 0, 0, 0 )
 
 [node name="Grass" type="Spatial" parent="."]

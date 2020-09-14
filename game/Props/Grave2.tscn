@@ -4,7 +4,7 @@
 [ext_resource path="res://Common/mat_palette.tres" type="Material" id=2]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.657367, 1.28241, 0.307104 )
+extents = Vector3( 0.657367, 1.28241, 0.427252 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1.02104, 0.245005, 2.04031 )
@@ -18,7 +18,7 @@ material_override = ExtResource( 2 )
 [node name="StaticBody" type="StaticBody" parent="grave_2" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="grave_2/StaticBody" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06409, -2.56995 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.141959, 1.06409, -2.56995 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="grave_2/StaticBody" index="1"]

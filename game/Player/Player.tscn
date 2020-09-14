@@ -4,6 +4,8 @@
 [ext_resource path="res://Common/Audio/superspeed.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Common/Audio/move.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Common/Audio/placeholder.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Player/mat_player.tres" type="Material" id=5]
+[ext_resource path="res://Player/GunImpactParticles.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "buffed_to_normal"
@@ -82,56 +84,6 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, -0.15, 0 ), Vector3( 0.077, -0.18, 0 ), Vector3( -0.1, 0.055, 0 ), Vector3( -0.0576923, -0.0166877, 0.0823834 ), Vector3( -0.0163419, -0.118368, 0.136575 ), Vector3( -0.012925, -0.17974, 0.108018 ), Vector3( -0.0115644, -0.0828807, 0.0108842 ), Vector3( -0.121232, 0.0312989, 0.00896349 ), Vector3( -0.0865943, -0.0798709, -0.0810456 ), Vector3( -0.0100356, 0.0399345, -0.0324182 ), Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="Shader" id=4]
-code = "shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
-uniform vec4 albedo : hint_color;
-uniform sampler2D texture_albedo : hint_albedo;
-uniform float specular;
-uniform float metallic;
-uniform float roughness : hint_range(0,1);
-uniform float point_size : hint_range(0,128);
-uniform sampler2D texture_emission : hint_black_albedo;
-uniform vec4 emission : hint_color;
-uniform float emission_energy;
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-uniform vec3 velocity;
-
-void vertex() {
-	//UV=UV*uv1_scale.xy+uv1_offset.xy;
-	//VERTEX += velocity * 0.1;
-}
-
-void fragment() {
-	vec2 base_uv = UV;
-	vec4 albedo_tex = texture(texture_albedo,base_uv);
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
-	METALLIC = metallic;
-	ROUGHNESS = roughness;
-	SPECULAR = specular;
-	vec3 emission_tex = texture(texture_emission,base_uv).rgb;
-	EMISSION = (emission.rgb+emission_tex)*emission_energy;
-}
-"
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
-shader_param/albedo = Color( 1, 1, 1, 1 )
-shader_param/specular = 0.5
-shader_param/metallic = 0.0
-shader_param/roughness = 1.0
-shader_param/point_size = 1.0
-shader_param/emission = Color( 1, 1, 1, 1 )
-shader_param/emission_energy = 1.0
-shader_param/uv1_scale = Vector3( 1, 1, 1 )
-shader_param/uv1_offset = Vector3( 0, 0, 0 )
-shader_param/uv2_scale = Vector3( 1, 1, 1 )
-shader_param/uv2_offset = Vector3( 0, 0, 0 )
-shader_param/velocity = null
-
 [sub_resource type="SphereMesh" id=6]
 radius = 0.12
 height = 0.24
@@ -173,6 +125,11 @@ radius = 0.537683
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
 
+[node name="Node" type="Node" parent="."]
+
+[node name="RaygunImpactParticles" parent="Node" instance=ExtResource( 6 )]
+emitting = false
+
 [node name="TurnAccumulatorResetTimer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
@@ -212,7 +169,7 @@ bus = "PlayerSound"
 [node name="Projectiles" type="Node" parent="."]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-material_override = SubResource( 5 )
+material_override = ExtResource( 5 )
 mesh = SubResource( 6 )
 material/0 = null
 
@@ -264,9 +221,9 @@ far = 25.0
 light_energy = 0.35
 
 [node name="GunRayCast" type="RayCast" parent="Gimbal/Camera"]
-transform = Transform( 1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 0.927184, -0.374606, 0, 0.374607, 0.927184, 0, -0.603269, -4.53862 )
 enabled = true
-cast_to = Vector3( 0, 0, -10 )
+cast_to = Vector3( 0, 0, -20 )
 
 [node name="RayCastDown" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.00355e-07, -0.194195, 0 )

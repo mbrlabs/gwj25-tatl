@@ -1,7 +1,7 @@
 class_name Projectile
 extends MeshInstance
 
-const SPEED := 85
+const SPEED := 100
 var direction: Vector3
 var start_position: Vector3
 
