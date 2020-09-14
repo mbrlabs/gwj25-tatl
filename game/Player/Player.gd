@@ -17,7 +17,7 @@ const HOVER_HEIGHT_BUFFED := 1.5
 const SPEED_SCALE_NORMAL := 1.0
 const SPEED_SCALE_NORMAL_SUPERSPEED := 2.0
 const SPEED_SCALE_BUFFED := 0.5
-const MAX_SUPERSPEED_POWER := 100
+const MAX_ABILITY_POWER := 100
 
 # ---------------------------------------------------------------------------------------
 enum Form {
@@ -35,7 +35,7 @@ enum MovementState {
 onready var _sound_move: AudioStreamPlayer3D = $MoveSound
 onready var _sound_turn: AudioStreamPlayer3D = $TurnSound
 onready var _sound_superspeed: AudioStreamPlayer3D = $SuperspeedSound
-onready var _superhover_cooldown_timer: Timer = $SuperhoverCooldownTimer
+onready var _ability_cooldown_timer: Timer = $AbilityCooldownTimer
 onready var _gimbal: Spatial = $Gimbal
 onready var _camera: Camera = $Gimbal/Camera
 onready var _orb_mesh: MeshInstance = $MeshInstance
@@ -48,6 +48,7 @@ onready var _collision_shape_normal: CollisionShape = $CollisionShapeNorrmal
 onready var _collision_shape_buffed: CollisionShape = $CollisionShapeBuffed
 onready var _projectiles_container: Node = $Projectiles
 onready var _gun_impact_particles: CPUParticles = $Node/RaygunImpactParticles
+onready var _crosshair: TextureRect = $Crosshair
 
 # ---------------------------------------------------------------------------------------
 export var evirorment: Environment 
@@ -76,8 +77,8 @@ var _camera_lag_velocity: Vector3
 var _movement_state = MovementState.IDLE
 var _turn_accumulator := 0.0
 var _is_transforming := false
-var _superspeed_power := MAX_SUPERSPEED_POWER
-var _is_in_superhover_cooldown := false
+var _ability_power := MAX_ABILITY_POWER
+var _is_ability_cooldown_active := false
 
 # ---------------------------------------------------------------------------------------
 func _ready():
@@ -92,8 +93,12 @@ func _set_glowiness(new_glowiness: float) -> void:
 	_orb_mesh.material_override.set_shader_param("emission_energy", _base_player_emission*glowiness)
 
 # ---------------------------------------------------------------------------------------
-func get_superhover_power() -> int:
-	return _superspeed_power
+func get_ability_power() -> int:
+	return _ability_power
+
+# ---------------------------------------------------------------------------------------
+func get_form() -> int:
+	return _form
 
 # ---------------------------------------------------------------------------------------
 func _physics_process(delta: float) -> void:
@@ -126,26 +131,27 @@ func _input(e: InputEvent) -> void:
 func _handle_mode() -> void:
 	if _form == Form.NORMAL:
 		# player just moves faster
-		if Input.is_action_pressed("special_ability") && _superspeed_power > 0:
+		if Input.is_action_pressed("special_ability") && _ability_power > 0:
 			speed_scale = SPEED_SCALE_NORMAL_SUPERSPEED
 			hover_height = HOVER_HEIGHT_NORMAL_SUPERSPEED
-			_superspeed_power -= 1
-			if _superspeed_power == 0:
-				_is_in_superhover_cooldown = true
-				_superhover_cooldown_timer.start()
+			_ability_power -= 1
+			if _ability_power == 0:
+				_is_ability_cooldown_active = true
+				_ability_cooldown_timer.start()
 		elif Input.is_action_just_released("special_ability"):
-			_is_in_superhover_cooldown = true
-			_superhover_cooldown_timer.start()
+			_is_ability_cooldown_active = true
+			_ability_cooldown_timer.start()
 		else:
 			speed_scale = SPEED_SCALE_NORMAL
 			hover_height = HOVER_HEIGHT_NORMAL
-			if !_is_in_superhover_cooldown:
-				_superspeed_power = min(_superspeed_power+1, MAX_SUPERSPEED_POWER)
+			if !_is_ability_cooldown_active:
+				_ability_power = min(_ability_power+1, MAX_ABILITY_POWER)
 	if _form == Form.BUFFED:
-		_superspeed_power = MAX_SUPERSPEED_POWER
-		_is_in_superhover_cooldown = false
-		_superhover_cooldown_timer.stop()
-		if Input.is_action_pressed("special_ability"):
+		if _ability_power <= 0:
+			_crosshair.modulate.a = 0.25
+		else:
+			_crosshair.modulate.a = 1.0
+		if Input.is_action_pressed("special_ability") && _ability_power > 0:
 			var projectile := ProjectileFactory.instance() as Projectile
 			
 			# projectile start position
@@ -170,8 +176,20 @@ func _handle_mode() -> void:
 				_gun_impact_particles.global_transform.basis = _raycast_gun.global_transform.basis
 			else:
 				_gun_impact_particles.emitting = false
+				
+			# decrease power
+			_ability_power -= 2
+			if _ability_power <= 0:
+				_is_ability_cooldown_active = true
+				_ability_cooldown_timer.start()
 		elif Input.is_action_just_released("special_ability"):
 			_gun_impact_particles.emitting = false
+			_is_ability_cooldown_active = true
+			_ability_cooldown_timer.start()
+		else:
+			_gun_impact_particles.emitting = false
+			if !_is_ability_cooldown_active:
+				_ability_power = min(_ability_power+1, MAX_ABILITY_POWER)
 				
 # ---------------------------------------------------------------------------------------
 func _handle_movement_state(pre_move_velocity: Vector3) -> void:
@@ -270,8 +288,13 @@ func _get_move_direction() -> Vector3:
 # ---------------------------------------------------------------------------------------
 func _handle_transformation() -> void:
 	if Input.is_action_just_pressed("change_form"):
+		_ability_power = MAX_ABILITY_POWER
+		_is_ability_cooldown_active = false
+		_ability_cooldown_timer.stop()
+		
 		_is_transforming = true
 		if _form == Form.NORMAL:
+			_crosshair.show()
 			_form = Form.BUFFED
 			if Global.god_mode_enabled:
 				speed_scale = 2.5
@@ -281,6 +304,7 @@ func _handle_transformation() -> void:
 				hover_height = HOVER_HEIGHT_BUFFED
 			_transformation_anim_player.play(ANIM_NORMAL_TO_BUFFED)
 		else:
+			_crosshair.hide()
 			_form = Form.NORMAL
 			speed_scale = SPEED_SCALE_NORMAL
 			hover_height = HOVER_HEIGHT_NORMAL
@@ -303,5 +327,5 @@ func _on_TurnAccumulatorResetTimer_timeout():
 	_turn_accumulator = 0.0
 
 # ---------------------------------------------------------------------------------------
-func _on_SuperhoverCooldownTimer_timeout():
-	_is_in_superhover_cooldown = false
+func _on_AbilityCooldownTimer_timeout():
+	_is_ability_cooldown_active = false

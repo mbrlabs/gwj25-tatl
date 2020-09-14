@@ -30,7 +30,7 @@
 [ext_resource path="res://POIs/POIAreaGraveyard.gd" type="Script" id=28]
 [ext_resource path="res://UI/InteractableOverlay.tscn" type="PackedScene" id=29]
 [ext_resource path="res://Interactables/LaughingGrave.tscn" type="PackedScene" id=30]
-[ext_resource path="res://UI/SuperhoverOverlay.tscn" type="PackedScene" id=31]
+[ext_resource path="res://UI/AbilityOverlay.tscn" type="PackedScene" id=31]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 30.6502, 7.36716, 6.19276 )
@@ -99,7 +99,7 @@ margin_bottom = 0.0
 [node name="InteractableOverlay" parent="UI" instance=ExtResource( 29 )]
 visible = false
 
-[node name="SuperhoverOverlay" parent="UI" instance=ExtResource( 31 )]
+[node name="AbilityOverlay" parent="UI" instance=ExtResource( 31 )]
 visible = false
 player = NodePath("../../Player")
 
@@ -138,7 +138,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.871102, 7.74847, 31.4062 )
 evirorment = ExtResource( 3 )
 speed = 4.0
 
-[node name="Gimbal" parent="Player" index="13"]
+[node name="Gimbal" parent="Player" index="14"]
 transform = Transform( 0.77426, 0, 0.632868, 0, 1, 0, -0.632868, 0, 0.77426, 0, 0, 0 )
 
 [node name="Grass" type="Spatial" parent="."]
