@@ -4,9 +4,11 @@
 [ext_resource path="res://Common/Audio/superspeed.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Common/Audio/move.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Common/Audio/placeholder.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Player/mat_player.tres" type="Material" id=5]
+[ext_resource path="res://Common/mat_white_glow.tres" type="Material" id=5]
 [ext_resource path="res://Player/GunImpactParticles.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Crosshair.tscn" type="PackedScene" id=7]
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "buffed_to_normal"

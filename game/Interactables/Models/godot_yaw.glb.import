@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/godot.glb-eb24d8b4fe33f23ff1e7a68e0424ffc1.scn"
+path="res://.import/godot_yaw.glb-46a486df4c3da3acd80e375055742b5e.scn"
 
 [deps]
 
-source_file="res://Props/Models/godot.glb"
-dest_files=[ "res://.import/godot.glb-eb24d8b4fe33f23ff1e7a68e0424ffc1.scn" ]
+source_file="res://Interactables/Models/godot_yaw.glb"
+dest_files=[ "res://.import/godot_yaw.glb-46a486df4c3da3acd80e375055742b5e.scn" ]
 
 [params]
 

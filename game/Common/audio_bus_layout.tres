@@ -1,4 +1,8 @@
-[gd_resource type="AudioBusLayout" format=2]
+[gd_resource type="AudioBusLayout" load_steps=2 format=2]
+
+[sub_resource type="AudioEffectAmplify" id=1]
+resource_name = "Amplify"
+volume_db = 24.0
 
 [resource]
 bus/1/name = "Music"
@@ -31,3 +35,11 @@ bus/5/mute = false
 bus/5/bypass_fx = false
 bus/5/volume_db = -10.5185
 bus/5/send = "Sound"
+bus/6/name = "GodotTalk"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = -0.130497
+bus/6/send = "Sound"
+bus/6/effect/0/effect = SubResource( 1 )
+bus/6/effect/0/enabled = true

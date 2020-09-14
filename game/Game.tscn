@@ -25,7 +25,7 @@
 [ext_resource path="res://Interactables/DestructibleFrontGate.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Common/Audio/crow.ogg" type="AudioStream" id=24]
 [ext_resource path="res://Common/Scripts/AmbientJukebox.gd" type="Script" id=25]
-[ext_resource path="res://Interactables/HolyCrypt.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Interactables/GodotCrypt.tscn" type="PackedScene" id=26]
 [ext_resource path="res://UI/DialogBox.tscn" type="PackedScene" id=27]
 [ext_resource path="res://POIs/POIAreaGraveyard.gd" type="Script" id=28]
 [ext_resource path="res://UI/InteractableOverlay.tscn" type="PackedScene" id=29]
@@ -834,14 +834,15 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.9337
 [node name="FenceBentBack" parent="Graveyard" instance=ExtResource( 22 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.98137, 0.0851482, 28.4786 )
 
-[node name="AwesomeCrypt" parent="." instance=ExtResource( 26 )]
+[node name="GodotCrypt" parent="." instance=ExtResource( 26 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30.4109, 0.258159, 24.9455 )
+dialog_box = NodePath("../UI/DialogBox")
+interact_overlay = NodePath("../UI/InteractableOverlay")
 
-[node name="DialogStartTimer" type="Timer" parent="."]
+[node name="IntroStartTimer" type="Timer" parent="."]
 wait_time = 1.25
 one_shot = true
 autostart = true
-[connection signal="message_confirmed" from="UI/DialogBox" to="." method="_on_DialogBox_message_confirmed"]
-[connection signal="timeout" from="DialogStartTimer" to="." method="_on_DialogStartTimer_timeout"]
+[connection signal="timeout" from="IntroStartTimer" to="." method="_on_IntroStartTimer_timeout"]
 
 [editable path="Player"]

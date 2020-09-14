@@ -27,6 +27,7 @@ var _intro_lvl = IntroLevel.HELLO
 
 # ---------------------------------------------------------------------------------------
 func _ready():
+	_dialog_box.connect("message_confirmed", self, "_on_DialogBox_message_confirmed")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Global.play_music()
 
@@ -53,10 +54,6 @@ func _process(delta: float) -> void:
 		_player.glowiness -= GLOWINESS_INCREASE
 
 # ---------------------------------------------------------------------------------------
-func _on_DialogStartTimer_timeout():
-	_dialog_box.show_message("Tatl:", _intro_dialogs[_intro_lvl], true)
-
-# ---------------------------------------------------------------------------------------
 func _on_DialogBox_message_confirmed():
 	match _intro_lvl:
 		IntroLevel.HELLO:
@@ -68,6 +65,11 @@ func _on_DialogBox_message_confirmed():
 		IntroLevel.GOOD_LUCK:
 			_intro_lvl = IntroLevel.DONE
 			Global.state = Global.State.PRE_CRYPT
+			_dialog_box.disconnect("message_confirmed", self, "_on_DialogBox_message_confirmed")
 	
 	if _intro_lvl != IntroLevel.DONE:
 		_dialog_box.show_message("Tatl:", _intro_dialogs[_intro_lvl], true)
+
+# ---------------------------------------------------------------------------------------
+func _on_IntroStartTimer_timeout():
+	_dialog_box.show_message("Tatl:", _intro_dialogs[_intro_lvl], true)
