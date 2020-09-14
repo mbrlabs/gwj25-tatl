@@ -19,6 +19,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 material_override = ExtResource( 2 )
 
 [node name="StaticBody" type="StaticBody" parent="fence_with_hole" index="0"]
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape" type="CollisionShape" parent="fence_with_hole/StaticBody" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.986044, 0.80756, -0.0248785 )

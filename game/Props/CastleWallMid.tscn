@@ -16,11 +16,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 material_override = ExtResource( 2 )
 
 [node name="StaticBody" type="StaticBody" parent="castle_wall_mid" index="0"]
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape" type="CollisionShape" parent="castle_wall_mid/StaticBody" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10768, 2.52911, -0.400112 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape2" type="CollisionShape" parent="castle_wall_mid/StaticBody" index="1"]
+[node name="StaticBodyWall" type="StaticBody" parent="castle_wall_mid" index="1"]
+collision_layer = 8
+
+[node name="CollisionShape2" type="CollisionShape" parent="castle_wall_mid/StaticBodyWall" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03371, 7.74889, 0.713507 )
 shape = SubResource( 2 )

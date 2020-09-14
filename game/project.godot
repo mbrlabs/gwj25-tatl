@@ -154,6 +154,13 @@ change_form={
  ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="player"
+3d_physics/layer_2="props"
+3d_physics/layer_3="gun"
+3d_physics/layer_4="barrier"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

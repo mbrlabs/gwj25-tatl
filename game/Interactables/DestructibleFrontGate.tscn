@@ -5,23 +5,26 @@
 [ext_resource path="res://Interactables/Models/CastleFrontGate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Interactables/Models/CastleFrontGateBroken.tscn" type="PackedScene" id=4]
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=1]
 extents = Vector3( 2.05368, 4.27664, 0.234457 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 2.05368, 2.46346, 0.234457 )
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 2.50806, 5.00771, 1.63088 )
 
 [node name="DestructibleFrontGate" type="Area"]
+collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape_intact" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703206, 4.21253, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape_broken" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703206, 5.62649, 0 )
@@ -30,7 +33,7 @@ disabled = true
 
 [node name="InteractableCollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.85647, 0.275907 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="DesctructionParticles" type="CPUParticles" parent="."]
 

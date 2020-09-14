@@ -22,6 +22,8 @@ transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0 )
 material/0 = ExtResource( 2 )
 
 [node name="StaticBody" type="StaticBody" parent="castle_wall_corner" index="0"]
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape" type="CollisionShape" parent="castle_wall_corner/StaticBody" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.221953, 2.48575, 0.971229 )
@@ -36,5 +38,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.861196, 2.48575, -1.67936 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="castle_wall_corner/StaticBody" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66926, 8.20087, -0.885107 )
+shape = SubResource( 4 )
+
+[node name="StaticBodyWalls" type="StaticBody" parent="castle_wall_corner" index="1"]
+collision_layer = 8
+
+[node name="CollisionShape3" type="CollisionShape" parent="castle_wall_corner/StaticBodyWalls" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.221953, 8.3137, 1.80025 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="castle_wall_corner/StaticBodyWalls" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66926, 8.20087, -0.885107 )
 shape = SubResource( 4 )

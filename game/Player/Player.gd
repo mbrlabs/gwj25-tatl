@@ -151,7 +151,7 @@ func _handle_mode() -> void:
 			# projectile start position
 			projectile.start_position = _raycast_gun.global_transform.origin
 			#projectile.start_position -= _raycast_gun.global_transform.basis.z * 2.0
-			var offset = 0.2
+			var offset = 0.25
 			var pos_offset = Vector3(
 				rand_range(-offset, offset), 
 				rand_range(-offset, offset), 
@@ -168,6 +168,8 @@ func _handle_mode() -> void:
 				_gun_impact_particles.emitting = true
 				_gun_impact_particles.global_transform.origin = _raycast_gun.get_collision_point()
 				_gun_impact_particles.global_transform.basis = _raycast_gun.global_transform.basis
+			else:
+				_gun_impact_particles.emitting = false
 		elif Input.is_action_just_released("special_ability"):
 			_gun_impact_particles.emitting = false
 				
