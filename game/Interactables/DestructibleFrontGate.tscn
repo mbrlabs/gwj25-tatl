@@ -1,18 +1,28 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Interactables/DestructibleFrontGate.gd" type="Script" id=1]
 [ext_resource path="res://Interactables/Models/CasteFrontGateDamaged.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Interactables/Models/CastleFrontGate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Interactables/Models/CastleFrontGateBroken.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Common/Audio/placeholder.ogg" type="AudioStream" id=5]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 2.05368, 4.27664, 0.234457 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 2.05368, 2.46346, 0.234457 )
-
-[sub_resource type="BoxShape" id=3]
 extents = Vector3( 2.50806, 5.00771, 1.63088 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.145098, 0.27451, 0.443137, 1 )
+metallic = 0.19
+metallic_specular = 0.61
+roughness = 0.32
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 0.25, 2, 1 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.517241 ), 0.0, 0.0, 0, 0 ]
 
 [node name="DestructibleFrontGate" type="Area"]
 collision_layer = 2
@@ -27,16 +37,39 @@ collision_mask = 5
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703206, 4.21253, 0 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape_broken" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703206, 4.32, 0 )
-shape = SubResource( 2 )
+[node name="CollisionShape_broken" type="CollisionPolygon" parent="StaticBody"]
+depth = 0.25
 disabled = true
+polygon = PoolVector2Array( -1.74271, 0.210263, -1.8025, 6.28535, 0.0391598, 7.85195, 1.80907, 6.28535, 1.96453, 0.0308809, 0.685923, 0.0833725, 0.550205, 1.20485, 0.66734, 2.25175, -0.682359, 2.08558, -0.643107, 1.85642, -0.335628, 1.13164, -0.239359, -0.061815 )
 
 [node name="InteractableCollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.85647, 0.275907 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="DesctructionParticles" type="CPUParticles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0539163, 2.22866, 0.434713 )
+material_override = SubResource( 3 )
+emitting = false
+amount = 12
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.5
+mesh = SubResource( 4 )
+flag_disable_z = true
+direction = Vector3( 1, 1, 1 )
+spread = 180.0
+flatness = 1.0
+gravity = Vector3( 0, -9, 0 )
+initial_velocity = 16.0
+initial_velocity_random = 0.24
+angular_velocity = 650.77
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+orbit_velocity_curve = null
+angle = 221.5
+angle_random = 1.0
+scale_amount_curve = SubResource( 5 )
 
 [node name="CastleFrontGate" parent="." instance=ExtResource( 3 )]
 
@@ -45,4 +78,10 @@ visible = false
 
 [node name="CastleFrontGateBroken" parent="." instance=ExtResource( 4 )]
 visible = false
+
+[node name="DestructionSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96403, 0 )
+stream = ExtResource( 5 )
+unit_db = 10.0
+bus = "AmbientSounds"
 [connection signal="area_entered" from="." to="." method="_on_DestructibleFrontGate_area_entered"]

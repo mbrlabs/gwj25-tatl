@@ -14,7 +14,7 @@ onready var _gate_model_damaged: Spatial = $CastleFrontGateDamaged
 onready var _gate_model_broken: Spatial = $CastleFrontGateBroken
 onready var _destruction_particles: CPUParticles = $DesctructionParticles
 onready var _collsion_shape_intact: CollisionShape = $StaticBody/CollisionShape_intact
-onready var _collsion_shape_broken: CollisionShape = $StaticBody/CollisionShape_broken
+onready var _collsion_shape_broken: CollisionPolygon = $StaticBody/CollisionShape_broken
 
 # ---------------------------------------------------------------------------------------
 export var required_projectile_count_per_stage: int = 75
@@ -50,6 +50,8 @@ func _on_DestructibleFrontGate_area_entered(area: Area):
 	if _state != State.BROKEN && area.collision_layer == 16: # TODO: clean this up! layer 16 area projectils
 		projectile_count += 1
 		if projectile_count >= required_projectile_count_per_stage:
+			$DestructionSound.play()
+			_destruction_particles.emitting = true
 			projectile_count = 0
 			match _state:
 				State.OK:
