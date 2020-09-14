@@ -2,7 +2,7 @@ class_name Player
 extends KinematicBody
 
 # ---------------------------------------------------------------------------------------
-const ProjectileFactory = preload("res://Projectile.tscn")
+const ProjectileFactory = preload("res://Player/Projectile.tscn")
 
 # ---------------------------------------------------------------------------------------
 const ANIM_IDLE := "idle"
@@ -41,6 +41,7 @@ onready var _camera: Camera = $Gimbal/Camera
 onready var _orb_mesh: MeshInstance = $MeshInstance
 onready var _raycast_down: RayCast = $RayCastDown
 onready var _raycast_up: RayCast = $RayCastUp
+onready var _raycast_gun: RayCast = $Gimbal/Camera/GunRayCast
 onready var _dir_light: DirectionalLight = $Gimbal/Camera/DirectionalLight
 onready var _transformation_anim_player: AnimationPlayer = $AnimationPlayerTransformation
 onready var _collision_shape_normal: CollisionShape = $CollisionShapeNorrmal
@@ -143,24 +144,22 @@ func _handle_mode() -> void:
 		_superspeed_power = MAX_SUPERSPEED_POWER
 		_is_in_superhover_cooldown = false
 		_superhover_cooldown_timer.stop()
-		if Input.is_action_pressed("special_ability") && randf() < 0.5:
+		if Input.is_action_pressed("special_ability"):
 			var projectile := ProjectileFactory.instance() as Projectile
 			
+			# projectile start position
 			var offset = 0.2
 			var pos_offset = Vector3(
 				rand_range(-offset, offset), 
 				0.5 + rand_range(-offset, offset), 
 				rand_range(-offset, offset)
 			)
-			projectile.direction = -_camera.get_global_transform().basis.z
-			
-			# this rotates the rotation vector of the camera around it's x axis for 15 deg. If you look at the
-			# godot gizmo in the 3d editor you can see, that (because z is forward, it must rotate around the x
-			# axis to align approx. with the center of the screen.
-			# man it's late. i should reall sleep now....
-			projectile.direction = projectile.direction.rotated(_camera.get_global_transform().basis.x, deg2rad(15))
-			
 			projectile.start_position = global_transform.origin + pos_offset
+			
+			# shoot direction
+			projectile.direction = -_raycast_gun.global_transform.basis.z
+			
+			# fire!
 			_projectiles_container.add_child(projectile)
 			
 # ---------------------------------------------------------------------------------------

@@ -39,10 +39,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Player/Player.gd"
 }, {
-"base": "Area",
+"base": "MeshInstance",
 "class": "Projectile",
 "language": "GDScript",
-"path": "res://Projectile.gd"
+"path": "res://Player/Projectile.gd"
 } ]
 _global_script_class_icons={
 "DestructibleFrontGate": "",
