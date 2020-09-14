@@ -45,8 +45,12 @@ func _on_interact() -> void:
 func _on_DialogBox_message_confirmed() -> void:
 	if _dialog_index == 1:
 		_godot_talk_sound.play()
+		$CrowSoundTimer.start()
 		pass
-		# TODO thunder sound here and make the screen shake
+		# TODO make the screen shake
+	
+	if _dialog_index == 3:
+		$CrowSoundTimer2.start()
 	
 	# godot talks
 	match _dialog_index:
@@ -68,3 +72,11 @@ func _on_DialogBox_message_confirmed() -> void:
 		_head._stop_talking()
 		_godot_talk_sound.stop()
 		db.disconnect("message_confirmed", self, "_on_DialogBox_message_confirmed")
+		
+# ---------------------------------------------------------------------------------------
+func _on_CrowSoundTimer_timeout():
+	$CrowSound.play()
+
+# ---------------------------------------------------------------------------------------
+func _on_CrowSoundTimer2_timeout():
+	$CrowSound2.play()

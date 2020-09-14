@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Interactables/Models/Crypt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Interactables/GodotHead.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Interactables/GodotCrypt.gd" type="Script" id=3]
 [ext_resource path="res://Common/Audio/godot_talk.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Common/Audio/crow.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=5]
 resource_name = "fade_in"
@@ -18,7 +19,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -20.0, 0.0 ]
+"values": [ -20.0, -5.0 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -34,7 +35,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, -20.0 ]
+"values": [ -5.0, -20.0 ]
 }
 
 [sub_resource type="BoxShape" id=1]
@@ -65,7 +66,7 @@ anims/fade_out = SubResource( 6 )
 [node name="GodotTalk" type="AudioStreamPlayer3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.23386, -1.18918 )
 stream = ExtResource( 4 )
-unit_db = -20.0
+unit_db = -5.0
 bus = "GodotTalk"
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -91,3 +92,23 @@ spread = 180.0
 gravity = Vector3( 0, 0, 0 )
 radial_accel = 0.25
 scale_amount_curve = SubResource( 4 )
+
+[node name="CrowSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.45728, 6.809, 6.92897 )
+stream = ExtResource( 5 )
+bus = "AmbientSounds"
+
+[node name="CrowSound2" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75871, 6.809, -1.58728 )
+stream = ExtResource( 5 )
+bus = "AmbientSounds"
+
+[node name="CrowSoundTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="CrowSoundTimer2" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+[connection signal="timeout" from="CrowSoundTimer" to="." method="_on_CrowSoundTimer_timeout"]
+[connection signal="timeout" from="CrowSoundTimer2" to="." method="_on_CrowSoundTimer2_timeout"]
