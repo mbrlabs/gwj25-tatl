@@ -17,7 +17,11 @@ onready var _collsion_shape_intact: CollisionShape = $StaticBody/CollisionShape_
 onready var _collsion_shape_broken: CollisionShape = $StaticBody/CollisionShape_broken
 
 # ---------------------------------------------------------------------------------------
+export var required_projectile_count_per_stage: int = 75
+
+# ---------------------------------------------------------------------------------------
 var _state = State.OK
+var projectile_count := 0
 
 # ---------------------------------------------------------------------------------------
 func _ready() -> void:
@@ -42,17 +46,21 @@ func _play_desctruction_effects() -> void:
 	pass
 
 # ---------------------------------------------------------------------------------------
-func _smash_it() -> void:
-	match _state:
-		State.OK:
-			_gate_model_ok.hide()
-			_gate_model_damaged.show()
-			_play_desctruction_effects()
-		State.DAMAGED:
-			_gate_model_damaged.hide()
-			_gate_model_broken.show()
-			_collsion_shape_intact.disabled = true
-			_collsion_shape_broken.disabled = false
-			_play_desctruction_effects()
-		State.BROKEN:
-			printerr("This should not happen")
+func _on_DestructibleFrontGate_area_entered(area: Area):
+	if _state != State.BROKEN && area.collision_layer == 16: # TODO: clean this up! layer 16 area projectils
+		projectile_count += 1
+		if projectile_count >= required_projectile_count_per_stage:
+			projectile_count = 0
+			match _state:
+				State.OK:
+					_state = State.DAMAGED
+					_gate_model_ok.hide()
+					_gate_model_damaged.show()
+					_play_desctruction_effects()
+				State.DAMAGED:
+					_state = State.BROKEN
+					_gate_model_damaged.hide()
+					_gate_model_broken.show()
+					_collsion_shape_intact.disabled = true
+					_collsion_shape_broken.disabled = false
+					_play_desctruction_effects()
