@@ -17,7 +17,7 @@ const HOVER_HEIGHT_BUFFED := 1.75
 const SPEED_SCALE_NORMAL := 1.0
 const SPEED_SCALE_NORMAL_SUPERSPEED := 2.0
 const SPEED_SCALE_BUFFED := 0.5
-const MAX_ABILITY_POWER := 120
+const MAX_ABILITY_POWER := 200
 
 # ---------------------------------------------------------------------------------------
 enum Form {
@@ -187,7 +187,7 @@ func _handle_mode() -> void:
 				_gun_impact_particles.emitting = false
 				
 			# decrease power
-			_ability_power -= 1
+			_ability_power -= 2
 			if _ability_power <= 0:
 				_is_ability_cooldown_active = true
 				_ability_cooldown_timer.start()
@@ -203,7 +203,7 @@ func _handle_mode() -> void:
 			_sound_cannon.stop()
 			_gun_impact_particles.emitting = false
 			if !_is_ability_cooldown_active:
-				_ability_power = min(_ability_power+1, MAX_ABILITY_POWER)
+				_ability_power = min(_ability_power+2, MAX_ABILITY_POWER)
 				
 # ---------------------------------------------------------------------------------------
 func _handle_movement_state(pre_move_velocity: Vector3) -> void:
