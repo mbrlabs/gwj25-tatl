@@ -13,7 +13,7 @@ extents = Vector3( 2.05368, 4.27664, 0.234457 )
 extents = Vector3( 2.50806, 5.00771, 1.63088 )
 
 [sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.145098, 0.27451, 0.443137, 1 )
+albedo_color = Color( 0.180392, 0.329412, 0.52549, 1 )
 metallic = 0.19
 metallic_specular = 0.61
 roughness = 0.32
@@ -51,7 +51,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0539163, 2.22866, 0.434713 )
 material_override = SubResource( 3 )
 emitting = false
 amount = 12
-lifetime = 0.2
+lifetime = 0.5
 one_shot = true
 explosiveness = 0.5
 mesh = SubResource( 4 )

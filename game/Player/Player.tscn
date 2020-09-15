@@ -8,7 +8,7 @@
 [ext_resource path="res://Player/GunImpactParticles.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Common/Audio/transformation_to_normal.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Common/Audio/godot_cannon2.ogg" type="AudioStream" id=9]
-[ext_resource path="res://Player/BetterCroshair.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Player/Crosshair.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "buffed_to_normal"
@@ -178,7 +178,6 @@ bus = "PlayerSound"
 [node name="Projectiles" type="Node" parent="."]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0857143, 0 )
 material_override = ExtResource( 5 )
 mesh = SubResource( 4 )
 material/0 = null
@@ -236,7 +235,7 @@ enabled = true
 cast_to = Vector3( 0, 0, -20 )
 collision_mask = 2
 
-[node name="BetterCroshair" parent="Gimbal/Camera/GunRayCast" instance=ExtResource( 10 )]
+[node name="Crosshair" parent="Gimbal/Camera/GunRayCast" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, -1.19209e-07, 0, 0, 1, 0, 6.46804e-07, -0.700844 )
 visible = false
 

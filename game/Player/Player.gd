@@ -49,7 +49,7 @@ onready var _collision_shape_normal: CollisionShape = $CollisionShapeNorrmal
 onready var _collision_shape_buffed: CollisionShape = $CollisionShapeBuffed
 onready var _projectiles_container: Node = $Projectiles
 onready var _gun_impact_particles: CPUParticles = $Node/RaygunImpactParticles
-onready var _better_crosshair: Spatial = $Gimbal/Camera/GunRayCast/BetterCroshair
+onready var _crosshair: Spatial = $Gimbal/Camera/GunRayCast/Crosshair
 
 # ---------------------------------------------------------------------------------------
 export var evirorment: Environment 
@@ -152,19 +152,15 @@ func _handle_mode() -> void:
 		var dist = _raycast_gun.global_transform.origin.distance_to(_raycast_gun.get_collision_point())
 		if dist < 10.0:
 			var offset = _raycast_gun.global_transform.basis.z
-			_better_crosshair.global_transform.origin = _raycast_gun.get_collision_point() + offset
+			_crosshair.global_transform.origin = _raycast_gun.get_collision_point() + offset
 		else:
 			var offset = _raycast_gun.global_transform.basis.z*12
-			_better_crosshair.global_transform.origin = _raycast_gun.global_transform.origin - offset
+			_crosshair.global_transform.origin = _raycast_gun.global_transform.origin - offset
 
 		if _ability_power <= 0:
-			pass
-			# TODO: fix this
-			#_crosshair.modulate.a = 0.25
+			_crosshair.disable()
 		else:
-			pass
-			# TODO: fix this
-			# _crosshair.modulate.a = 1.0
+			_crosshair.enable()
 		if Input.is_action_pressed("special_ability") && _ability_power > 0:
 			var projectile := ProjectileFactory.instance() as Projectile
 			# projectile start position
@@ -312,7 +308,7 @@ func _handle_transformation() -> void:
 		
 		_is_transforming = true
 		if _form == Form.NORMAL:
-			_better_crosshair.show()
+			_crosshair.show()
 			_form = Form.BUFFED
 			if Global.god_mode_enabled:
 				speed_scale = 2.5
@@ -322,7 +318,7 @@ func _handle_transformation() -> void:
 				hover_height = HOVER_HEIGHT_BUFFED
 			_transformation_anim_player.play(ANIM_NORMAL_TO_BUFFED)
 		else:
-			_better_crosshair.hide()
+			_crosshair.hide()
 			_form = Form.NORMAL
 			speed_scale = SPEED_SCALE_NORMAL
 			hover_height = HOVER_HEIGHT_NORMAL
