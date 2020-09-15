@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Common/mat_palette.tres" type="Material" id=1]
+[ext_resource path="res://Props/Models/ground_cobblestone.glb" type="PackedScene" id=2]
+
+[node name="GroundCobblestone" type="StaticBody"]
+
+[node name="ground_cobblestone" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.217233, 0 )
+
+[node name="ground_cobblestone" parent="ground_cobblestone" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 1 )
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.217233, 0 )
+depth = 10.0
+polygon = PoolVector2Array( -5.36769, 0.755625, -3.78123, 0.822538, -2.13783, 0.752817, 0.0533805, 0.822538, 1.31831, 1.05162, 2.55335, 1.0815, 5.11308, 0.683097, 5.19276, 0.294656, -5.31508, 0.224935 )
+
+[node name="MultiMeshInstance" type="MultiMeshInstance" parent="."]
+
+[editable path="ground_cobblestone"]

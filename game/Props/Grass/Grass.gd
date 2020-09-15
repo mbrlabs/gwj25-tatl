@@ -1,4 +1,3 @@
-tool
 extends StaticBody
 
 const A = [0.0, 0.0]
@@ -18,7 +17,7 @@ func _ready():
 	_mm.multimesh.transform_format = MultiMesh.TRANSFORM_3D
 	_mm.multimesh.custom_data_format = MultiMesh.CUSTOM_DATA_FLOAT
 	_mm.multimesh.instance_count = grass_count
-	_mm.multimesh.mesh = preload("res://Props/Grass/grass.obj")
+	_mm.multimesh.mesh = preload("res://Props/Models/grass.obj")
 	_mm.multimesh.visible_instance_count  = grass_count
 	
 	var aabb_size = _base_mesh.get_aabb().size
