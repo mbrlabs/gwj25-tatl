@@ -10,6 +10,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	translate(SPEED*delta*direction)
+
+func _on_Area_body_entered(body):
+	if body is RigidBody:
+		body.apply_central_impulse(direction*64)
 		
 func _on_AutodestroyTimer_timeout():
 	queue_free()

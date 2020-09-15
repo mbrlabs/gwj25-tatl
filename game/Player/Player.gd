@@ -116,7 +116,7 @@ func _physics_process(delta: float) -> void:
 	move_velocity = _apply_hover(move_velocity)
 	
 	# move
-	_velocity = move_and_slide(move_velocity, Vector3.UP)
+	_velocity = move_and_slide(move_velocity, Vector3.UP, false, 4, 0.785398, false)
 	_handle_movement_state(prev_velocity)
 	
 	# form transformation

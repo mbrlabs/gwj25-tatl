@@ -169,6 +169,11 @@ change_form={
 3d_physics/layer_3="gun"
 3d_physics/layer_4="barrier"
 3d_physics/layer_5="projectile"
+3d_physics/layer_6="brick"
+
+[physics]
+
+3d/default_gravity=16.0
 
 [rendering]
 

@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Props/Models/castle_wall_mid.glb" type="PackedScene" id=1]
 [ext_resource path="res://Common/mat_palette.tres" type="Material" id=2]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 4.31481, 3.09973, 1.14118 )
-
-[sub_resource type="BoxShape" id=2]
-extents = Vector3( 4.42474, 2.19332, 0.274327 )
 
 [node name="CastleWallMid" instance=ExtResource( 1 )]
 
@@ -22,10 +19,3 @@ collision_mask = 5
 [node name="CollisionShape" type="CollisionShape" parent="castle_wall_mid/StaticBody" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10768, 2.52911, -0.400112 )
 shape = SubResource( 1 )
-
-[node name="StaticBodyWall" type="StaticBody" parent="castle_wall_mid" index="1"]
-collision_layer = 8
-
-[node name="CollisionShape2" type="CollisionShape" parent="castle_wall_mid/StaticBodyWall" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03371, 7.74889, 0.713507 )
-shape = SubResource( 2 )
