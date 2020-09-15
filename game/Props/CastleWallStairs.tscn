@@ -6,7 +6,7 @@
 [node name="CastleWallStairs" instance=ExtResource( 1 )]
 
 [node name="castle_wall_stairs" parent="." index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
 material_override = ExtResource( 2 )
 
 [node name="StaticBody" type="StaticBody" parent="castle_wall_stairs" index="0"]
@@ -15,4 +15,4 @@ collision_mask = 5
 
 [node name="CollisionPolygon" type="CollisionPolygon" parent="castle_wall_stairs/StaticBody" index="0"]
 depth = 2.0
-polygon = PoolVector2Array( -6.32238, 5.54219, 1.20775, 0.482758, 1.18625, 0.0311863, -7.05393, 0.00491643, -6.92061, 0.668843, -7.2075, 5.52638 )
+polygon = PoolVector2Array( -0.578716, 0.535113, -0.497366, 0.0632772, 7.89805, 0.0144672, 7.65399, 0.697815, 7.89805, 5.54633, 7.052, 5.61141 )
