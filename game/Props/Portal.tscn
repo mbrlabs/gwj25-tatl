@@ -2,7 +2,6 @@
 
 [ext_resource path="res://Assets/Models/portal.glb" type="PackedScene" id=2]
 
-
 [sub_resource type="CylinderShape" id=1]
 radius = 1.68002
 height = 8.14724

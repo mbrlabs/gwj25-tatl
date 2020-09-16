@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Props/Grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -37,11 +37,12 @@
 [ext_resource path="res://Props/BrickBig.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Props/BrickSmall.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Props/BrickMid.tscn" type="PackedScene" id=37]
-[ext_resource path="res://Props/Portal.tscn" type="PackedScene" id=38]
+[ext_resource path="res://Interactables/LightPortal.tscn" type="PackedScene" id=38]
 [ext_resource path="res://Props/Crystal.tscn" type="PackedScene" id=39]
 [ext_resource path="res://Interactables/AutomaticDoor.tscn" type="PackedScene" id=40]
 [ext_resource path="res://Interactables/AutomaticLever.tscn" type="PackedScene" id=41]
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=42]
+[ext_resource path="res://POIs/CrystalPOI.gd" type="Script" id=43]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 3.77311, 5.10357, 9.91623 )
@@ -107,6 +108,9 @@ extents = Vector3( 16.5866, 8.47418, 2.61007 )
 
 [sub_resource type="BoxShape" id=22]
 extents = Vector3( 10.9586, 8.47418, 1 )
+
+[sub_resource type="BoxShape" id=29]
+extents = Vector3( 7.05816, 4.38029, 8.10308 )
 
 [sub_resource type="BoxShape" id=23]
 extents = Vector3( 20.2731, 6.55711, 1.87577 )
@@ -211,7 +215,7 @@ stream = ExtResource( 24 )
 bus = "AmbientSounds"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0698, 5.66661, -9.87818 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -61.9128, 6.91815, -27.9565 )
 evirorment = ExtResource( 3 )
 speed = 4.0
 
@@ -1412,6 +1416,16 @@ transform = Transform( 0.377405, 0.00392295, 0.92604, -0.00785575, 0.999968, -0.
 [node name="Cave" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -98.1614, 0, -39.0347 )
 
+[node name="CrystalPOI" type="Area" parent="Cave"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6288, 4.69061, 0 )
+script = ExtResource( 43 )
+dialog_box = NodePath("../../UI/DialogBox")
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="Cave/CrystalPOI"]
+transform = Transform( 0.835999, 0, -0.548731, 0, 1, 0, 0.548731, 0, 0.835999, 17.8953, 0.0192871, 5.72104 )
+shape = SubResource( 29 )
+
 [node name="StaticBody" type="StaticBody" parent="Cave"]
 collision_layer = 2
 collision_mask = 23
@@ -1440,8 +1454,10 @@ shape = SubResource( 27 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.315, 6.7487, 0 )
 shape = SubResource( 28 )
 
-[node name="Portal" parent="Cave" instance=ExtResource( 38 )]
+[node name="LightPortal" parent="Cave" instance=ExtResource( 38 )]
 transform = Transform( 0.972614, 0, -0.232427, 0, 1, 0, 0.232427, 0, 0.972614, -5.67992, -0.435664, 2.12708 )
+dialog_box = NodePath("../../UI/DialogBox")
+interact_overlay = NodePath("../../UI/InteractableOverlay")
 
 [node name="Rocks" type="Spatial" parent="Cave"]
 

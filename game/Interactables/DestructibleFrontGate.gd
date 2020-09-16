@@ -42,6 +42,7 @@ func _on_interact() -> void:
 		dbox.show_message("Tatl", "That gate looks pretty tough. I don't think i can get through it :(", false)
 	if Global.state == Global.State.PRE_CASTLE:
 		dbox.show_message("Tatl", "I wonder what the Godot-Cannon does to that gate...", false)
+
 # ---------------------------------------------------------------------------------------
 func _play_desctruction_effects() -> void:
 	pass
