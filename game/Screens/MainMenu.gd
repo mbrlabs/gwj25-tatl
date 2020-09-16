@@ -41,11 +41,7 @@ func _on_ButtonQuit_pressed():
 # ---------------------------------------------------------------------------------------
 func _on_ButtonAbout_pressed():
 	_ui_click_sound.play()
-	if _about_open:
-		_about_anim.play("slide_out_about")
-	else:
-		_about_anim.play("slide_in_about")
-	_about_open = !_about_open
+	_toggle_about()
 
 # ---------------------------------------------------------------------------------------
 func _on_StartTimer_timeout():
@@ -62,3 +58,18 @@ func _on_ButtonAbout_mouse_entered():
 # ---------------------------------------------------------------------------------------
 func _on_ButtonQuit_mouse_entered():
 	_ui_hover_sound.play()
+
+# ---------------------------------------------------------------------------------------
+func _on_Background_gui_input(event):
+	if event is InputEventMouseButton && _about_open:
+		if _about_open:
+			_ui_click_sound.play()
+			_toggle_about()
+
+# ---------------------------------------------------------------------------------------
+func _toggle_about() -> void:
+	if _about_open:
+		_about_anim.play("slide_out_about")
+	else:
+		_about_anim.play("slide_in_about")
+	_about_open = !_about_open
