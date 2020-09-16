@@ -37,4 +37,8 @@ func mute_audiobus(bus_name: String, mute: bool = true):
 
 # ---------------------------------------------------------------------------------------
 func play_music(play: bool = true) -> void:
-	_music.play()
+	if play:
+		if !_music.playing:
+			_music.play()
+	else:
+		_music.stop()
