@@ -1,14 +1,17 @@
 [gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Common/Audio/superspeed.ogg" type="AudioStream" id=2]
-[ext_resource path="res://Common/Audio/move.ogg" type="AudioStream" id=3]
-[ext_resource path="res://Common/Audio/transformation_to_godot.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Common/mat_white_glow.tres" type="Material" id=5]
+[ext_resource path="res://Assets/Audio/superspeed.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Audio/move.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Audio/transformation_to_godot.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Materials/mat_white_glow.tres" type="Material" id=5]
 [ext_resource path="res://Player/GunImpactParticles.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Common/Audio/transformation_to_normal.ogg" type="AudioStream" id=8]
-[ext_resource path="res://Common/Audio/godot_cannon2.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Audio/transformation_to_normal.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Audio/godot_cannon2.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Player/Crosshair.tscn" type="PackedScene" id=10]
+
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "buffed_to_normal"

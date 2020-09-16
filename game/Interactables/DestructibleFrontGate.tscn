@@ -4,7 +4,8 @@
 [ext_resource path="res://Interactables/Models/CasteFrontGateDamaged.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Interactables/Models/CastleFrontGate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Interactables/Models/CastleFrontGateBroken.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Common/Audio/placeholder.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Audio/placeholder.ogg" type="AudioStream" id=5]
+
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 2.05368, 4.27664, 0.234457 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/godot_cannon2.ogg-55ffdac05cb40c82476a93b240ce6c8a.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/godot_cannon2.ogg"
+dest_files=[ "res://.import/godot_cannon2.ogg-55ffdac05cb40c82476a93b240ce6c8a.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

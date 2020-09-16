@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/transformation_to_normal.ogg-67b311da307dea8302f05cd30b9a8234.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/transformation_to_normal.ogg"
+dest_files=[ "res://.import/transformation_to_normal.ogg-67b311da307dea8302f05cd30b9a8234.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

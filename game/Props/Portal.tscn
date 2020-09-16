@@ -1,6 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Props/Models/portal.glb" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Models/portal.glb" type="PackedScene" id=2]
+
 
 [sub_resource type="CylinderShape" id=1]
 radius = 1.68002

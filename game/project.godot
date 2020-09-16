@@ -70,17 +70,17 @@ _global_script_class_icons={
 
 config/name="Tatl"
 run/main_scene="res://Game.tscn"
-boot_splash/image="res://Common/boot.png"
+boot_splash/image="res://Assets/Textures/boot.png"
 boot_splash/bg_color=Color( 0.0627451, 0.121569, 0.196078, 1 )
-config/icon="res://Common/icon.png"
+config/icon="res://Assets/Textures/icon.png"
 
 [audio]
 
-default_bus_layout="res://Common/audio_bus_layout.tres"
+default_bus_layout="res://Assets/audio_bus_layout.tres"
 
 [autoload]
 
-Global="*res://Autoloads/Global.gd"
+Global="*res://Utils/Global.gd"
 
 [debug]
 
@@ -186,4 +186,4 @@ change_form={
 [rendering]
 
 quality/driver/driver_name="GLES2"
-environment/default_environment="res://Common/env_default.tres"
+environment/default_environment="res://Assets/Enviroment/env_default.tres"

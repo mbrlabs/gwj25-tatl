@@ -3,8 +3,9 @@
 [ext_resource path="res://Interactables/Models/Crypt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Interactables/GodotHead.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Interactables/GodotCrypt.gd" type="Script" id=3]
-[ext_resource path="res://Common/Audio/godot_talk.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Common/Audio/crow.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Audio/godot_talk.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Audio/crow.ogg" type="AudioStream" id=5]
+
 
 [sub_resource type="Animation" id=5]
 resource_name = "fade_in"

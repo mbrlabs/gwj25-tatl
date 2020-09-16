@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/superspeed.ogg-76c556e055bd4161bb583b492ef8839a.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/superspeed.ogg"
+dest_files=[ "res://.import/superspeed.ogg-76c556e055bd4161bb583b492ef8839a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

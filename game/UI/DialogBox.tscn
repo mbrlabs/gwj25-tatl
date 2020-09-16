@@ -1,10 +1,12 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Common/Fonts/font_dialog.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Common/Fonts/font_dialog_title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Fonts/font_dialog.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Fonts/font_dialog_title.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI/DialogBox.gd" type="Script" id=3]
-[ext_resource path="res://Common/Audio/dialog_click.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Common/Audio/placeholder.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Audio/dialog_click.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Audio/placeholder.ogg" type="AudioStream" id=5]
+
+
 
 
 [sub_resource type="Animation" id=1]
