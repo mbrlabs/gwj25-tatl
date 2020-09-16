@@ -106,9 +106,9 @@ func _physics_process(delta: float) -> void:
 	var prev_velocity = _velocity
 	
 	# do input and calc move velocity
-	_handle_mode()
 	var move_velocity: Vector3
 	if input_enabled:
+		_handle_mode()
 		_aim_camera(delta)
 		if !_is_transforming:
 			move_velocity = _get_move_velocity(delta)

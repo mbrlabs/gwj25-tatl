@@ -62,8 +62,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GWJ25"
-run/main_scene="res://Game.tscn"
+config/name="Tatl"
+run/main_scene="res://MainMenu.tscn"
 config/icon="res://Common/icon.png"
 
 [audio]
