@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://Props/Grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -43,6 +43,7 @@
 [ext_resource path="res://Interactables/AutomaticLever.tscn" type="PackedScene" id=41]
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=42]
 [ext_resource path="res://POIs/CrystalPOI.gd" type="Script" id=43]
+[ext_resource path="res://UI/TheEndOverlay.tscn" type="PackedScene" id=44]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 3.77311, 5.10357, 9.91623 )
@@ -109,25 +110,25 @@ extents = Vector3( 16.5866, 8.47418, 2.61007 )
 [sub_resource type="BoxShape" id=22]
 extents = Vector3( 10.9586, 8.47418, 1 )
 
-[sub_resource type="BoxShape" id=29]
+[sub_resource type="BoxShape" id=23]
 extents = Vector3( 7.05816, 4.38029, 8.10308 )
 
-[sub_resource type="BoxShape" id=23]
+[sub_resource type="BoxShape" id=24]
 extents = Vector3( 20.2731, 6.55711, 1.87577 )
 
-[sub_resource type="BoxShape" id=24]
+[sub_resource type="BoxShape" id=25]
 extents = Vector3( 20.2731, 6.55711, 0.319071 )
 
-[sub_resource type="BoxShape" id=25]
+[sub_resource type="BoxShape" id=26]
 extents = Vector3( 9.35898, 6.55711, 0.319071 )
 
-[sub_resource type="BoxShape" id=26]
+[sub_resource type="BoxShape" id=27]
 extents = Vector3( 3.35156, 6.55711, 2.66218 )
 
-[sub_resource type="BoxShape" id=27]
+[sub_resource type="BoxShape" id=28]
 extents = Vector3( 4.52443, 6.55711, 0.319071 )
 
-[sub_resource type="BoxShape" id=28]
+[sub_resource type="BoxShape" id=29]
 extents = Vector3( 1, 6.55238, 18.5642 )
 
 [node name="Game" type="Spatial"]
@@ -176,6 +177,9 @@ visible = false
 player = NodePath("../../Player")
 
 [node name="PauseMenu" parent="UI" instance=ExtResource( 42 )]
+
+[node name="TheEndOverlay" parent="UI" instance=ExtResource( 44 )]
+visible = false
 
 [node name="IntroStartTimer" type="Timer" parent="."]
 wait_time = 1.25
@@ -1424,7 +1428,7 @@ one_shot = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Cave/CrystalPOI"]
 transform = Transform( 0.835999, 0, -0.548731, 0, 1, 0, 0.548731, 0, 0.835999, 17.8953, 0.0192871, 5.72104 )
-shape = SubResource( 29 )
+shape = SubResource( 23 )
 
 [node name="StaticBody" type="StaticBody" parent="Cave"]
 collision_layer = 2
@@ -1432,27 +1436,27 @@ collision_mask = 23
 
 [node name="CollisionShape2" type="CollisionShape" parent="Cave/StaticBody"]
 transform = Transform( 0.990831, 0, -0.13511, 0, 1, 0, 0.13511, 0, 0.990831, -5.64404, 7.02526, -6.98603 )
-shape = SubResource( 23 )
+shape = SubResource( 24 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="Cave/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.64404, 7.02526, 10.0844 )
-shape = SubResource( 24 )
+shape = SubResource( 25 )
 
 [node name="CollisionShape5" type="CollisionShape" parent="Cave/StaticBody"]
 transform = Transform( 0.58609, 0, -0.810246, 0, 1, 0, 0.810246, 0, 0.58609, -17.1363, 7.02526, 7.9276 )
-shape = SubResource( 25 )
+shape = SubResource( 26 )
 
 [node name="CollisionShape6" type="CollisionShape" parent="Cave/StaticBody"]
 transform = Transform( 0.961372, 0, 0.275252, 0, 1, 0, -0.275252, 0, 0.961372, 4.26522, 7.02526, 7.45578 )
-shape = SubResource( 26 )
+shape = SubResource( 27 )
 
 [node name="CollisionShape7" type="CollisionShape" parent="Cave/StaticBody"]
 transform = Transform( 0.102445, 0, 0.994739, 0, 1, 0, -0.994739, 0, 0.102445, 0.315269, 7.02526, 10.7038 )
-shape = SubResource( 27 )
+shape = SubResource( 28 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Cave/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.315, 6.7487, 0 )
-shape = SubResource( 28 )
+shape = SubResource( 29 )
 
 [node name="LightPortal" parent="Cave" instance=ExtResource( 38 )]
 transform = Transform( 0.972614, 0, -0.232427, 0, 1, 0, 0.232427, 0, 0.972614, -5.67992, -0.435664, 2.12708 )
@@ -1685,3 +1689,4 @@ transform = Transform( 0.683745, 0.398756, 0.611136, 0.122961, 0.762558, -0.6351
 [connection signal="unpaused" from="UI/PauseMenu" to="." method="_on_PauseMenu_unpaused"]
 [connection signal="timeout" from="IntroStartTimer" to="." method="_on_IntroStartTimer_timeout"]
 [connection signal="body_entered" from="Castle/ExitCastleStateArea" to="." method="_on_ExitCastleStateArea_body_entered"]
+[connection signal="the_end" from="Cave/LightPortal" to="." method="_on_LightPortal_the_end"]

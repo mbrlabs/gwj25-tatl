@@ -1,6 +1,7 @@
 extends Node
 
 # ---------------------------------------------------------------------------------------
+const AUDIOBUS_MASTER = "Master"
 const AUDIOBUS_MUSIC = "Music"
 const AUDIOBUS_SOUND = "Sound"
 const AUDIOBUS_AMBIENT_SOUND = "AmbientSound"

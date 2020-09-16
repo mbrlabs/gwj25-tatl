@@ -16,6 +16,7 @@ onready var _fps_label: Label = $UI/MarginContainer/FpsLabel
 onready var _player: Player = $Player
 onready var _dialog_box: DialogBox = $UI/DialogBox
 onready var _pause_menu: PauseMenu = $UI/PauseMenu
+onready var _end_overlay: TheEndOverlay = $UI/TheEndOverlay
 
 # ---------------------------------------------------------------------------------------
 var _intro_dialogs = {
@@ -98,3 +99,7 @@ func _unpause() -> void:
 	_pause_menu.slide_out()
 	_player.input_enabled = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+# ---------------------------------------------------------------------------------------
+func _on_LightPortal_the_end():
+	_end_overlay.show_end_screen()
