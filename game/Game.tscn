@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://Props/Grass/Grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -37,6 +37,8 @@
 [ext_resource path="res://Props/BrickBig.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Props/BrickSmall.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Props/BrickMid.tscn" type="PackedScene" id=37]
+[ext_resource path="res://Props/Portal.tscn" type="PackedScene" id=38]
+[ext_resource path="res://Props/Crystal.tscn" type="PackedScene" id=39]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 21.3831, 5.12716, 2.78075 )
@@ -85,37 +87,37 @@ extents = Vector3( 1, 6.65086, 8.81409 )
 
 [sub_resource type="CubeMesh" id=16]
 
-[sub_resource type="BoxShape" id=26]
+[sub_resource type="BoxShape" id=17]
 extents = Vector3( 4.49363, 8.47418, 1 )
 
-[sub_resource type="BoxShape" id=30]
+[sub_resource type="BoxShape" id=18]
 extents = Vector3( 8.91549, 8.47418, 1 )
 
-[sub_resource type="BoxShape" id=31]
+[sub_resource type="BoxShape" id=19]
 extents = Vector3( 11.1877, 8.47418, 1 )
 
-[sub_resource type="BoxShape" id=27]
+[sub_resource type="BoxShape" id=20]
 extents = Vector3( 16.5866, 8.47418, 2.61007 )
 
-[sub_resource type="BoxShape" id=28]
+[sub_resource type="BoxShape" id=21]
 extents = Vector3( 10.9586, 8.47418, 1 )
 
-[sub_resource type="BoxShape" id=20]
+[sub_resource type="BoxShape" id=22]
 extents = Vector3( 20.2731, 6.55711, 1.87577 )
 
-[sub_resource type="BoxShape" id=22]
+[sub_resource type="BoxShape" id=23]
 extents = Vector3( 20.2731, 6.55711, 0.319071 )
 
 [sub_resource type="BoxShape" id=24]
 extents = Vector3( 9.35898, 6.55711, 0.319071 )
 
-[sub_resource type="BoxShape" id=32]
+[sub_resource type="BoxShape" id=25]
 extents = Vector3( 3.35156, 6.55711, 2.66218 )
 
-[sub_resource type="BoxShape" id=25]
+[sub_resource type="BoxShape" id=26]
 extents = Vector3( 4.52443, 6.55711, 0.319071 )
 
-[sub_resource type="BoxShape" id=23]
+[sub_resource type="BoxShape" id=27]
 extents = Vector3( 1, 6.55238, 18.5642 )
 
 [node name="Game" type="Spatial"]
@@ -202,7 +204,7 @@ stream = ExtResource( 24 )
 bus = "AmbientSounds"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.12021, 7.80442, -7.70262 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -81.6013, 5.66661, -36.6278 )
 evirorment = ExtResource( 3 )
 speed = 4.0
 
@@ -983,7 +985,7 @@ mesh = SubResource( 16 )
 material/0 = null
 
 [node name="MeshInstance15" type="MeshInstance" parent="Mountain/MeshInstance21"]
-transform = Transform( -0.566253, -0.176377, -0.791066, 0.0556588, -0.152966, -0.452132, -0.013659, -0.161496, 0.765137, 1.65689, -0.482143, -0.362724 )
+transform = Transform( -0.566253, -0.176377, -0.791066, 0.0556588, -0.152966, -0.452132, -0.013659, -0.161496, 0.765137, 1.66344, -0.480905, -0.362943 )
 material_override = ExtResource( 34 )
 mesh = SubResource( 16 )
 material/0 = null
@@ -1258,6 +1260,48 @@ material_override = ExtResource( 34 )
 mesh = SubResource( 16 )
 material/0 = null
 
+[node name="Crystal13" parent="Mountain" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 0.989196, -0.146601, 0, 0.146601, 0.989196, -72.7591, 2.6877, -41.7484 )
+
+[node name="Crystal14" parent="Mountain" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 0.989196, -0.146601, 0, 0.146601, 0.989196, -72.9956, 15.8146, -41.7484 )
+
+[node name="Crystal15" parent="Mountain" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 0.989196, -0.146601, 0, 0.146601, 0.989196, -87.5777, 13.1097, -41.7484 )
+
+[node name="Crystal16" parent="Mountain" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 0.989196, -0.146601, 0, 0.146601, 0.989196, -86.5247, 9.61724, -31.606 )
+
+[node name="Crystal22" parent="Mountain" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 0.989196, -0.146601, 0, 0.146601, 0.989196, -83.7559, 7.46736, -42.0215 )
+
+[node name="Crystal17" parent="Mountain" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 0.989196, -0.146601, 0, 0.146601, 0.989196, -83.1908, 5.21467, -30.6525 )
+
+[node name="Crystal18" parent="Mountain" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 0.989196, -0.146601, 0, 0.146601, 0.989196, -67.1322, 3.32783, -38.8918 )
+
+[node name="Crystal23" parent="Mountain" instance=ExtResource( 39 )]
+transform = Transform( -0.0643695, -0.536311, 0.841562, 0.493795, 0.715715, 0.493881, -0.867192, 0.44735, 0.218758, -77.5427, 7.52825, -29.7007 )
+
+[node name="Crystal24" parent="Mountain" instance=ExtResource( 39 )]
+transform = Transform( -0.0643695, -0.536311, 0.841562, 0.493795, 0.715715, 0.493881, -0.867192, 0.44735, 0.218758, -72.2162, 10.6059, -31.9604 )
+
+[node name="Crystal25" parent="Mountain" instance=ExtResource( 39 )]
+transform = Transform( -0.0205462, 0.305236, 0.952055, -0.999644, -0.022497, -0.0143604, 0.0170351, -0.952011, 0.30559, -66.8369, 12.2271, -32.0373 )
+
+[node name="Crystal26" parent="Mountain" instance=ExtResource( 39 )]
+transform = Transform( 0.396447, 0.147613, 0.906113, -0.311485, -0.906816, 0.28401, 0.863601, -0.394835, -0.313525, -81.1961, 3.04975, -42.2328 )
+
+[node name="Crystal19" parent="Mountain" instance=ExtResource( 39 )]
+transform = Transform( 0.604696, 0.787851, -0.116761, -0.796456, 0.598163, -0.0886491, 0, 0.146601, 0.989196, -68.2293, 9.93287, -25.8273 )
+
+[node name="Crystal20" parent="Mountain" instance=ExtResource( 39 )]
+transform = Transform( 0.604696, 0.787851, -0.116761, -0.796456, 0.598163, -0.0886491, 0, 0.146601, 0.989196, -68.7212, 5.9739, -27.0641 )
+
+[node name="Crystal21" parent="Mountain" instance=ExtResource( 39 )]
+transform = Transform( 0.604696, 0.787851, -0.116761, -0.796456, 0.598163, -0.0886491, 0, 0.146601, 0.989196, -65.704, 5.9739, -38.4673 )
+
 [node name="MountainRoad" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -53.0031, 0, -19.0814 )
 __meta__ = {
@@ -1271,23 +1315,23 @@ collision_mask = 53
 
 [node name="CollisionShape" type="CollisionShape" parent="MountainRoad/StaticBody"]
 transform = Transform( 0.913588, 0, -0.406641, 0, 1, 0, 0.406641, 0, 0.913588, -0.299591, 6.37336, -0.943226 )
-shape = SubResource( 26 )
+shape = SubResource( 17 )
 
 [node name="CollisionShape5" type="CollisionShape" parent="MountainRoad/StaticBody"]
 transform = Transform( 0.999948, 0, 0.010175, 0, 1, 0, -0.010175, 0, 0.999948, -33.4378, 6.37336, -13.4632 )
-shape = SubResource( 30 )
+shape = SubResource( 18 )
 
 [node name="CollisionShape6" type="CollisionShape" parent="MountainRoad/StaticBody"]
 transform = Transform( 0.999948, 0, 0.010175, 0, 1, 0, -0.010175, 0, 0.999948, -31.3554, 6.37336, -22.6195 )
-shape = SubResource( 31 )
+shape = SubResource( 19 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="MountainRoad/StaticBody"]
 transform = Transform( 0.913588, 0, -0.406641, 0, 1, 0, 0.406641, 0, 0.913588, -6.87867, 6.37336, -15.4454 )
-shape = SubResource( 27 )
+shape = SubResource( 20 )
 
 [node name="CollisionShape3" type="CollisionShape" parent="MountainRoad/StaticBody"]
 transform = Transform( 0.85254, 0, -0.522662, 0, 1, 0, 0.522662, 0, 0.85254, -16.3572, 6.37336, -8.25518 )
-shape = SubResource( 28 )
+shape = SubResource( 21 )
 
 [node name="GroundCobblestone31" parent="MountainRoad" instance=ExtResource( 33 )]
 transform = Transform( 0.0176617, -0.0758023, 0.996966, -1.23517e-08, 0.997122, 0.0758141, -0.999844, -0.00133901, 0.0176108, -27.3018, 0.980481, -18.2164 )
@@ -1348,10 +1392,6 @@ transform = Transform( 0.377405, 0.00392295, 0.92604, -0.00785575, 0.999968, -0.
 
 [node name="Cave" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -98.1614, 0, -39.0347 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 
 [node name="StaticBody" type="StaticBody" parent="Cave"]
 collision_layer = 2
@@ -1359,11 +1399,11 @@ collision_mask = 23
 
 [node name="CollisionShape2" type="CollisionShape" parent="Cave/StaticBody"]
 transform = Transform( 0.990831, 0, -0.13511, 0, 1, 0, 0.13511, 0, 0.990831, -5.64404, 7.02526, -6.98603 )
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="Cave/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.64404, 7.02526, 10.0844 )
-shape = SubResource( 22 )
+shape = SubResource( 23 )
 
 [node name="CollisionShape5" type="CollisionShape" parent="Cave/StaticBody"]
 transform = Transform( 0.58609, 0, -0.810246, 0, 1, 0, 0.810246, 0, 0.58609, -17.1363, 7.02526, 7.9276 )
@@ -1371,15 +1411,18 @@ shape = SubResource( 24 )
 
 [node name="CollisionShape6" type="CollisionShape" parent="Cave/StaticBody"]
 transform = Transform( 0.961372, 0, 0.275252, 0, 1, 0, -0.275252, 0, 0.961372, 4.26522, 7.02526, 7.45578 )
-shape = SubResource( 32 )
+shape = SubResource( 25 )
 
 [node name="CollisionShape7" type="CollisionShape" parent="Cave/StaticBody"]
 transform = Transform( 0.102445, 0, 0.994739, 0, 1, 0, -0.994739, 0, 0.102445, 0.315269, 7.02526, 10.7038 )
-shape = SubResource( 25 )
+shape = SubResource( 26 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Cave/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2493, 6.7487, 0 )
-shape = SubResource( 23 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.315, 6.7487, 0 )
+shape = SubResource( 27 )
+
+[node name="Portal" parent="Cave" instance=ExtResource( 38 )]
+transform = Transform( 0.972614, 0, -0.232427, 0, 1, 0, 0.232427, 0, 0.972614, -5.67992, -0.435664, 2.12708 )
 
 [node name="Rocks" type="Spatial" parent="Cave"]
 
@@ -1420,13 +1463,13 @@ mesh = SubResource( 16 )
 material/0 = null
 
 [node name="MeshInstance14" type="MeshInstance" parent="Cave/Rocks/MeshInstance29"]
-transform = Transform( -0.384015, -0.590665, -0.303113, -0.0475906, 0.0746054, -0.698045, 0.143978, -0.136514, -0.450347, 0.919868, 0.188518, -0.261704 )
+transform = Transform( -0.384015, -0.590665, -0.303113, -0.0475906, 0.0746054, -0.698045, 0.143978, -0.136514, -0.450347, 0.919868, 0.188518, -0.261703 )
 material_override = ExtResource( 34 )
 mesh = SubResource( 16 )
 material/0 = null
 
 [node name="MeshInstance24" type="MeshInstance" parent="Cave/Rocks"]
-transform = Transform( 3.53676, -1.1697, 5.52687, -1.84936, -0.0801579, 10.6403, -0.26672, -14.9541, -0.489348, -25.9317, 6.53275, 2.58638 )
+transform = Transform( 3.53676, -1.1697, 5.52687, -1.84936, -0.0801579, 10.6403, -0.26672, -14.9541, -0.489348, -20.295, 6.53275, 2.58638 )
 material_override = ExtResource( 34 )
 mesh = SubResource( 16 )
 material/0 = null
@@ -1474,7 +1517,7 @@ mesh = SubResource( 16 )
 material/0 = null
 
 [node name="MeshInstance28" type="MeshInstance" parent="Cave/Rocks"]
-transform = Transform( 0.79801, 12.7668, -5.82695, -3.91328, 3.01663, -0.593319, 0.22229, 7.27374, 10.4735, -7.35876, 20.1276, 2.53094 )
+transform = Transform( 0.79801, 12.7668, -5.82695, -3.91328, 3.01663, -0.593319, 0.22229, 7.27374, 10.4735, -7.35876, 16.7579, 2.53094 )
 material_override = ExtResource( 34 )
 mesh = SubResource( 16 )
 material/0 = null
@@ -1556,4 +1599,52 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9397, 0, -8.286 )
 
 [node name="Grass10" parent="Cave" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9397, 0, 1.714 )
+
+[node name="Crystal" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 0.999186, -0.0403411, 0, 0.0403411, 0.999186, -5.9252, 4.0316, -5.46653 )
+
+[node name="Crystal11" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 0.999186, -0.0403411, 0, 0.0403411, 0.999186, -16.0104, 5.33529, -0.531422 )
+
+[node name="Crystal12" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 0.999186, -0.0403411, 0, 0.0403411, 0.999186, 2.91995, 2.6877, -5.45763 )
+
+[node name="Crystal2" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 0.999186, -0.0403411, 0, 0.0403411, 0.999186, -9.64322, 10.1931, -4.04818 )
+
+[node name="Crystal3" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 0.999186, -0.0403411, 0, 0.0403411, 0.999186, -10.1046, 10.1931, 5.56565 )
+
+[node name="Crystal4" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 0.999186, -0.0403411, 0, 0.0403411, 0.999186, -16.0782, 4.82649, 8.50888 )
+
+[node name="Crystal5" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( 0.99075, -0.135588, 0.00547421, 0.135698, 0.989944, -0.0399679, 0, 0.0403411, 0.999186, -7.96447, 4.82649, 13.9283 )
+
+[node name="Crystal8" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( -0.499229, -0.865765, 0.0349543, 0.86647, -0.498823, 0.0201394, 0, 0.0403411, 0.999186, 1.54988, 2.95471, 9.86843 )
+
+[node name="Crystal13" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( 0.167147, -0.985129, 0.0397735, 0.985932, 0.167011, -0.0067429, 0, 0.0403411, 0.999186, -14.4948, 8.96668, 2.68802 )
+
+[node name="Crystal14" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( 0.167147, -0.985129, 0.0397735, 0.985932, 0.167011, -0.0067429, 0, 0.0403411, 0.999186, -13.0991, 9.11688, -0.596722 )
+
+[node name="Crystal15" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( 0.167147, -0.985129, 0.0397735, 0.985932, 0.167011, -0.0067429, 0, 0.0403411, 0.999186, -12.0878, 2.88154, -6.18326 )
+
+[node name="Crystal16" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( 0.167147, -0.985129, 0.0397735, 0.985932, 0.167011, -0.0067429, 0, 0.0403411, 0.999186, -7.88363, 9.67009, -6.18326 )
+
+[node name="Crystal9" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( -0.499229, -0.865765, 0.0349543, 0.86647, -0.498823, 0.0201394, 0, 0.0403411, 0.999186, -1.65728, 7.46221, 7.42243 )
+
+[node name="Crystal10" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( -0.499229, -0.865765, 0.0349543, 0.86647, -0.498823, 0.0201394, 0, 0.0403411, 0.999186, 0.67617, 10.5474, 5.07218 )
+
+[node name="Crystal6" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( 0.99075, -0.135588, 0.00547421, 0.135698, 0.989944, -0.0399679, 0, 0.0403411, 0.999186, -5.08772, 11.1428, 0.742104 )
+
+[node name="Crystal7" parent="Cave" instance=ExtResource( 39 )]
+transform = Transform( 0.683745, 0.398756, 0.611136, 0.122961, 0.762558, -0.635126, -0.719287, 0.50941, 0.472364, -4.16115, 12.4306, 5.08379 )
 [connection signal="timeout" from="IntroStartTimer" to="." method="_on_IntroStartTimer_timeout"]
