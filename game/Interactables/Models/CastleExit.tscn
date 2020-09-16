@@ -3,7 +3,6 @@
 [ext_resource path="res://Common/mat_palette.tres" type="Material" id=1]
 [ext_resource path="res://Interactables/Models/castle_exit.glb" type="PackedScene" id=2]
 
-
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 2.1217, 3.02152, 0.211773 )
 
@@ -14,6 +13,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 material_override = ExtResource( 1 )
 
 [node name="StaticBody" type="StaticBody" parent="castle_exit" index="0"]
+collision_layer = 2
+collision_mask = 15
 
 [node name="CollisionShape" type="CollisionShape" parent="castle_exit/StaticBody" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.131631, 0.526522, 0 )
