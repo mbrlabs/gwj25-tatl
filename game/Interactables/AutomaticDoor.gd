@@ -17,7 +17,9 @@ func open_door(close_time: float) -> void:
 	$CloseTimer.wait_time = close_time
 	$CloseTimer.start()
 	$AnimationPlayer.play("open")
+	$AudioStreamPlayer3D.play()
 
 # ---------------------------------------------------------------------------------------
 func _on_CloseTimer_timeout():
 	$AnimationPlayer.play("close")
+	$AudioStreamPlayer3D.play()

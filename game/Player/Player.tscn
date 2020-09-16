@@ -10,9 +10,6 @@
 [ext_resource path="res://Assets/Audio/godot_cannon2.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Player/Crosshair.tscn" type="PackedScene" id=10]
 
-
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "buffed_to_normal"
 length = 1.3
