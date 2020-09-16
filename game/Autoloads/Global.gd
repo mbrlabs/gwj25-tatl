@@ -8,14 +8,16 @@ const AUDIOBUS_PLAYER_SOUND = "PlayerSound"
 
 # ---------------------------------------------------------------------------------------
 enum State {
-	INTRO,		# this is the tutorial with the 3-4 dialogs
-	PRE_CRYPT,	# this is time of exploration until the player gets the ability from the crypt
-	PUZZLE_1,	# this is the time before the player uses the new ability to break through the door
+	INTRO,	# this is the tutorial sequence (3-4 dialogs of Tatl to player)
+	CRYPT,	# this is time of exploration until the player gets the ability from the crypt
+	PRE_CASTLE, # this is the time before the player breaks through the castle front door
+	CASTLE,	# this is the time inside the castle
+	MONTAIN,# this is when the player gets through the castle exit
 }
 
 # ---------------------------------------------------------------------------------------
 var state = State.INTRO
-var buffed_form_unlocked := true
+var buffed_form_unlocked := false
 var god_mode_enabled := false
 
 # ---------------------------------------------------------------------------------------

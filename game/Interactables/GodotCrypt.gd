@@ -30,12 +30,12 @@ func _physics_process(delta: float) -> void:
 
 # ---------------------------------------------------------------------------------------
 func _is_interactable() -> bool:
-	return Global.state == Global.State.PRE_CRYPT
+	return Global.state == Global.State.CRYPT
 
 # ---------------------------------------------------------------------------------------
 func _on_interact() -> void:
 	get_node(dialog_box).connect("message_confirmed", self, "_on_DialogBox_message_confirmed")
-	Global.state = Global.State.PUZZLE_1
+	Global.state = Global.State.PRE_CASTLE
 	var db := get_node(dialog_box) as DialogBox
 	var msg = _dialogs[_dialog_index]
 	db.show_message(msg[0], msg[1], true)

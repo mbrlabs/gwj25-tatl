@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/castle_exit_gate.glb-dde614181b3167ef3733ff62faf6195d.scn"
+path="res://.import/castle_exit_gate_broken.glb-8f84030d7dd416355dd5c7ac771cd7f0.scn"
 
 [deps]
 
-source_file="res://Props/Models/castle_exit_gate.glb"
-dest_files=[ "res://.import/castle_exit_gate.glb-dde614181b3167ef3733ff62faf6195d.scn" ]
+source_file="res://Props/Models/castle_exit_gate_broken.glb"
+dest_files=[ "res://.import/castle_exit_gate_broken.glb-8f84030d7dd416355dd5c7ac771cd7f0.scn" ]
 
 [params]
 

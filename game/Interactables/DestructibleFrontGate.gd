@@ -33,14 +33,15 @@ func _physics_process(delta: float) -> void:
 
 # ---------------------------------------------------------------------------------------
 func _is_interactable() -> bool:
-	return Global.state != Global.State.INTRO
+	return Global.state == Global.State.PRE_CASTLE || Global.state == Global.State.CRYPT
 
 # ---------------------------------------------------------------------------------------
 func _on_interact() -> void:
 	var dbox := get_node(dialog_box) as DialogBox
-	if Global.state == Global.State.PRE_CRYPT:
+	if Global.state == Global.State.CRYPT:
 		dbox.show_message("Tatl", "That gate looks pretty tough. I don't think i can get through it :(", false)
-	
+	if Global.state == Global.State.PRE_CASTLE:
+		dbox.show_message("Tatl", "I wonder what the Godot-Cannon does to that gate...", false)
 # ---------------------------------------------------------------------------------------
 func _play_desctruction_effects() -> void:
 	pass
@@ -60,6 +61,7 @@ func _on_DestructibleFrontGate_area_entered(area: Area):
 					_gate_model_damaged.show()
 					_play_desctruction_effects()
 				State.DAMAGED:
+					Global.state = Global.State.CASTLE
 					_state = State.BROKEN
 					_gate_model_damaged.hide()
 					_gate_model_broken.show()

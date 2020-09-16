@@ -64,7 +64,7 @@ func _on_DialogBox_message_confirmed():
 			_intro_lvl = IntroLevel.GOOD_LUCK
 		IntroLevel.GOOD_LUCK:
 			_intro_lvl = IntroLevel.DONE
-			Global.state = Global.State.PRE_CRYPT
+			Global.state = Global.State.CRYPT
 			_dialog_box.disconnect("message_confirmed", self, "_on_DialogBox_message_confirmed")
 	
 	if _intro_lvl != IntroLevel.DONE:
