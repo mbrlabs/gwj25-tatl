@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Interactable",
+"class": "AutomaticDoor",
+"language": "GDScript",
+"path": "res://Interactables/AutomaticDoor.gd"
+}, {
+"base": "Interactable",
 "class": "DestructibleFrontGate",
 "language": "GDScript",
 "path": "res://Interactables/DestructibleFrontGate.gd"
@@ -50,6 +55,7 @@ _global_script_classes=[ {
 "path": "res://Player/Projectile.gd"
 } ]
 _global_script_class_icons={
+"AutomaticDoor": "",
 "DestructibleFrontGate": "",
 "DialogBox": "",
 "GodotHead": "",

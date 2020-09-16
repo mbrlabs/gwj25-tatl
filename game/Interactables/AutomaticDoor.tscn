@@ -23,7 +23,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 1.8, 0 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 2.2, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -46,7 +46,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 1.8, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 2.2, 0 ) ]
 }
 
 [sub_resource type="BoxShape" id=1]

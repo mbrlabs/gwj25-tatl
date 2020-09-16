@@ -4,7 +4,7 @@
 [ext_resource path="res://Interactables/Models/castle_exit.glb" type="PackedScene" id=2]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 2.1217, 3.02152, 0.211773 )
+extents = Vector3( 2.1217, 2.34329, 0.211773 )
 
 [node name="CastleExit" instance=ExtResource( 2 )]
 
@@ -17,5 +17,5 @@ collision_layer = 2
 collision_mask = 15
 
 [node name="CollisionShape" type="CollisionShape" parent="castle_exit/StaticBody" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.131631, 0.526522, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.131631, 0.840159, 0 )
 shape = SubResource( 1 )

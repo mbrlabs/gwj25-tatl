@@ -1,8 +1,12 @@
-class_name AutomaticDoor
 extends Interactable
 
 # ---------------------------------------------------------------------------------------
-var _dialog = "That thing is massive! I can't get through it and i'm sure even the Godot-Cannon won't leave a skratch"
+export var automatic_door: NodePath
+export var close_time: float = 2.0
+
+# ---------------------------------------------------------------------------------------
+func _ready():
+	$ResetTimer.wait_time = close_time
 
 # ---------------------------------------------------------------------------------------
 func _is_interactable() -> bool:
@@ -10,14 +14,14 @@ func _is_interactable() -> bool:
 
 # ---------------------------------------------------------------------------------------
 func _on_interact() -> void:
-	get_node(dialog_box).show_message("Tatl:", _dialog, true)
+	activate()
 
 # ---------------------------------------------------------------------------------------
-func open_door(close_time: float) -> void:
-	$CloseTimer.wait_time = close_time
-	$CloseTimer.start()
-	$AnimationPlayer.play("open")
+func _on_ResetTimer_timeout():
+	$AnimationPlayer.play("deactivate")
 
 # ---------------------------------------------------------------------------------------
-func _on_CloseTimer_timeout():
-	$AnimationPlayer.play("close")
+func activate() -> void:
+	get_node(automatic_door).open_door(close_time)
+	$AnimationPlayer.play("activate")
+	$ResetTimer.start()

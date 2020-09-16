@@ -73,3 +73,8 @@ func _on_DialogBox_message_confirmed():
 # ---------------------------------------------------------------------------------------
 func _on_IntroStartTimer_timeout():
 	_dialog_box.show_message("Tatl:", _intro_dialogs[_intro_lvl], true)
+
+# ---------------------------------------------------------------------------------------
+func _on_ExitCastleStateArea_body_entered(body):
+	if body is Player:
+		Global.state = Global.State.MONTAIN
