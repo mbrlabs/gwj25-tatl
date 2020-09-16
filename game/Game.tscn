@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Props/Grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://Props/Crystal.tscn" type="PackedScene" id=39]
 [ext_resource path="res://Interactables/AutomaticDoor.tscn" type="PackedScene" id=40]
 [ext_resource path="res://Interactables/AutomaticLever.tscn" type="PackedScene" id=41]
+[ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=42]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 3.77311, 5.10357, 9.91623 )
@@ -126,6 +127,7 @@ extents = Vector3( 4.52443, 6.55711, 0.319071 )
 extents = Vector3( 1, 6.55238, 18.5642 )
 
 [node name="Game" type="Spatial"]
+pause_mode = 1
 script = ExtResource( 4 )
 
 [node name="UI" type="Control" parent="."]
@@ -168,6 +170,8 @@ visible = false
 [node name="AbilityOverlay" parent="UI" instance=ExtResource( 31 )]
 visible = false
 player = NodePath("../../Player")
+
+[node name="PauseMenu" parent="UI" instance=ExtResource( 42 )]
 
 [node name="IntroStartTimer" type="Timer" parent="."]
 wait_time = 1.25
@@ -1662,5 +1666,6 @@ transform = Transform( 0.99075, -0.135588, 0.00547421, 0.135698, 0.989944, -0.03
 
 [node name="Crystal7" parent="Cave" instance=ExtResource( 39 )]
 transform = Transform( 0.683745, 0.398756, 0.611136, 0.122961, 0.762558, -0.635126, -0.719287, 0.50941, 0.472364, -4.16115, 12.4306, 5.08379 )
+[connection signal="unpaused" from="UI/PauseMenu" to="." method="_on_PauseMenu_unpaused"]
 [connection signal="timeout" from="IntroStartTimer" to="." method="_on_IntroStartTimer_timeout"]
 [connection signal="body_entered" from="Castle/ExitCastleStateArea" to="." method="_on_ExitCastleStateArea_body_entered"]

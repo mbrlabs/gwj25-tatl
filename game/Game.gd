@@ -15,6 +15,7 @@ enum IntroLevel {
 onready var _fps_label: Label = $UI/MarginContainer/FpsLabel
 onready var _player: Player = $Player
 onready var _dialog_box: DialogBox = $UI/DialogBox
+onready var _pause_menu: PauseMenu = $UI/PauseMenu
 
 # ---------------------------------------------------------------------------------------
 var _intro_dialogs = {
@@ -35,11 +36,13 @@ func _ready():
 func _process(delta: float) -> void:
 	_fps_label.text = str(Engine.get_frames_per_second())
 	
+	if Input.is_action_just_pressed("pause") && !get_tree().paused:
+		_pause_menu.handle_input = false
+		_pause()
+	
 	# basic debug stuff
 	if Input.is_action_just_pressed("debug_reload"):
 		get_tree().reload_current_scene()
-	if Input.is_action_just_pressed("debug_exit"):
-		get_tree().quit()
 	if Input.is_action_just_pressed("debug_toggle_input"):
 		if _player.input_enabled:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -78,3 +81,20 @@ func _on_IntroStartTimer_timeout():
 func _on_ExitCastleStateArea_body_entered(body):
 	if body is Player:
 		Global.state = Global.State.MONTAIN
+
+# ---------------------------------------------------------------------------------------
+func _on_PauseMenu_unpaused():
+	_unpause()
+
+# ---------------------------------------------------------------------------------------
+func _pause() -> void:
+	get_tree().paused = true
+	_pause_menu.slide_in()
+	_player.input_enabled = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+# ---------------------------------------------------------------------------------------
+func _unpause() -> void:
+	_pause_menu.slide_out()
+	_player.input_enabled = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

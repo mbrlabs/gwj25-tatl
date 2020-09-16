@@ -55,7 +55,6 @@ onready var _crosshair: Spatial = $Gimbal/Camera/GunRayCast/Crosshair
 export var evirorment: Environment 
 export var input_enabled := true
 export(float, 0.0, 1.0) var glowiness = 1.0 setget _set_glowiness
-export var mouse_sensitivity := 1.0
 export var camera_zoom_increments := 0.1
 export var camera_max_zoom_increments := 10
 export var camera_lag := 8.0
@@ -270,9 +269,10 @@ func _apply_camera_lag(delta: float) -> void:
 	
 # ---------------------------------------------------------------------------------------
 func _aim_camera(delta: float) -> void:
+	var ms = float(Global.mouse_sensitivity) / 50.0
 	if _mouse_movement.length() > 0:
-		_gimbal.rotate_y(-deg2rad(_mouse_movement.x * delta * mouse_sensitivity * ROTATION_SPEED))
-		_gimbal.rotate_object_local(Vector3(1, 0, 0), deg2rad(-_mouse_movement.y * delta * mouse_sensitivity * ROTATION_SPEED))
+		_gimbal.rotate_y(-deg2rad(_mouse_movement.x * delta * ms * ROTATION_SPEED))
+		_gimbal.rotate_object_local(Vector3(1, 0, 0), deg2rad(-_mouse_movement.y * delta * ms * ROTATION_SPEED))
 	_mouse_movement = Vector2()
 
 # ---------------------------------------------------------------------------------------
