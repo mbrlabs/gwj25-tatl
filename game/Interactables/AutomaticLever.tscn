@@ -49,7 +49,7 @@ tracks/0/keys = {
 extents = Vector3( 0.881614, 3.07684, 1.41113 )
 
 [sub_resource type="BoxShape" id=4]
-extents = Vector3( 0.578293, 1, 0.466877 )
+extents = Vector3( 0.412039, 0.666334, 0.466877 )
 
 [node name="AutomaticLever" type="Area"]
 script = ExtResource( 1 )

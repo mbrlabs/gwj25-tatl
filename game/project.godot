@@ -70,6 +70,8 @@ _global_script_class_icons={
 
 config/name="Tatl"
 run/main_scene="res://Game.tscn"
+boot_splash/image="res://Common/boot.png"
+boot_splash/bg_color=Color( 0.0627451, 0.121569, 0.196078, 1 )
 config/icon="res://Common/icon.png"
 
 [audio]
