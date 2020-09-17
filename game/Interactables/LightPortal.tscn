@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Interactables/LightPortal.gd" type="Script" id=1]
 [ext_resource path="res://Props/Portal.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Enviroment/env_fancy_glowy_with_fog.tres" type="Environment" id=3]
+[ext_resource path="res://Assets/Audio/transformation_to_godot.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Audio/godot_cannon.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Audio/superspeed.ogg" type="AudioStream" id=7]
 
@@ -119,9 +119,6 @@ hue_variation = -0.25
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/boom = SubResource( 4 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 3 )
-
 [node name="AmbientActivationSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -10.0
@@ -130,6 +127,11 @@ bus = "AmbientSounds"
 [node name="AmbientActivationSound2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -40.0
+bus = "AmbientSounds"
+
+[node name="LaunchSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -5.0
 bus = "AmbientSounds"
 
 [node name="AmbientActivationSound2Timer" type="Timer" parent="."]

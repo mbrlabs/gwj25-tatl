@@ -2,6 +2,7 @@ extends RigidBody
 
 var fall_sound: AudioStreamPlayer3D
 
+# ---------------------------------------------------------------------------------------
 func _ready():
 	fall_sound = AudioStreamPlayer3D.new()
 	if randf() < 0.5:
@@ -11,7 +12,8 @@ func _ready():
 	fall_sound.bus = Global.AUDIOBUS_AMBIENT_SOUND
 	fall_sound.unit_db = 15.0
 	add_child(fall_sound)
-	
+
+# ---------------------------------------------------------------------------------------	
 func _process(delta):
 	if linear_velocity.length() > 20.0:
 		if !fall_sound.playing:

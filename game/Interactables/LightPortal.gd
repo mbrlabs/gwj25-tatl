@@ -13,6 +13,8 @@ func _on_interact() -> void:
 	$AnimationPlayer.play("boom")
 	$AmbientActivationSound.play()
 	$AmbientActivationSound2Timer.start()
+	$LaunchSound.play()
+	Global.buffed_form_unlocked = false
 	var dbox := get_node(dialog_box) as DialogBox
 	dbox.show_message("Tatl: ", "Nice, we found a Light portal. I go now, goodbye. The end", true)
 

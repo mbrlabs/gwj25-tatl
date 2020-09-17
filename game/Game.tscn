@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Props/Grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -44,6 +44,7 @@
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=42]
 [ext_resource path="res://POIs/CrystalPOI.gd" type="Script" id=43]
 [ext_resource path="res://UI/TheEndOverlay.tscn" type="PackedScene" id=44]
+[ext_resource path="res://Enemies/Zombie.tscn" type="PackedScene" id=45]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 3.77311, 5.10357, 9.91623 )
@@ -219,7 +220,7 @@ stream = ExtResource( 24 )
 bus = "AmbientSounds"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -61.9128, 6.91815, -27.9565 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.971668, 6.91815, 28.8332 )
 evirorment = ExtResource( 3 )
 speed = 4.0
 
@@ -590,10 +591,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39556, -0.0913386, -3.7521 
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.6962, -0.255251, -9.73276 )
 
 [node name="Forest" type="Spatial" parent="."]
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 
 [node name="StaticBody" type="StaticBody" parent="Forest"]
 collision_layer = 2
@@ -647,6 +644,20 @@ shape = SubResource( 10 )
 [node name="CollisionShape5" type="CollisionShape" parent="Forest/POIForestWarning"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -42.8788, 5.44339, 7.43477 )
 shape = SubResource( 11 )
+
+[node name="FriendlyZombies" type="Spatial" parent="Forest"]
+
+[node name="Zombie" parent="Forest/FriendlyZombies" instance=ExtResource( 45 )]
+transform = Transform( -0.991102, 0, 0.133103, 0, 1, 0, -0.133103, 0, -0.991102, 1.363, 0.573392, 51.3322 )
+
+[node name="Zombie2" parent="Forest/FriendlyZombies" instance=ExtResource( 45 )]
+transform = Transform( -0.83297, 0, 0.553318, 0, 1, 0, -0.553318, 0, -0.83297, -29.9249, 0.573392, 48.51 )
+
+[node name="Zombie4" parent="Forest/FriendlyZombies" instance=ExtResource( 45 )]
+transform = Transform( -0.472228, 0, 0.881476, 0, 1, 0, -0.881476, 0, -0.472228, -44.2806, 0.573392, 35.9697 )
+
+[node name="Zombie3" parent="Forest/FriendlyZombies" instance=ExtResource( 45 )]
+transform = Transform( -0.045554, 0, -0.998962, 0, 1, 0, 0.998962, 0, -0.045554, 21.6873, 0.573392, 29.1158 )
 
 [node name="TreeNoLeaves4" parent="Forest" instance=ExtResource( 12 )]
 transform = Transform( -0.0100528, 0, -0.999949, 0, 1, 0, 0.999949, 0, -0.0100528, -38.6964, 0, 27.1923 )
@@ -736,7 +747,7 @@ transform = Transform( 0.955886, 0, -0.29374, 0, 1, 0, 0.29374, 0, 0.955886, 7.9
 transform = Transform( 0.770691, 0, 0.637209, 0, 1, 0, -0.637209, 0, 0.770691, -2.59617, -1.90735e-06, 44.4349 )
 
 [node name="TreeNoLeaves31" parent="Forest" instance=ExtResource( 14 )]
-transform = Transform( 0.770691, 0, 0.637209, 0, 1, 0, -0.637209, 0, 0.770691, 2.1327, -1.90735e-06, 48.2947 )
+transform = Transform( 0.770691, 0, 0.637209, 0, 1, 0, -0.637209, 0, 0.770691, 2.1327, -1.90735e-06, 49.9224 )
 
 [node name="TreeNoLeaves18" parent="Forest" instance=ExtResource( 14 )]
 transform = Transform( 0.794489, 0, 0.607279, 0, 1, 0, -0.607279, 0, 0.794489, 20.6811, 0, 34.5241 )
@@ -754,7 +765,7 @@ transform = Transform( 0.0980345, 0, 0.995183, 0, 1, 0, -0.995183, 0, 0.0980345,
 transform = Transform( 0.0980345, 0, 0.995183, 0.00661762, 0.999978, -0.000651896, -0.995161, 0.00664966, 0.0980323, 13.0249, 0, 28.3857 )
 
 [node name="TreeNoLeaves17" parent="Forest" instance=ExtResource( 14 )]
-transform = Transform( -0.854658, 0, 0.519191, 0, 1, 0, -0.519191, 0, -0.854658, 21.3257, 0, 28.3857 )
+transform = Transform( -0.854658, 0, 0.519191, 0, 1, 0, -0.519191, 0, -0.854658, 20.7434, 0, 28.3857 )
 
 [node name="TreeNoLeaves19" parent="Forest" instance=ExtResource( 14 )]
 transform = Transform( 0.857903, 0, 0.513811, 0, 1, 0, -0.513811, 0, 0.857903, 8.58608, 0, 32.9591 )
@@ -775,7 +786,13 @@ transform = Transform( 0.0980345, 0, 0.995183, 0, 1, 0, -0.995183, 0, 0.0980345,
 transform = Transform( 0.937008, 0, 0.349308, 0, 1, 0, -0.349308, 0, 0.937008, 12.8865, -1.90735e-06, 38.6006 )
 
 [node name="TreeNoLeaves25" parent="Forest" instance=ExtResource( 14 )]
-transform = Transform( 0.611347, 0, 0.791362, 0, 1, 0, -0.791362, 0, 0.611347, -27.3475, 0, 44.7891 )
+transform = Transform( 0.611347, 0, 0.791362, 0, 1, 0, -0.791362, 0, 0.611347, -28.7898, 0, 47.3177 )
+
+[node name="TreeNoLeaves34" parent="Forest" instance=ExtResource( 14 )]
+transform = Transform( -0.328125, 0, 0.944634, 0, 1, 0, -0.944634, 0, -0.328125, -43.0681, 0, 34.3737 )
+
+[node name="TreeNoLeaves33" parent="Forest" instance=ExtResource( 14 )]
+transform = Transform( -0.851671, 0, -0.524075, 0, 1, 0, 0.524075, 0, -0.851671, -31.4127, 0, 41.6827 )
 
 [node name="TreeNoLeaves26" parent="Forest" instance=ExtResource( 14 )]
 transform = Transform( 0.098399, 0, -0.995147, 0, 1, 0, 0.995147, 0, 0.098399, -16.7291, 0, 39.4562 )

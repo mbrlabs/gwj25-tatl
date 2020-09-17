@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Materials/mat_palette.tres" type="Material" id=1]
+[ext_resource path="res://Enemies/Zombie.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Models/zombie.glb" type="PackedScene" id=3]
+
+[node name="Zombie" instance=ExtResource( 3 )]
+script = ExtResource( 2 )
+
+[node name="zombie" parent="Zombie/Skeleton" index="0"]
+material_override = ExtResource( 1 )
