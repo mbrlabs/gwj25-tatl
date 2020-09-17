@@ -14,6 +14,7 @@ enum State {
 	PRE_CASTLE, # this is the time before the player breaks through the castle front door
 	CASTLE,	# this is the time inside the castle
 	MONTAIN,# this is when the player gets through the castle exit
+	THE_END,# this is when the player gets through the castle exit	
 }
 
 # ---------------------------------------------------------------------------------------

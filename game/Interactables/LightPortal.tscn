@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Interactables/LightPortal.gd" type="Script" id=1]
 [ext_resource path="res://Props/Portal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Enviroment/env_fancy_glowy_with_fog.tres" type="Environment" id=3]
+[ext_resource path="res://Assets/Audio/godot_cannon.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Audio/superspeed.ogg" type="AudioStream" id=7]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 7.15459, 7.24874, 7.37517 )
@@ -30,7 +33,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 10, 17, 18 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.5, 5.0, 20.0, 1000.0 ]
+"values": [ 0.5, 5.0, 40.0, 1000.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ActivationParticles:damping")
@@ -39,7 +42,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 10 ),
+"times": PoolRealArray( 0, 6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 100.0, 0.0 ]
@@ -55,6 +58,30 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -100.0, -100.0, 0.0, 20.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AmbientActivationSound:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 10, 17, 18 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -10.0, 15.0, 20.0, -80.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AmbientActivationSound2:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 15.9, 18 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -40.0, 0.0, -80.0 ]
 }
 
 [node name="LightPortal" type="Area"]
@@ -85,11 +112,27 @@ linear_accel = 2.0
 tangential_accel = -100.0
 tangential_accel_random = 1.0
 damping = 100.0
-angle = 720.0
 angle_random = 1.0
 scale_amount = 0.5
 hue_variation = -0.25
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/boom = SubResource( 4 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 3 )
+
+[node name="AmbientActivationSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+bus = "AmbientSounds"
+
+[node name="AmbientActivationSound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -40.0
+bus = "AmbientSounds"
+
+[node name="AmbientActivationSound2Timer" type="Timer" parent="."]
+wait_time = 2.0
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="AmbientActivationSound2Timer" to="." method="_on_AmbientActivationSound2Timer_timeout"]

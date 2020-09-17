@@ -37,7 +37,7 @@ func _ready():
 func _process(delta: float) -> void:
 	_fps_label.text = str(Engine.get_frames_per_second())
 	
-	if Input.is_action_just_pressed("pause") && !get_tree().paused:
+	if Input.is_action_just_pressed("pause") && !get_tree().paused && Global.state != Global.State.THE_END:
 		_pause_menu.handle_input = false
 		_pause()
 	

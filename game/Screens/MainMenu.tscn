@@ -58,7 +58,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="ColorRect" parent="UI"]
+[node name="FadeBackgroud" type="ColorRect" parent="UI"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -248,7 +248,7 @@ grass_count = 250
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -20 )
 grass_count = 250
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
-[connection signal="gui_input" from="UI/Background" to="." method="_on_Background_gui_input"]
+[connection signal="gui_input" from="UI/FadeBackgroud" to="." method="_on_FadeBackgroud_gui_input"]
 [connection signal="mouse_entered" from="UI/MarginContainer/VBoxContainer/ButtonStartGame" to="." method="_on_ButtonStartGame_mouse_entered"]
 [connection signal="pressed" from="UI/MarginContainer/VBoxContainer/ButtonStartGame" to="." method="_on_ButtonStartGame_pressed"]
 [connection signal="mouse_entered" from="UI/MarginContainer/VBoxContainer/ButtonAbout" to="." method="_on_ButtonAbout_mouse_entered"]
