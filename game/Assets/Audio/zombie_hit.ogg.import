@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/zombie_hit.ogg-f82e235a80d65c315b47f617bfa4c1d3.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/zombie_hit.ogg"
+dest_files=[ "res://.import/zombie_hit.ogg-f82e235a80d65c315b47f617bfa4c1d3.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

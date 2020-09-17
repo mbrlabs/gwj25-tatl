@@ -233,7 +233,7 @@ light_energy = 0.35
 transform = Transform( 1, 0, 0, 0, 0.927184, -0.374606, 0, 0.374607, 0.927184, 0, -0.603269, -4.53862 )
 enabled = true
 cast_to = Vector3( 0, 0, -20 )
-collision_mask = 2
+collision_mask = 66
 
 [node name="Crosshair" parent="Gimbal/Camera/GunRayCast" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, -1.19209e-07, 0, 0, 1, 0, 6.46804e-07, -0.700844 )

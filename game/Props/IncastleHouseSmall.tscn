@@ -13,6 +13,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 material/0 = ExtResource( 2 )
 
 [node name="StaticBody" type="StaticBody" parent="incastle_house_small" index="0"]
+collision_layer = 2
+collision_mask = 85
 
 [node name="CollisionShape" type="CollisionShape" parent="incastle_house_small/StaticBody" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.53493, -0.488628 )

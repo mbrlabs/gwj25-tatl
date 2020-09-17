@@ -13,6 +13,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 material_override = ExtResource( 2 )
 
 [node name="StaticBody" type="StaticBody" parent="incastle_barrel" index="0"]
+collision_layer = 2
+collision_mask = 85
 
 [node name="CollisionShape" type="CollisionShape" parent="incastle_barrel/StaticBody" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77377, 0 )

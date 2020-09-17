@@ -19,9 +19,10 @@ enum State {
 
 # ---------------------------------------------------------------------------------------
 var state = State.INTRO
-var buffed_form_unlocked := false
+var buffed_form_unlocked := true
 var god_mode_enabled := false
 var mouse_sensitivity := 50
+var zombies_hostile := false
 
 # ---------------------------------------------------------------------------------------
 var _music: AudioStreamPlayer
@@ -50,3 +51,4 @@ func play_music(play: bool = true) -> void:
 func reset() -> void:
 	state = State.INTRO
 	buffed_form_unlocked = false
+	zombies_hostile = false

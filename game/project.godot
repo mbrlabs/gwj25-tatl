@@ -63,6 +63,11 @@ _global_script_classes=[ {
 "class": "TheEndOverlay",
 "language": "GDScript",
 "path": "res://UI/TheEndOverlay.gd"
+}, {
+"base": "KinematicBody",
+"class": "Zombie",
+"language": "GDScript",
+"path": "res://Enemies/Zombie.gd"
 } ]
 _global_script_class_icons={
 "AutomaticDoor": "",
@@ -75,7 +80,8 @@ _global_script_class_icons={
 "PauseMenu": "",
 "Player": "",
 "Projectile": "",
-"TheEndOverlay": ""
+"TheEndOverlay": "",
+"Zombie": ""
 }
 
 [application]

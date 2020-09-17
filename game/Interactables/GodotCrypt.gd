@@ -17,7 +17,7 @@ var _dialogs = [
 	[C, "To transform back, simply press the [Right Mouse Button] again."],
 	[T, "Wow, thank you so much!"],
 	[C, "You're welcome little faerie. I still have to warn you though: there a beings in this world, that can be extremly dangerous. Normally they are quite peacful, but..."],
-	[C, "DO NOT try to talk to them or provoke them in any way! I will go back to sleep now. Good luck to you."],
+	[C, "DO NOT try to talk to them or even attack them...they don't like that. I will go back to sleep now. Good luck to you."],
 ]
 var _dialog_index := 0
 
