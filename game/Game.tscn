@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://Props/Grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -45,6 +45,17 @@
 [ext_resource path="res://POIs/CrystalPOI.gd" type="Script" id=43]
 [ext_resource path="res://UI/TheEndOverlay.tscn" type="PackedScene" id=44]
 [ext_resource path="res://Enemies/Zombie.tscn" type="PackedScene" id=45]
+[ext_resource path="res://Props/IncastleHouse.tscn" type="PackedScene" id=46]
+[ext_resource path="res://Props/IncastleWell.tscn" type="PackedScene" id=47]
+[ext_resource path="res://Props/IncastleHouseSmall.tscn" type="PackedScene" id=48]
+[ext_resource path="res://Props/IncastleHut.tscn" type="PackedScene" id=49]
+[ext_resource path="res://Props/IncastleBarrel.tscn" type="PackedScene" id=50]
+[ext_resource path="res://Props/IncastleTable.tscn" type="PackedScene" id=51]
+[ext_resource path="res://Props/IncastleChair.tscn" type="PackedScene" id=52]
+[ext_resource path="res://Props/IncastleBarrelTop.tscn" type="PackedScene" id=53]
+[ext_resource path="res://Props/IncastleAnvil.tscn" type="PackedScene" id=54]
+[ext_resource path="res://Props/IncastleHammer.tscn" type="PackedScene" id=55]
+[ext_resource path="res://Props/IncastleSword.tscn" type="PackedScene" id=56]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 3.77311, 5.10357, 9.91623 )
@@ -414,7 +425,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.584217, 4.97154, 0 )
 shape = SubResource( 1 )
 
 [node name="DestructibleFrontGate" parent="Castle" instance=ExtResource( 23 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.928, -0.0555863, 17.53 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.928, 5.22623, 17.53 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 interaction_prompt = "Press [E] to inspect"
@@ -430,6 +441,134 @@ close_time = 1.4
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.1926, 2.9016, -4.69016 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
+
+[node name="Walls" type="Spatial" parent="Castle"]
+
+[node name="CastleTower" parent="Castle/Walls" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.03822, 0, 16.7486 )
+
+[node name="CastleTower3" parent="Castle/Walls" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -33.8461, -3.8147e-06, -1.69571 )
+
+[node name="CastleTower4" parent="Castle/Walls" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -33.8461, -3.8147e-06, -7.81957 )
+
+[node name="CastleTower5" parent="Castle/Walls" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24.0152, -3.8147e-06, -1.69571 )
+
+[node name="CastleTower6" parent="Castle/Walls" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24.0152, -3.8147e-06, -7.81957 )
+
+[node name="CastleTower2" parent="Castle/Walls" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.516608, 0, 16.741 )
+
+[node name="CastleWallLong" parent="Castle/Walls" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.16041, 9.53674e-07, 16.8204 )
+
+[node name="CastleWallLong3" parent="Castle/Walls" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -33.5889, -0.289271, -25.354 )
+
+[node name="CastleWallLong4" parent="Castle/Walls" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -25.7916, -0.17941, -33.3809 )
+
+[node name="CastleWallLong5" parent="Castle/Walls" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.27238, -0.180241, -33.3809 )
+
+[node name="CastleWallLong7" parent="Castle/Walls" instance=ExtResource( 6 )]
+transform = Transform( 8.9407e-08, 0, 1, 0, 1, 0, -1, 0, 8.9407e-08, 10.6354, -0.193364, -19.5118 )
+
+[node name="CastleWallLong8" parent="Castle/Walls" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, 4.56956e-08, 0, 1, 0, -4.56956e-08, 0, -1, 19.8714, -0.193364, -9.71073 )
+
+[node name="CastleWallLong11" parent="Castle/Walls" instance=ExtResource( 6 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 27.5358, -0.255836, -1.157 )
+
+[node name="CastleWallLong14" parent="Castle/Walls" instance=ExtResource( 6 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 17.9177, -2.86102e-06, 8.80396 )
+
+[node name="CastleWallLong15" parent="Castle/Walls" instance=ExtResource( 6 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -1.4077, -0.0227861, -13.5461 )
+
+[node name="CastleWallLong2" parent="Castle/Walls" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8456, 9.53674e-07, 16.697 )
+
+[node name="CastleWallShort" parent="Castle/Walls" instance=ExtResource( 9 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -26.0242, 0, 15.7856 )
+
+[node name="CastleWallShort2" parent="Castle/Walls" instance=ExtResource( 9 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -29.1404, 0, 12.6694 )
+
+[node name="CastleWallShort3" parent="Castle/Walls" instance=ExtResource( 9 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -32.2256, 0, 9.58418 )
+
+[node name="CastleWallShort10" parent="Castle/Walls" instance=ExtResource( 9 )]
+transform = Transform( -0.0110127, 0, -0.99994, 0, 1, 0, 0.99994, 0, -0.0110127, -24.0637, -0.224601, -10.5061 )
+
+[node name="CastleWallShort15" parent="Castle/Walls" instance=ExtResource( 9 )]
+transform = Transform( 0.0110127, 0, 0.99994, 0, 1, 0, -0.99994, 0, 0.0110127, 10.7068, -0.168723, -30.9661 )
+
+[node name="CastleWallShort16" parent="Castle/Walls" instance=ExtResource( 9 )]
+transform = Transform( -0.99994, 0, 0.0110127, 0, 1, 0, -0.0110127, 0, -0.99994, 10.6778, -0.197004, -33.3706 )
+
+[node name="CastleWallShort17" parent="Castle/Walls" instance=ExtResource( 9 )]
+transform = Transform( -0.99994, 0, 0.0110127, 0, 1, 0, -0.0110127, 0, -0.99994, -31.2623, -0.326444, -21.2865 )
+
+[node name="CastleWallShort12" parent="Castle/Walls" instance=ExtResource( 9 )]
+transform = Transform( -0.99994, 0, 0.0110127, 0, 1, 0, -0.0110127, 0, -0.99994, 16.2232, -0.053318, -4.10648 )
+
+[node name="CastleWallShort14" parent="Castle/Walls" instance=ExtResource( 9 )]
+transform = Transform( -0.99994, 0, 0.0110127, 0, 1, 0, -0.0110127, 0, -0.99994, 9.54049, -0.053318, -4.06776 )
+
+[node name="CastleWallShort18" parent="Castle/Walls" instance=ExtResource( 9 )]
+transform = Transform( -0.99994, 0, 0.0110127, 0, 1, 0, -0.0110127, 0, -0.99994, 12.7091, -0.053318, -4.00709 )
+
+[node name="CastleWallShort13" parent="Castle/Walls" instance=ExtResource( 9 )]
+transform = Transform( 0.0110127, 0, 0.99994, 0, 1, 0, -0.99994, 0, 0.0110127, 17.9644, -0.053318, -2.63281 )
+
+[node name="CastleWallMid" parent="Castle/Walls" instance=ExtResource( 32 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -33.9002, 0, 5.02234 )
+
+[node name="CastleWallMid3" parent="Castle/Walls" instance=ExtResource( 32 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.021, -0.162403, 12.5095 )
+
+[node name="CastleWallMid6" parent="Castle/Walls" instance=ExtResource( 32 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.021, -0.162403, 3.99299 )
+
+[node name="CastleWallMid13" parent="Castle/Walls" instance=ExtResource( 32 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.6273, -0.205148, 10.7265 )
+
+[node name="CastleWallMid10" parent="Castle/Walls" instance=ExtResource( 32 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.58744, -0.00715818, -21.2724 )
+
+[node name="CastleWallMid12" parent="Castle/Walls" instance=ExtResource( 32 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.87248, -0.179127, -33.4911 )
+
+[node name="CastleWallMid11" parent="Castle/Walls" instance=ExtResource( 32 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.40246, -0.00715818, -4.24392 )
+
+[node name="CastleWallMid8" parent="Castle/Walls" instance=ExtResource( 32 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.1498, -0.162403, -14.9577 )
+
+[node name="CastleWallMid9" parent="Castle/Walls" instance=ExtResource( 32 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -19.8029, -0.0326262, -21.3646 )
+
+[node name="CastleWallMid14" parent="Castle/Walls" instance=ExtResource( 32 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -28.3985, -0.0326262, -21.3646 )
+
+[node name="CastleWallMid2" parent="Castle/Walls" instance=ExtResource( 32 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -33.8012, -0.312079, -12.1572 )
+
+[node name="CastleExitGateBroken" parent="Castle/Walls" instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -33.9755, 5.27665, -4.91036 )
+
+[node name="CastleWallHalf" parent="Castle/Walls" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4136, -0.202539, 17.1262 )
+
+[node name="CastleWallCornerPiece" parent="Castle/Walls" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39556, -0.0913386, -3.7521 )
+
+[node name="CastleWallCornerPiece2" parent="Castle/Walls" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.6962, -0.255251, -9.73276 )
 
 [node name="BrickWall" type="Spatial" parent="Castle"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6715, 0, -21.2024 )
@@ -464,133 +603,122 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444051, 4.38684, 0.0138664 
 [node name="BrickMid3" parent="Castle/BrickWall" instance=ExtResource( 37 )]
 transform = Transform( 0.650496, -0.75951, 0, 0.75951, 0.650496, 0, 0, 0, 1, 2.5086, 5.36767, 0.0138664 )
 
-[node name="CastleTower" parent="Castle" instance=ExtResource( 7 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.03822, 0, 16.7486 )
+[node name="Zombie" parent="Castle" instance=ExtResource( 45 )]
+transform = Transform( 0.998079, 0, 0.0619544, 0, 1, 0, -0.0619544, 0, 0.998079, -4.45646, 0.414973, -3.8083 )
 
-[node name="CastleTower3" parent="Castle" instance=ExtResource( 7 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -33.8461, -3.8147e-06, -1.69571 )
+[node name="IncastleHouse" parent="Castle" instance=ExtResource( 46 )]
+transform = Transform( 2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 14.7019, 0.694873, 1.30553 )
 
-[node name="CastleTower4" parent="Castle" instance=ExtResource( 7 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -33.8461, -3.8147e-06, -7.81957 )
+[node name="IncastleHouse2" parent="Castle" instance=ExtResource( 46 )]
+transform = Transform( -0.987707, 0, 0.156314, 0, 1, 0, -0.156314, 0, -0.987707, 7.63533, 0.694873, 14.126 )
 
-[node name="CastleTower5" parent="Castle" instance=ExtResource( 7 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24.0152, -3.8147e-06, -1.69571 )
+[node name="IncastleHouseSmall" parent="Castle" instance=ExtResource( 48 )]
+transform = Transform( -0.21753, 0, -0.976054, 0, 1, 0, 0.976054, 0, -0.21753, 14.1633, 0.330318, 9.92185 )
 
-[node name="CastleTower6" parent="Castle" instance=ExtResource( 7 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24.0152, -3.8147e-06, -7.81957 )
+[node name="IncastleHouseSmall2" parent="Castle" instance=ExtResource( 48 )]
+transform = Transform( 0.980205, 0, 0.197983, 0, 1, 0, -0.197983, 0, 0.980205, 9.08295, 0.432156, -2.87342 )
 
-[node name="CastleTower2" parent="Castle" instance=ExtResource( 7 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.516608, 0, 16.741 )
+[node name="IncastleWell" parent="Castle" instance=ExtResource( 47 )]
+transform = Transform( 0.639815, 0, -0.768529, 0, 1, 0, 0.768529, 0, 0.639815, 6.96271, 0.43216, 5.22457 )
 
-[node name="CastleWallLong" parent="Castle" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.16041, 9.53674e-07, 16.8204 )
+[node name="IncastleHut" parent="Castle" instance=ExtResource( 49 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9677, 0.359273, 13.1589 )
 
-[node name="CastleWallLong3" parent="Castle" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -33.5889, -0.289271, -25.354 )
+[node name="IncastleHut2" parent="Castle" instance=ExtResource( 49 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1769, 0.359273, 13.1589 )
 
-[node name="CastleWallLong4" parent="Castle" instance=ExtResource( 6 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -25.7916, -0.17941, -33.3809 )
+[node name="IncastleBarrel" parent="Castle" instance=ExtResource( 50 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.92432, 0.483534, 14.5122 )
 
-[node name="CastleWallLong5" parent="Castle" instance=ExtResource( 6 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.27238, -0.180241, -33.3809 )
+[node name="IncastleSword4" parent="Castle/IncastleBarrel" instance=ExtResource( 56 )]
+transform = Transform( 0.00916945, -0.0418069, -0.999084, -0.420404, 0.906374, -0.0417859, 0.907291, 0.420401, -0.00926482, -0.0206099, 0.227544, -0.269171 )
 
-[node name="CastleWallLong7" parent="Castle" instance=ExtResource( 6 )]
-transform = Transform( 8.9407e-08, 0, 1, 0, 1, 0, -1, 0, 8.9407e-08, 10.6354, -0.193364, -19.5118 )
+[node name="IncastleSword5" parent="Castle/IncastleBarrel" instance=ExtResource( 56 )]
+transform = Transform( 0.0820603, -0.273753, -0.958293, -0.287749, 0.914079, -0.285763, 0.954184, 0.299198, -0.00376266, -0.0206099, 0.227544, -0.269171 )
 
-[node name="CastleWallLong8" parent="Castle" instance=ExtResource( 6 )]
-transform = Transform( -1, 0, 4.56956e-08, 0, 1, 0, -4.56956e-08, 0, -1, 19.8714, -0.193364, -9.71073 )
+[node name="IncastleSword6" parent="Castle/IncastleBarrel" instance=ExtResource( 56 )]
+transform = Transform( 0.0820603, -0.273753, -0.958293, -0.287749, 0.914079, -0.285763, 0.954184, 0.299198, -0.00376266, 0.027647, 0.227544, -0.553853 )
 
-[node name="CastleWallLong11" parent="Castle" instance=ExtResource( 6 )]
-transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 27.5358, -0.255836, -1.157 )
+[node name="IncastleSword7" parent="Castle/IncastleBarrel" instance=ExtResource( 56 )]
+transform = Transform( -0.0452962, 0.313303, -0.948572, -0.318892, 0.895332, 0.310946, 0.946708, 0.316577, 0.0593548, -0.17821, 0.134661, -0.377682 )
 
-[node name="CastleWallLong14" parent="Castle" instance=ExtResource( 6 )]
-transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 17.9177, -2.86102e-06, 8.80396 )
+[node name="IncastleBarrel2" parent="Castle" instance=ExtResource( 50 )]
+transform = Transform( 0.888441, 0, 0.458991, 0, 1, 0, -0.458991, 0, 0.888441, -8.44553, 0.483534, 12.5582 )
 
-[node name="CastleWallLong15" parent="Castle" instance=ExtResource( 6 )]
-transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -1.4077, -0.0227861, -13.5461 )
+[node name="IncastleChair" parent="Castle" instance=ExtResource( 52 )]
+transform = Transform( 0.888441, 0, 0.458991, 0, 1, 0, -0.458991, 0, 0.888441, -19.8002, 0.253523, 8.45904 )
 
-[node name="CastleWallLong2" parent="Castle" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8456, 9.53674e-07, 16.697 )
+[node name="IncastleBarrel8" parent="Castle" instance=ExtResource( 50 )]
+transform = Transform( 0.888441, 0, 0.458991, 0, 1, 0, -0.458991, 0, 0.888441, -20.7644, 0.226131, 7.01473 )
 
-[node name="CastleWallShort" parent="Castle" instance=ExtResource( 9 )]
-transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -26.0242, 0, 15.7856 )
+[node name="IncastleBarrelTop" parent="Castle/IncastleBarrel8" instance=ExtResource( 53 )]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 2.04493, 0 )
 
-[node name="CastleWallShort2" parent="Castle" instance=ExtResource( 9 )]
-transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -29.1404, 0, 12.6694 )
+[node name="IncastleAnvil" parent="Castle/IncastleBarrel8" instance=ExtResource( 54 )]
+transform = Transform( 0.104216, 0, 0.994553, 0, 1, 0, -0.994553, 0, 0.104216, 0.0979252, 2.08233, 0.130082 )
 
-[node name="CastleWallShort3" parent="Castle" instance=ExtResource( 9 )]
-transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -32.2256, 0, 9.58418 )
+[node name="IncastleHammer" parent="Castle/IncastleBarrel8" instance=ExtResource( 55 )]
+transform = Transform( -0.629971, 0, -0.776618, 0, 1, 0, 0.776618, 0, -0.629971, 0.0925293, 2.10558, -0.489526 )
 
-[node name="CastleWallShort10" parent="Castle" instance=ExtResource( 9 )]
-transform = Transform( -0.0110127, 0, -0.99994, 0, 1, 0, 0.99994, 0, -0.0110127, -24.0637, -0.224601, -10.5061 )
+[node name="IncastleSword" parent="Castle/IncastleBarrel8" instance=ExtResource( 56 )]
+transform = Transform( -0.217046, -0.240008, 0.946194, -0.0703439, 0.970628, 0.23007, -0.973621, -0.0166231, -0.227554, 1.30578, -0.358553, -0.0617847 )
 
-[node name="CastleWallShort15" parent="Castle" instance=ExtResource( 9 )]
-transform = Transform( 0.0110127, 0, 0.99994, 0, 1, 0, -0.99994, 0, 0.0110127, 10.7068, -0.168723, -30.9661 )
+[node name="IncastleBarrel9" parent="Castle" instance=ExtResource( 50 )]
+transform = Transform( 0.888441, 0, 0.458991, 0, 1, 0, -0.458991, 0, 0.888441, 3.40513, 0.220553, -2.02915 )
 
-[node name="CastleWallShort16" parent="Castle" instance=ExtResource( 9 )]
-transform = Transform( -0.99994, 0, 0.0110127, 0, 1, 0, -0.0110127, 0, -0.99994, 10.6778, -0.197004, -33.3706 )
+[node name="IncastleBarrelTop" parent="Castle/IncastleBarrel9" instance=ExtResource( 53 )]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 2.04493, 0 )
 
-[node name="CastleWallShort17" parent="Castle" instance=ExtResource( 9 )]
-transform = Transform( -0.99994, 0, 0.0110127, 0, 1, 0, -0.0110127, 0, -0.99994, -31.2623, -0.326444, -21.2865 )
+[node name="IncastleBarrel10" parent="Castle" instance=ExtResource( 50 )]
+transform = Transform( 0.961238, 0, -0.275721, 0, 1, 0, 0.275721, 0, 0.961238, 1.46337, 0.220553, -2.09852 )
 
-[node name="CastleWallShort12" parent="Castle" instance=ExtResource( 9 )]
-transform = Transform( -0.99994, 0, 0.0110127, 0, 1, 0, -0.0110127, 0, -0.99994, 16.2232, -0.053318, -4.10648 )
+[node name="IncastleBarrelTop" parent="Castle/IncastleBarrel10" instance=ExtResource( 53 )]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 2.04493, 0 )
 
-[node name="CastleWallShort14" parent="Castle" instance=ExtResource( 9 )]
-transform = Transform( -0.99994, 0, 0.0110127, 0, 1, 0, -0.0110127, 0, -0.99994, 9.54049, -0.053318, -4.06776 )
+[node name="IncastleBarrel12" parent="Castle" instance=ExtResource( 50 )]
+transform = Transform( 0.910438, 0, -0.413645, 0, 1, 0, 0.413645, 0, 0.910438, 2.26291, 2.192, -2.02915 )
 
-[node name="CastleWallShort18" parent="Castle" instance=ExtResource( 9 )]
-transform = Transform( -0.99994, 0, 0.0110127, 0, 1, 0, -0.0110127, 0, -0.99994, 12.7091, -0.053318, -4.00709 )
+[node name="IncastleBarrelTop" parent="Castle/IncastleBarrel12" instance=ExtResource( 53 )]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 2.04493, 0 )
 
-[node name="CastleWallShort13" parent="Castle" instance=ExtResource( 9 )]
-transform = Transform( 0.0110127, 0, 0.99994, 0, 1, 0, -0.99994, 0, 0.0110127, 17.9644, -0.053318, -2.63281 )
+[node name="IncastleBarrel13" parent="Castle" instance=ExtResource( 50 )]
+transform = Transform( 0.996406, 0, 0.0847041, 0, 1, 0, -0.0847041, 0, 0.996406, 0.321147, 2.192, -2.09852 )
 
-[node name="CastleWallMid" parent="Castle" instance=ExtResource( 32 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -33.9002, 0, 5.02234 )
+[node name="IncastleBarrelTop" parent="Castle/IncastleBarrel13" instance=ExtResource( 53 )]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 2.04493, 0 )
 
-[node name="CastleWallMid3" parent="Castle" instance=ExtResource( 32 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.021, -0.162403, 12.5095 )
+[node name="IncastleBarrel11" parent="Castle" instance=ExtResource( 50 )]
+transform = Transform( 0.919876, 0, 0.392209, 0, 1, 0, -0.392209, 0, 0.919876, -0.632864, 0.220553, -2.28616 )
 
-[node name="CastleWallMid6" parent="Castle" instance=ExtResource( 32 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.021, -0.162403, 3.99299 )
+[node name="IncastleBarrelTop" parent="Castle/IncastleBarrel11" instance=ExtResource( 53 )]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 2.04493, 0 )
 
-[node name="CastleWallMid13" parent="Castle" instance=ExtResource( 32 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.6273, -0.205148, 10.7265 )
+[node name="IncastleBarrel14" parent="Castle" instance=ExtResource( 50 )]
+transform = Transform( 0.919876, 0, 0.392209, 0, 1, 0, -0.392209, 0, 0.919876, -16.4346, 0.220553, 10.7518 )
 
-[node name="CastleWallMid10" parent="Castle" instance=ExtResource( 32 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.58744, -0.00715818, -21.2724 )
+[node name="IncastleBarrelTop" parent="Castle/IncastleBarrel14" instance=ExtResource( 53 )]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 2.04493, 0 )
 
-[node name="CastleWallMid12" parent="Castle" instance=ExtResource( 32 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.87248, -0.179127, -33.4911 )
+[node name="IncastleTable" parent="Castle" instance=ExtResource( 51 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0334, 0.525961, 14.1252 )
 
-[node name="CastleWallMid11" parent="Castle" instance=ExtResource( 32 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.40246, -0.00715818, -4.24392 )
+[node name="IncastleSword3" parent="Castle/IncastleTable" instance=ExtResource( 56 )]
+transform = Transform( 0.2177, -0.976015, 0.000681389, 0, -0.000698133, -1, 0.976016, 0.2177, -0.000151984, 1.29536, 1.91712, 0.117785 )
 
-[node name="CastleWallMid8" parent="Castle" instance=ExtResource( 32 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.1498, -0.162403, -14.9577 )
+[node name="IncastleTable2" parent="Castle" instance=ExtResource( 51 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5232, 0.556144, 14.1252 )
 
-[node name="CastleWallMid9" parent="Castle" instance=ExtResource( 32 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -19.8029, -0.0326262, -21.3646 )
+[node name="IncastleSword" parent="Castle/IncastleTable2" instance=ExtResource( 56 )]
+transform = Transform( 0.402363, -0.91548, 0.000639127, 0, -0.000698133, -1, 0.91548, 0.402363, -0.000280903, 1.18225, 1.91951, -0.327808 )
 
-[node name="CastleWallMid14" parent="Castle" instance=ExtResource( 32 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -28.3985, -0.0326262, -21.3646 )
-
-[node name="CastleWallMid2" parent="Castle" instance=ExtResource( 32 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -33.8012, -0.312079, -12.1572 )
-
-[node name="CastleExitGateBroken" parent="Castle" instance=ExtResource( 10 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -33.9755, 5.27665, -4.91036 )
-
-[node name="CastleWallHalf" parent="Castle" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4136, -0.202539, 17.1262 )
-
-[node name="CastleWallCornerPiece" parent="Castle" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39556, -0.0913386, -3.7521 )
-
-[node name="CastleWallCornerPiece2" parent="Castle" instance=ExtResource( 11 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.6962, -0.255251, -9.73276 )
+[node name="IncastleSword2" parent="Castle/IncastleTable2" instance=ExtResource( 56 )]
+transform = Transform( -0.105744, -0.994393, 0.000694219, 0, -0.000698133, -1, 0.994393, -0.105744, 7.38231e-05, 2.44594, 1.91951, 0.117785 )
 
 [node name="Forest" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="StaticBody" type="StaticBody" parent="Forest"]
 collision_layer = 2
@@ -654,7 +782,7 @@ transform = Transform( -0.991102, 0, 0.133103, 0, 1, 0, -0.133103, 0, -0.991102,
 transform = Transform( -0.83297, 0, 0.553318, 0, 1, 0, -0.553318, 0, -0.83297, -29.9249, 0.573392, 48.51 )
 
 [node name="Zombie4" parent="Forest/FriendlyZombies" instance=ExtResource( 45 )]
-transform = Transform( -0.472228, 0, 0.881476, 0, 1, 0, -0.881476, 0, -0.472228, -44.2806, 0.573392, 35.9697 )
+transform = Transform( -0.526214, 0, 0.850352, 0, 1, 0, -0.850352, 0, -0.526214, -43.7944, 0.573392, 36.9676 )
 
 [node name="Zombie3" parent="Forest/FriendlyZombies" instance=ExtResource( 45 )]
 transform = Transform( -0.045554, 0, -0.998962, 0, 1, 0, 0.998962, 0, -0.045554, 21.6873, 0.573392, 29.1158 )
@@ -789,7 +917,7 @@ transform = Transform( 0.937008, 0, 0.349308, 0, 1, 0, -0.349308, 0, 0.937008, 1
 transform = Transform( 0.611347, 0, 0.791362, 0, 1, 0, -0.791362, 0, 0.611347, -28.7898, 0, 47.3177 )
 
 [node name="TreeNoLeaves34" parent="Forest" instance=ExtResource( 14 )]
-transform = Transform( -0.328125, 0, 0.944634, 0, 1, 0, -0.944634, 0, -0.328125, -43.0681, 0, 34.3737 )
+transform = Transform( -0.386325, 0, 0.922362, 0, 1, 0, -0.922362, 0, -0.386325, -42.5819, 0, 35.3716 )
 
 [node name="TreeNoLeaves33" parent="Forest" instance=ExtResource( 14 )]
 transform = Transform( -0.851671, 0, -0.524075, 0, 1, 0, 0.524075, 0, -0.851671, -31.4127, 0, 41.6827 )
@@ -1436,6 +1564,10 @@ transform = Transform( 0.377405, 0.00392295, 0.92604, -0.00785575, 0.999968, -0.
 
 [node name="Cave" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -98.1614, 0, -39.0347 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="CrystalPOI" type="Area" parent="Cave"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6288, 4.69061, 0 )

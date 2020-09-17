@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Models/incastle_well.glb" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Materials/mat_palette.tres" type="Material" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.31199, 0.929637, 1 )
+
+[node name="IncastleWell" instance=ExtResource( 1 )]
+
+[node name="incastle_well" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="incastle_well" index="0"]
+
+[node name="CollisionShape" type="CollisionShape" parent="incastle_well/StaticBody" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.976569, 0.0151244 )
+shape = SubResource( 1 )
