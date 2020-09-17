@@ -56,7 +56,7 @@
 [ext_resource path="res://Props/IncastleAnvil.tscn" type="PackedScene" id=54]
 [ext_resource path="res://Props/IncastleHammer.tscn" type="PackedScene" id=55]
 [ext_resource path="res://Props/IncastleSword.tscn" type="PackedScene" id=56]
-[ext_resource path="res://Assets/Navmeshes/navmesh_castle_with_wall.tres" type="NavigationMesh" id=57]
+[ext_resource path="res://Assets/Navmeshes/navmesh_castle_no_brickwall.tres" type="NavigationMesh" id=57]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 21.3831, 5.12716, 2.78075 )
@@ -1475,7 +1475,7 @@ interaction_prompt = "Press [E] to inspect"
 transform = Transform( 8.74228e-08, 0, -1, 0, 1, 0, 1, 0, 8.74228e-08, -2.51559, 2.90977, -5.40699 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
-automatic_door = NodePath("../../Navigation/NavigationMeshInstance/Castle/AutomaticDoor")
+automatic_door = NodePath("../AutomaticDoor")
 close_time = 10.0
 
 [node name="AutomaticDoor" parent="Castle" instance=ExtResource( 40 )]
@@ -1855,9 +1855,17 @@ player = NodePath("../../Player")
 
 [node name="Zombie2" parent="Castle" instance=ExtResource( 45 )]
 transform = Transform( 0.0630346, 0, -0.998011, 0, 1, 0, 0.998011, 0, 0.0630346, -21.3272, 0.742387, 0.42443 )
+hostile = true
+just_looking_around = false
+navigation = NodePath("../../Navigation")
+player = NodePath("../../Player")
 
 [node name="Zombie3" parent="Castle" instance=ExtResource( 45 )]
 transform = Transform( 0.0630346, 0, -0.998011, 0, 1, 0, 0.998011, 0, 0.0630346, -21.0559, 0.742387, -9.69582 )
+hostile = true
+just_looking_around = false
+navigation = NodePath("../../Navigation")
+player = NodePath("../../Player")
 
 [node name="Navigation" type="Navigation" parent="."]
 
