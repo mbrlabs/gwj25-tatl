@@ -4,8 +4,16 @@
 [ext_resource path="res://Enemies/Zombie.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Models/zombie.glb" type="PackedScene" id=3]
 
-[node name="Zombie" instance=ExtResource( 3 )]
+[node name="Zombie" type="KinematicBody"]
 script = ExtResource( 2 )
 
-[node name="zombie" parent="Zombie/Skeleton" index="0"]
+[node name="zombie" parent="." instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+
+[node name="zombie" parent="zombie/Zombie/Skeleton" index="0"]
 material_override = ExtResource( 1 )
+
+[node name="PathUpdateTimer" type="Timer" parent="."]
+[connection signal="timeout" from="PathUpdateTimer" to="." method="_on_PathUpdateTimer_timeout"]
+
+[editable path="zombie"]
