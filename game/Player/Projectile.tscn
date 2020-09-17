@@ -3,8 +3,6 @@
 [ext_resource path="res://Player/Projectile.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Materials/mat_white_glow.tres" type="Material" id=2]
 
-
-
 [sub_resource type="SphereMesh" id=1]
 radius = 0.1
 height = 0.2
@@ -21,6 +19,7 @@ material/0 = null
 script = ExtResource( 1 )
 
 [node name="AutodestroyTimer" type="Timer" parent="."]
+wait_time = 0.33
 one_shot = true
 autostart = true
 

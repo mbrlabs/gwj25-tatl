@@ -102,6 +102,7 @@ func get_form() -> int:
 
 # ---------------------------------------------------------------------------------------
 func _physics_process(delta: float) -> void:
+	_crosshair.hide()
 	var prev_velocity = _velocity
 	
 	# do input and calc move velocity

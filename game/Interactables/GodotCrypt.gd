@@ -16,7 +16,8 @@ var _dialogs = [
 	[C, "Great. Now you can use the Godot-Cannon with the [Left Mouse Button]. Note however, that this form also makes you slower."],
 	[C, "To transform back, simply press the [Right Mouse Button] again."],
 	[T, "Wow, thank you so much!"],
-	[C, "You're welcome little faerie. I'll go back to sleep now. Good luck!"],
+	[C, "You're welcome little faerie. I still have to warn you though: there a beings in this world, that can be extremly dangerous. Normally they are quite peacful, but..."],
+	[C, "DO NOT try to talk to them or provoke them in any way! I will go back to sleep now. Good luck to you."],
 ]
 var _dialog_index := 0
 
@@ -54,7 +55,7 @@ func _on_DialogBox_message_confirmed() -> void:
 	
 	# godot talks
 	match _dialog_index:
-		1, 3, 4, 5, 6, 8:
+		1, 3, 4, 5, 6, 8, 9, 10:
 			_head._start_talking()
 			$GodotTalkFadeAnimator.play("fade_in")
 		0, 2, 7:
