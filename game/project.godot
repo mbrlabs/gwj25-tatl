@@ -99,7 +99,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Tatl"
-run/main_scene="res://Screens/MainMenu.tscn"
+run/main_scene="res://Game.tscn"
 boot_splash/image="res://Assets/Textures/boot.png"
 boot_splash/bg_color=Color( 0.0627451, 0.121569, 0.196078, 1 )
 config/icon="res://Assets/Textures/icon.png"
@@ -121,6 +121,7 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=1920
 window/size/height=1080
+window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=864
 window/vsync/use_vsync=false

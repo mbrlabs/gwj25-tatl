@@ -257,7 +257,7 @@ stream = ExtResource( 24 )
 bus = "AmbientSounds"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.29236, 6.91815, 27.8665 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24973, 6.91815, 27.8929 )
 evirorment = ExtResource( 3 )
 speed = 4.0
 

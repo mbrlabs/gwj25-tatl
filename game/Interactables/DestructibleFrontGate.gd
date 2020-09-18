@@ -44,10 +44,6 @@ func _on_interact() -> void:
 		dbox.show_message("Tatl", "I wonder what the Godot-Cannon does to that gate...", false)
 
 # ---------------------------------------------------------------------------------------
-func _play_desctruction_effects() -> void:
-	pass
-
-# ---------------------------------------------------------------------------------------
 func _on_DestructibleFrontGate_area_entered(area: Area):
 	if _state != State.BROKEN && area.collision_layer == 16: # TODO: clean this up! layer 16 area projectils
 		projectile_count += 1
@@ -60,7 +56,6 @@ func _on_DestructibleFrontGate_area_entered(area: Area):
 					_state = State.DAMAGED
 					_gate_model_ok.hide()
 					_gate_model_damaged.show()
-					_play_desctruction_effects()
 				State.DAMAGED:
 					Global.state = Global.State.CASTLE
 					_state = State.BROKEN
@@ -68,4 +63,3 @@ func _on_DestructibleFrontGate_area_entered(area: Area):
 					_gate_model_broken.show()
 					_collsion_shape_intact.disabled = true
 					_collsion_shape_broken.disabled = false
-					_play_desctruction_effects()
