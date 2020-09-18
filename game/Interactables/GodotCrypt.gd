@@ -56,12 +56,12 @@ func _on_DialogBox_message_confirmed() -> void:
 	
 	# godot talks
 	match _dialog_index:
-		1, 3, 4, 5, 6, 8, 9:
-			_head._start_talking()
-			_godot_talk_sound.play()
+		1, 3, 8:
+			start_talking(true)
+		4, 5, 6, 9:
+			start_talking(false)
 		0, 2, 7:
-			_head._stop_talking()
-			_godot_talk_sound.stop()
+			stop_talking()
 	
 	var db := get_node(dialog_box) as DialogBox
 	if _dialog_index < _dialogs.size():
@@ -71,10 +71,26 @@ func _on_DialogBox_message_confirmed() -> void:
 		db.show_message(msg[0], msg[1], true)
 		_dialog_index += 1
 	else:
-		_head._stop_talking()
+		stop_talking()
 		_godot_talk_sound.stop()
 		db.disconnect("message_confirmed", self, "_on_DialogBox_message_confirmed")
-		
+
+# ---------------------------------------------------------------------------------------
+func start_talking(fade_in: bool = false) -> void:
+	if !_godot_talk_sound.playing:
+		_godot_talk_sound.play()
+	if fade_in:
+		_godot_talk_sound.volume_db = -30
+		$Tween.interpolate_property(_godot_talk_sound, "volume_db", -30, 0, .5)
+		$Tween.start()
+	_head._start_talking()
+
+# ---------------------------------------------------------------------------------------
+func stop_talking() -> void:
+	$Tween.interpolate_property(_godot_talk_sound, "volume_db", _godot_talk_sound.volume_db, -30, .5)
+	$Tween.start()
+	_head._stop_talking()
+
 # ---------------------------------------------------------------------------------------
 func _on_CrowSoundTimer_timeout():
 	$CrowSound.play()

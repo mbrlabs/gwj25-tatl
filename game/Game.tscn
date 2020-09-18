@@ -254,12 +254,16 @@ stream = ExtResource( 24 )
 bus = "AmbientSounds"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7098, 6.53721, -2.0013 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3314, 14.9063, 23.5516 )
 evirorment = ExtResource( 3 )
 dialog_box = NodePath("../UI/DialogBox")
 speed = 4.0
 
 [node name="Forest" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="StaticBody" type="StaticBody" parent="Forest"]
 collision_layer = 2
@@ -665,6 +669,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5375, 0, 40.9167 )
 grass_count = 100
 
 [node name="Mountain" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="StaticBody" type="StaticBody" parent="Mountain"]
 collision_layer = 2
@@ -1443,6 +1451,10 @@ transform = Transform( 0.99075, -0.135588, 0.00547421, 0.135698, 0.989944, -0.03
 transform = Transform( 0.683745, 0.398756, 0.611136, 0.122961, 0.762558, -0.635126, -0.719287, 0.50941, 0.472364, -4.16115, 12.4306, 5.08379 )
 
 [node name="Castle" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="ExitCastleStateArea" type="Area" parent="Castle"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.359, 0, -4.24236 )
