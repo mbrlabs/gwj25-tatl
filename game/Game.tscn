@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://Props/Grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -56,7 +56,8 @@
 [ext_resource path="res://Props/IncastleAnvil.tscn" type="PackedScene" id=54]
 [ext_resource path="res://Props/IncastleHammer.tscn" type="PackedScene" id=55]
 [ext_resource path="res://Props/IncastleSword.tscn" type="PackedScene" id=56]
-[ext_resource path="res://Assets/Navmeshes/navmesh_castle_no_brickwall.tres" type="NavigationMesh" id=57]
+[ext_resource path="res://Assets/Navmeshes/navmesh_castle.tres" type="NavigationMesh" id=57]
+[ext_resource path="res://Props/IncastleAxe.tscn" type="PackedScene" id=58]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 21.3831, 5.12716, 2.78075 )
@@ -257,16 +258,12 @@ stream = ExtResource( 24 )
 bus = "AmbientSounds"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6284, 6.53722, -5.60931 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6072, 6.53722, 26.7531 )
 evirorment = ExtResource( 3 )
 dialog_box = NodePath("../UI/DialogBox")
 speed = 4.0
 
 [node name="Forest" type="Spatial" parent="."]
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 
 [node name="StaticBody" type="StaticBody" parent="Forest"]
 collision_layer = 2
@@ -341,10 +338,6 @@ transform = Transform( -0.526214, 0, 0.850352, 0, 1, 0, -0.850352, 0, -0.526214,
 transform = Transform( -0.045554, 0, -0.998962, 0, 1, 0, 0.998962, 0, -0.045554, 21.6873, 0.573392, 29.1158 )
 
 [node name="Graveyard" type="Spatial" parent="Forest"]
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 
 [node name="POIGraveyard" type="Area" parent="Forest/Graveyard"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.48116, 0, 25.5019 )
@@ -357,11 +350,6 @@ disabled = true
 [node name="CollisionShape" type="CollisionShape" parent="Forest/Graveyard/POIGraveyard"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05601, 0.163599 )
 shape = SubResource( 11 )
-
-[node name="LaughingGrave" parent="Forest/Graveyard" instance=ExtResource( 30 )]
-transform = Transform( 0.0862516, 0, 0.996273, 0, 1, 0, -0.996273, 0, 0.0862516, -20.1667, 0.118192, 19.6437 )
-dialog_box = NodePath("../../../UI/DialogBox")
-interact_overlay = NodePath("../../../UI/InteractableOverlay")
 
 [node name="ReadableGrave1" parent="Forest/Graveyard" instance=ExtResource( 16 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.1963, 0.182783, 30.4966 )
@@ -382,7 +370,7 @@ interact_overlay = NodePath("../../../UI/InteractableOverlay")
 grave_text = "Rest in peace, CryEngine."
 
 [node name="ReadableGrave5" parent="Forest/Graveyard" instance=ExtResource( 16 )]
-transform = Transform( 0.07195, 0, 0.997408, 0, 1, 0, -0.997408, 0, 0.07195, -20.3964, 0.182783, 22.6935 )
+transform = Transform( 0.278354, 0, 0.960478, 0, 1, 0, -0.960478, 0, 0.278354, -20.3964, 0.182783, 20.9629 )
 dialog_box = NodePath("../../../UI/DialogBox")
 interact_overlay = NodePath("../../../UI/InteractableOverlay")
 grave_text = "Rest in peace, GameMaker."
@@ -1498,7 +1486,7 @@ interact_overlay = NodePath("../../UI/InteractableOverlay")
 interaction_prompt = "Press [E] to inspect"
 
 [node name="AutomaticLever" parent="Castle" instance=ExtResource( 41 )]
-transform = Transform( 8.74228e-08, 0, -1, 0, 1, 0, 1, 0, 8.74228e-08, -2.51559, 2.90977, -5.40699 )
+transform = Transform( 8.74228e-08, 0, -1, 0, 1, 0, 1, 0, 8.74228e-08, -2.5115, 2.90977, -4.39535 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 automatic_door = NodePath("../AutomaticDoor")
@@ -1807,6 +1795,20 @@ transform = Transform( 0.888441, 0, 0.458991, 0, 1, 0, -0.458991, 0, 0.888441, 3
 [node name="IncastleBarrelTop" parent="Castle/Village/IncastleBarrel9" instance=ExtResource( 53 )]
 transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 2.04493, 0 )
 
+[node name="Village2" type="Spatial" parent="Castle"]
+
+[node name="IncastleHouseSmall3" parent="Castle/Village2" instance=ExtResource( 48 )]
+transform = Transform( -0.0165624, 0, 0.999863, 0, 1, 0, -0.999863, 0, -0.0165624, -21.6858, 0.462996, -10.9552 )
+
+[node name="IncastleHouseSmall4" parent="Castle/Village2" instance=ExtResource( 48 )]
+transform = Transform( 0.784971, 0, 0.619533, 0, 1, 0, -0.619533, 0, 0.784971, -19.3412, 0.462996, -16.4815 )
+
+[node name="IncastleHouse3" parent="Castle/Village2" instance=ExtResource( 46 )]
+transform = Transform( 2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, -4.83419, 0.694875, -16.2684 )
+
+[node name="IncastleTable" parent="Castle/Village2" instance=ExtResource( 51 )]
+transform = Transform( -0.0288988, 0, -0.999582, 0, 1, 0, 0.999582, 0, -0.0288988, -3.30494, 0.448411, -8.93504 )
+
 [node name="Workshop" type="Spatial" parent="Castle"]
 
 [node name="IncastleBarrel2" parent="Castle/Workshop" instance=ExtResource( 50 )]
@@ -1826,6 +1828,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0334, 0.525961, 14.1252 )
 
 [node name="IncastleSword3" parent="Castle/Workshop/IncastleTable" instance=ExtResource( 56 )]
 transform = Transform( 0.2177, -0.976015, 0.000681389, 0, -0.000698133, -1, 0.976016, 0.2177, -0.000151984, 1.29536, 1.91712, 0.117785 )
+
+[node name="IncastleAxe" parent="Castle/Workshop/IncastleTable" instance=ExtResource( 58 )]
+transform = Transform( -0.30558, -0.713075, 0.630987, 0.919156, -0.393894, 0, 0.248542, 0.579976, 0.775793, -8.89261, 2.3164, 0.641741 )
 
 [node name="IncastleTable2" parent="Castle/Workshop" instance=ExtResource( 51 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5232, 0.556144, 14.1252 )
@@ -1856,6 +1861,9 @@ transform = Transform( 0.0820603, -0.273753, -0.958293, -0.287749, 0.914079, -0.
 
 [node name="IncastleSword7" parent="Castle/Workshop/IncastleBarrel" instance=ExtResource( 56 )]
 transform = Transform( -0.0452962, 0.313303, -0.948572, -0.318892, 0.895332, 0.310946, 0.946708, 0.316577, 0.0593548, -0.17821, 0.134661, -0.377682 )
+
+[node name="IncastleAxe" parent="Castle/Workshop/IncastleBarrel" instance=ExtResource( 58 )]
+transform = Transform( 1, 0, 0, 0, 0.86747, 0.497489, 0, -0.497489, 0.86747, 0.0897036, 2.25429, -0.677697 )
 
 [node name="IncastleBarrel8" parent="Castle/Workshop" instance=ExtResource( 50 )]
 transform = Transform( 0.888441, 0, 0.458991, 0, 1, 0, -0.458991, 0, 0.888441, -20.7644, 0.226131, 7.01473 )
@@ -1896,7 +1904,7 @@ player = NodePath("../../Player")
 [node name="Zombie3" parent="Castle" groups=[
 "zombie",
 ] instance=ExtResource( 45 )]
-transform = Transform( 0.0630346, 0, -0.998011, 0, 1, 0, 0.998011, 0, 0.0630346, -21.0559, 0.742387, -9.69582 )
+transform = Transform( -0.739161, 0, -0.673529, 0, 1, 0, 0.673529, 0, -0.739161, -18.742, 0.742389, -13.5304 )
 navigation = NodePath("../../Navigation")
 player = NodePath("../../Player")
 
@@ -2112,7 +2120,16 @@ navigation = NodePath("../../../Navigation")
 player = NodePath("../../../Player")
 life = 1000000
 
+[node name="LaughingGrave" parent="Castle" instance=ExtResource( 30 )]
+transform = Transform( -0.997716, 0, -0.0675452, 0, 1, 0, 0.0675452, 0, -0.997716, 22.5193, 0.151817, 12.4411 )
+dialog_box = NodePath("../../UI/DialogBox")
+interact_overlay = NodePath("../../UI/InteractableOverlay")
+
 [node name="Navigation" type="Navigation" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.289997, 0 )
