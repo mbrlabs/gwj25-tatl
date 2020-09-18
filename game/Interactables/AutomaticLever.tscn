@@ -4,9 +4,6 @@
 [ext_resource path="res://Assets/Models/lever.glb" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Materials/mat_palette.tres" type="Material" id=3]
 
-
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "activate"
 length = 0.25
@@ -81,6 +78,8 @@ transform = Transform( 1, 0, 0, 0, 0.156434, 0.987688, 0, -0.987688, 0.156434, 0
 material_override = ExtResource( 3 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
+collision_layer = 2
+collision_mask = 117
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 shape = SubResource( 4 )

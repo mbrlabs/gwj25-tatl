@@ -127,7 +127,7 @@ radius = 0.214785
 radius = 0.537683
 
 [sub_resource type="SphereShape" id=13]
-radius = 0.57533
+radius = 1.28369
 
 [node name="Player" type="KinematicBody"]
 collision_mask = 10

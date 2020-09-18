@@ -13,11 +13,14 @@ onready var _growl_sound: AudioStreamPlayer3D = $GrowlSound
 onready var _death_sound: AudioStreamPlayer3D = $DeathSound
 onready var _death_particles: CPUParticles = $DeathParticles
 onready var _death_timer: Timer = $DeathTimer
+onready var _interactable: Interactable = $InteractableArea
 
 # ---------------------------------------------------------------------------------------
 export var hostile: bool = false
 export var navigation: NodePath
 export var player: NodePath
+export var dialog_box: NodePath
+export var interaction_overlay: NodePath
 export var min_speed := 1.0
 export var max_speed := 3.0
 export var life := 45
@@ -33,6 +36,11 @@ var _attacking := false
 
 # ---------------------------------------------------------------------------------------
 func _ready():
+	# FIXME: ../ is an ugly hack. Apperently these node paths are relative and you have to manually
+	# update them if you want to pass them down/up the hirachy
+	_interactable.dialog_box = "../"+dialog_box
+	_interactable.interact_overlay = "../"+interaction_overlay
+	
 	_anim_player.get_animation(ANIM_IDLE).loop = true
 	_anim_player.get_animation(ANIM_WALK).loop = true
 	_anim_player.play(ANIM_IDLE)

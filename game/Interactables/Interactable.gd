@@ -23,8 +23,8 @@ func _is_interactable() -> bool:
 	return true
 
 # ---------------------------------------------------------------------------------------
-func _on_body_entered(body) -> void:
-	if !disabled && body is Player:
+func _on_body_entered(body: PhysicsBody) -> void:
+	if !disabled && body && body.collision_layer == 1:
 		_player_in_interactable_area = true
 		if _is_interactable():
 			if !one_shot || (one_shot && !_already_interacted_once):
@@ -34,7 +34,7 @@ func _on_body_entered(body) -> void:
 
 # ---------------------------------------------------------------------------------------
 func _on_body_exited(body) -> void:
-	if !disabled && body is Player:
+	if !disabled && body.collision_layer == 1:
 		_player_in_interactable_area = false
 		_interacted_by_player_without_leaving_area = false
 		get_node(interact_overlay).hide()

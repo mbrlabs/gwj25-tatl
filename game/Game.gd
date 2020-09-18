@@ -43,6 +43,7 @@ func _process(delta: float) -> void:
 	
 	# basic debug stuff
 	if Input.is_action_just_pressed("debug_reload"):
+		Global.reset()
 		get_tree().reload_current_scene()
 	if Input.is_action_just_pressed("debug_toggle_input"):
 		if _player.input_enabled:
