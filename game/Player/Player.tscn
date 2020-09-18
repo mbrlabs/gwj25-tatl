@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Audio/superspeed.ogg" type="AudioStream" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Player/GunImpactParticles.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Audio/godot_cannon.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Assets/Audio/transformation_to_normal.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Player/TatlCamera.gd" type="Script" id=9]
 [ext_resource path="res://Player/Crosshair.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
@@ -225,6 +226,7 @@ transform = Transform( 1, 0, 0, 0, 0.882948, 0.469472, 0, -0.469472, 0.882948, 0
 current = true
 fov = 75.0
 far = 25.0
+script = ExtResource( 9 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="Gimbal/Camera"]
 light_energy = 0.35

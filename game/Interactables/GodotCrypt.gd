@@ -2,7 +2,7 @@ extends Interactable
 
 # ---------------------------------------------------------------------------------------
 onready var _head: GodotHead = $GodotHead
-onready var _godot_talk_sound: AudioStreamPlayer3D = $GodotTalk
+onready var _godot_talk_sound: AudioStreamPlayer = $GodotTalk
 
 # ---------------------------------------------------------------------------------------
 const T = "Tatl:"
@@ -41,26 +41,28 @@ func _on_interact() -> void:
 	var msg = _dialogs[_dialog_index]
 	db.show_message(msg[0], msg[1], true)
 	_dialog_index += 1
+	get_viewport().get_camera().add_trauma(0.5)
+	$ActivationSound.play()
+	_head._start_talking()
 
 # ---------------------------------------------------------------------------------------
 func _on_DialogBox_message_confirmed() -> void:
 	if _dialog_index == 1:
-		_godot_talk_sound.play()
 		$CrowSoundTimer.start()
-		pass
-		# TODO make the screen shake
 	
 	if _dialog_index == 3:
 		$CrowSoundTimer2.start()
 	
 	# godot talks
 	match _dialog_index:
-		1, 3, 4, 5, 6, 8, 9, 10:
+		1, 3, 4, 5, 6, 8, 9:
 			_head._start_talking()
-			$GodotTalkFadeAnimator.play("fade_in")
+			#$GodotTalkFadeAnimator.play("fade_in")
+			_godot_talk_sound.play()
 		0, 2, 7:
 			_head._stop_talking()
-			$GodotTalkFadeAnimator.play("fade_out")
+			_godot_talk_sound.stop()
+			#$GodotTalkFadeAnimator.play("fade_out")
 	
 	var db := get_node(dialog_box) as DialogBox
 	if _dialog_index < _dialogs.size():

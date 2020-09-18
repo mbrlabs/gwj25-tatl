@@ -56,6 +56,9 @@ func _process(delta: float) -> void:
 		_player.glowiness += GLOWINESS_INCREASE
 	if Input.is_action_just_pressed("debug_decrease_glowiness"):
 		_player.glowiness -= GLOWINESS_INCREASE
+	if Input.is_action_just_pressed("shake"):
+		#_player.shake()
+		get_viewport().get_camera().add_trauma(0.75)
 
 # ---------------------------------------------------------------------------------------
 func _on_DialogBox_message_confirmed():

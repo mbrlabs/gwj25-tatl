@@ -11,3 +11,4 @@ func _start_talking() -> void:
 # ---------------------------------------------------------------------------------------
 func _stop_talking() -> void:
 	_annim_player.stop()
+	_annim_player.seek(0, true)

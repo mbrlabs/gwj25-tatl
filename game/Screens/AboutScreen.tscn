@@ -35,12 +35,12 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
 margin_left = 50.0
 margin_top = 100.0
-margin_right = 850.0
+margin_right = 905.0
 margin_bottom = 1030.0
 custom_constants/separation = 40
 
 [node name="Label" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
-margin_right = 800.0
+margin_right = 855.0
 margin_bottom = 58.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.380392, 0.286275, 1 )
@@ -50,7 +50,7 @@ valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="ColorRect/MarginContainer/VBoxContainer"]
 margin_top = 98.0
-margin_right = 800.0
+margin_right = 855.0
 margin_bottom = 123.0
 custom_styles/separator = SubResource( 1 )
 custom_constants/separation = 25
@@ -60,7 +60,7 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
 margin_top = 163.0
-margin_right = 800.0
+margin_right = 855.0
 margin_bottom = 222.0
 custom_fonts/font = ExtResource( 2 )
 text = "This game was created in 9 days for the 
@@ -70,7 +70,7 @@ valign = 1
 
 [node name="Label3" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
 margin_top = 262.0
-margin_right = 800.0
+margin_right = 855.0
 margin_bottom = 321.0
 custom_fonts/font = ExtResource( 2 )
 text = "Theme: Change yourself, change the world
@@ -80,7 +80,7 @@ valign = 1
 
 [node name="HSeparator2" type="HSeparator" parent="ColorRect/MarginContainer/VBoxContainer"]
 margin_top = 361.0
-margin_right = 800.0
+margin_right = 855.0
 margin_bottom = 386.0
 custom_styles/separator = SubResource( 1 )
 custom_constants/separation = 25
@@ -90,7 +90,7 @@ __meta__ = {
 
 [node name="Label4" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
 margin_top = 426.0
-margin_right = 800.0
+margin_right = 855.0
 margin_bottom = 547.0
 custom_fonts/font = ExtResource( 2 )
 text = "Unless otherwise noted all assets and code were created by
@@ -101,14 +101,15 @@ valign = 1
 
 [node name="Label5" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
 margin_top = 587.0
-margin_right = 800.0
-margin_bottom = 801.0
+margin_right = 855.0
+margin_bottom = 832.0
 custom_fonts/font = ExtResource( 2 )
 text = "Third party assets:
 
-Grass textures: Kenny's foliage pack
+Gate sound: from 'LittleRobotSoundFactory' on freesound.org
 Crow sound: Sonniss GDC 2018 Audio bundle
-Gate creak sound: LittleRobotSoundFactory on Freesound.org
+Thunder sound: from 'bajko' on freesound.org
 Music: OtherWorlds by FXhome
+Grass textures: Kenny's foliage pack
 Fonts: JosefinSans, Bebas"
 valign = 1
