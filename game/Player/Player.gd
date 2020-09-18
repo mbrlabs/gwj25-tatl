@@ -17,7 +17,7 @@ const HOVER_HEIGHT_BUFFED := 1.75
 const SPEED_SCALE_NORMAL := 1.0
 const SPEED_SCALE_NORMAL_SUPERSPEED := 2.0
 const SPEED_SCALE_BUFFED := 0.5
-const MAX_ABILITY_POWER := 200
+const MAX_ABILITY_POWER := 350 #200
 
 # ---------------------------------------------------------------------------------------
 enum Form {
@@ -53,6 +53,7 @@ onready var _crosshair: Spatial = $Gimbal/Camera/GunRayCast/Crosshair
 
 # ---------------------------------------------------------------------------------------
 export var evirorment: Environment 
+export var dialog_box: NodePath
 export var input_enabled := true
 export(float, 0.0, 1.0) var glowiness = 1.0 setget _set_glowiness
 export var camera_zoom_increments := 0.1
@@ -79,6 +80,14 @@ var _turn_accumulator := 0.0
 var _is_transforming := false
 var _ability_power := MAX_ABILITY_POWER
 var _is_ability_cooldown_active := false
+
+# dialogs
+var _zombie_attack_dialogs = [
+	"Ouch!",
+	"Come one...that's all you got?",
+	"I think my little sister punches harder than you!",
+]
+var _zombie_attack_dialogs_index := 0
 
 # ---------------------------------------------------------------------------------------
 func _ready():
@@ -107,7 +116,7 @@ func _physics_process(delta: float) -> void:
 	# do input and calc move velocity
 	var move_velocity: Vector3
 	if input_enabled:
-		_handle_mode()
+		_handle_form_ability()
 		_aim_camera(delta)
 		if !_is_transforming:
 			move_velocity = _get_move_velocity(delta)
@@ -128,7 +137,7 @@ func _input(e: InputEvent) -> void:
 		_mouse_movement += e.relative
 
 # ---------------------------------------------------------------------------------------
-func _handle_mode() -> void:
+func _handle_form_ability() -> void:
 	if _form == Form.NORMAL:
 		# player just moves faster
 		if Input.is_action_pressed("special_ability") && _ability_power > 0:
@@ -149,7 +158,7 @@ func _handle_mode() -> void:
 	if _form == Form.BUFFED:
 		# aim with crosshair
 		var dist = _raycast_gun.global_transform.origin.distance_to(_raycast_gun.get_collision_point())
-		if dist < 10.0:
+		if _raycast_gun.is_colliding() && dist < 10.0:
 			var offset = _raycast_gun.global_transform.basis.z
 			_crosshair.global_transform.origin = _raycast_gun.get_collision_point() + offset
 		else:
@@ -186,7 +195,7 @@ func _handle_mode() -> void:
 				_gun_impact_particles.emitting = false
 				
 			# decrease power
-			_ability_power -= 2
+			_ability_power -= 1
 			if _ability_power <= 0:
 				_is_ability_cooldown_active = true
 				_ability_cooldown_timer.start()
@@ -202,7 +211,7 @@ func _handle_mode() -> void:
 			_sound_cannon.stop()
 			_gun_impact_particles.emitting = false
 			if !_is_ability_cooldown_active:
-				_ability_power = int(min(_ability_power+2, MAX_ABILITY_POWER))
+				_ability_power = int(min(_ability_power+1, MAX_ABILITY_POWER))
 				
 # ---------------------------------------------------------------------------------------
 func _handle_movement_state(pre_move_velocity: Vector3) -> void:
@@ -343,3 +352,13 @@ func _on_TurnAccumulatorResetTimer_timeout():
 # ---------------------------------------------------------------------------------------
 func _on_AbilityCooldownTimer_timeout():
 	_is_ability_cooldown_active = false
+
+# ---------------------------------------------------------------------------------------
+func _on_ZombieDetectionArea_body_entered(body):
+	if body is Zombie and body.hostile:
+		if randf() < .33:
+			var msg = _zombie_attack_dialogs[_zombie_attack_dialogs_index]
+			_zombie_attack_dialogs_index += 1
+			if _zombie_attack_dialogs_index == _zombie_attack_dialogs.size():
+				_zombie_attack_dialogs_index = 0
+			get_node(dialog_box).show_message("Tatl:", msg, false, .75)

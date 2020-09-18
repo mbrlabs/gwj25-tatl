@@ -259,6 +259,7 @@ bus = "AmbientSounds"
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6284, 6.53722, -5.60931 )
 evirorment = ExtResource( 3 )
+dialog_box = NodePath("../UI/DialogBox")
 speed = 4.0
 
 [node name="Forest" type="Spatial" parent="."]

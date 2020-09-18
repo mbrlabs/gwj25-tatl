@@ -20,7 +20,7 @@ export var navigation: NodePath
 export var player: NodePath
 export var min_speed := 1.0
 export var max_speed := 3.0
-export var life := 20
+export var life := 45
 
 # ---------------------------------------------------------------------------------------
 var _path_nodes := []
@@ -65,7 +65,10 @@ func _physics_process(delta: float) -> void:
 			_anim_player.play(ANIM_WALK, 0.5, _speed)
 			_anim_player.advance(rand_range(0, 10))
 		if !_growl_sound.playing:
+			_growl_sound.unit_size = 0.1
 			_growl_sound.play()
+			$Tween.interpolate_property(_growl_sound, "unit_size", _growl_sound.unit_size, 2.0, .5)
+			$Tween.start()
 		
 		# turn towards player
 		look_at(_player.global_transform.origin, Vector3.UP)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Audio/superspeed.ogg" type="AudioStream" id=2]
@@ -126,6 +126,9 @@ radius = 0.214785
 [sub_resource type="SphereShape" id=12]
 radius = 0.537683
 
+[sub_resource type="SphereShape" id=13]
+radius = 0.57533
+
 [node name="Player" type="KinematicBody"]
 collision_mask = 10
 script = ExtResource( 1 )
@@ -252,7 +255,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000320584, 0.209172, -0.0062
 enabled = true
 cast_to = Vector3( 0, 1, 0 )
 collision_mask = 2147483658
+
+[node name="ZombieDetectionArea" type="Area" parent="."]
+collision_mask = 64
+
+[node name="CollisionShape" type="CollisionShape" parent="ZombieDetectionArea"]
+shape = SubResource( 13 )
 [connection signal="timeout" from="TurnAccumulatorResetTimer" to="." method="_on_TurnAccumulatorResetTimer_timeout"]
 [connection signal="timeout" from="AbilityCooldownTimer" to="." method="_on_AbilityCooldownTimer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayerTransformation" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayerIdle" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="ZombieDetectionArea" to="." method="_on_ZombieDetectionArea_body_entered"]
