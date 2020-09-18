@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Props/Grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -13,38 +13,6 @@
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="Animation" id=2]
-resource_name = "slide_in_about"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("AboutScreen:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1920, 0 ), Vector2( 1020, 0 ) ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "slide_out_about"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("AboutScreen:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1020, 0 ), Vector2( 1920, 0 ) ]
-}
-
 [node name="MainMenu" type="Spatial"]
 script = ExtResource( 4 )
 
@@ -57,6 +25,8 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AboutScreen" parent="UI" instance=ExtResource( 7 )]
 
 [node name="FadeBackgroud" type="ColorRect" parent="UI"]
 modulate = Color( 1, 1, 1, 0 )
@@ -154,14 +124,6 @@ text = "Quit"
 flat = true
 align = 0
 
-[node name="AboutScreen" parent="UI" instance=ExtResource( 7 )]
-margin_left = 1920.0
-margin_right = 2820.0
-
-[node name="AboutAnimationPlayer" type="AnimationPlayer" parent="UI"]
-anims/slide_in_about = SubResource( 2 )
-anims/slide_out_about = SubResource( 3 )
-
 [node name="HoverSound" type="AudioStreamPlayer" parent="UI"]
 stream = ExtResource( 9 )
 
@@ -248,7 +210,6 @@ grass_count = 250
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -20 )
 grass_count = 250
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
-[connection signal="gui_input" from="UI/FadeBackgroud" to="." method="_on_FadeBackgroud_gui_input"]
 [connection signal="mouse_entered" from="UI/MarginContainer/VBoxContainer/ButtonStartGame" to="." method="_on_ButtonStartGame_mouse_entered"]
 [connection signal="pressed" from="UI/MarginContainer/VBoxContainer/ButtonStartGame" to="." method="_on_ButtonStartGame_pressed"]
 [connection signal="mouse_entered" from="UI/MarginContainer/VBoxContainer/ButtonAbout" to="." method="_on_ButtonAbout_mouse_entered"]

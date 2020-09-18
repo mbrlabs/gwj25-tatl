@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Control",
+"class": "AboutScreen",
+"language": "GDScript",
+"path": "res://Screens/AboutScreen.gd"
+}, {
 "base": "Interactable",
 "class": "AutomaticDoor",
 "language": "GDScript",
@@ -75,6 +80,7 @@ _global_script_classes=[ {
 "path": "res://Enemies/Zombie.gd"
 } ]
 _global_script_class_icons={
+"AboutScreen": "",
 "AutomaticDoor": "",
 "DestructibleFrontGate": "",
 "DialogBox": "",
@@ -93,7 +99,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Tatl"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://Screens/MainMenu.tscn"
 boot_splash/image="res://Assets/Textures/boot.png"
 boot_splash/bg_color=Color( 0.0627451, 0.121569, 0.196078, 1 )
 config/icon="res://Assets/Textures/icon.png"
@@ -115,7 +121,6 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=864
 window/vsync/use_vsync=false

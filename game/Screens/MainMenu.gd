@@ -7,13 +7,12 @@ const ROTATE_SPEED = 0.05
 onready var _start_timer: Timer = $StartTimer
 onready var _fade_background: ColorRect = $UI/FadeBackgroud
 onready var _ui_container: MarginContainer = $UI/MarginContainer
-onready var _about_anim: AnimationPlayer = $UI/AboutAnimationPlayer
 onready var _ui_hover_sound: AudioStreamPlayer = $UI/HoverSound
 onready var _ui_click_sound: AudioStreamPlayer = $UI/ClickSound
+onready var _about_screen: AboutScreen = $UI/AboutScreen
 
 # ---------------------------------------------------------------------------------------
 var _start_requested := false
-var _about_open := false
 var _fade_in_done := false
 
 # ---------------------------------------------------------------------------------------
@@ -43,8 +42,6 @@ func _on_ButtonStartGame_pressed():
 	_ui_click_sound.play()
 	_start_timer.start()
 	_start_requested = true
-	if _about_open:
-		_about_anim.play("slide_out_about")
 
 # ---------------------------------------------------------------------------------------
 func _on_ButtonQuit_pressed():
@@ -53,7 +50,7 @@ func _on_ButtonQuit_pressed():
 # ---------------------------------------------------------------------------------------
 func _on_ButtonAbout_pressed():
 	_ui_click_sound.play()
-	_toggle_about()
+	_about_screen.toggle()
 
 # ---------------------------------------------------------------------------------------
 func _on_StartTimer_timeout():
@@ -70,18 +67,3 @@ func _on_ButtonAbout_mouse_entered():
 # ---------------------------------------------------------------------------------------
 func _on_ButtonQuit_mouse_entered():
 	_ui_hover_sound.play()
-
-# ---------------------------------------------------------------------------------------
-func _toggle_about() -> void:
-	if _about_open:
-		_about_anim.play("slide_out_about")
-	else:
-		_about_anim.play("slide_in_about")
-	_about_open = !_about_open
-	
-# ---------------------------------------------------------------------------------------
-func _on_FadeBackgroud_gui_input(event):
-	if event is InputEventMouseButton && _about_open:
-		if _about_open:
-			_ui_click_sound.play()
-			_toggle_about()

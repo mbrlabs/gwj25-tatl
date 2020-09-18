@@ -3,6 +3,7 @@ extends Interactable
 # ---------------------------------------------------------------------------------------
 onready var _head: GodotHead = $GodotHead
 onready var _godot_talk_sound: AudioStreamPlayer = $GodotTalk
+onready var _camera_shake_timer: Timer = $CameraShakeTimer
 
 # ---------------------------------------------------------------------------------------
 const T = "Tatl:"
@@ -41,9 +42,9 @@ func _on_interact() -> void:
 	var msg = _dialogs[_dialog_index]
 	db.show_message(msg[0], msg[1], true)
 	_dialog_index += 1
-	get_viewport().get_camera().add_trauma(0.5)
 	$ActivationSound.play()
 	_head._start_talking()
+	_camera_shake_timer.start()
 
 # ---------------------------------------------------------------------------------------
 func _on_DialogBox_message_confirmed() -> void:
@@ -57,12 +58,10 @@ func _on_DialogBox_message_confirmed() -> void:
 	match _dialog_index:
 		1, 3, 4, 5, 6, 8, 9:
 			_head._start_talking()
-			#$GodotTalkFadeAnimator.play("fade_in")
 			_godot_talk_sound.play()
 		0, 2, 7:
 			_head._stop_talking()
 			_godot_talk_sound.stop()
-			#$GodotTalkFadeAnimator.play("fade_out")
 	
 	var db := get_node(dialog_box) as DialogBox
 	if _dialog_index < _dialogs.size():
@@ -83,3 +82,7 @@ func _on_CrowSoundTimer_timeout():
 # ---------------------------------------------------------------------------------------
 func _on_CrowSoundTimer2_timeout():
 	$CrowSound2.play()
+
+# ---------------------------------------------------------------------------------------
+func _on_CameraShakeTimer_timeout():
+	get_viewport().get_camera().add_trauma(0.5)

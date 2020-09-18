@@ -5,8 +5,8 @@ extends Control
 signal unpaused
 
 # ---------------------------------------------------------------------------------------
-onready var _sensitivity_label: Label = $MarginContainer/ColorRect/VBoxContainer/MouseSensitivityLabel
-onready var _sensitivity_slider: HSlider = $MarginContainer/ColorRect/VBoxContainer/MouseSensitivitySlider
+onready var _sensitivity_label: Label = $MarginContainer/ColorRect/MarginContainer/VBoxContainer/MouseSensitivityLabel
+onready var _sensitivity_slider: HSlider = $MarginContainer/ColorRect/MarginContainer/VBoxContainer/MouseSensitivitySlider
 onready var _anim_player: AnimationPlayer = $SlideAnimationPlayer
 var handle_input := false
 

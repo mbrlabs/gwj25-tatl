@@ -52,3 +52,7 @@ func reset() -> void:
 	state = State.INTRO
 	buffed_form_unlocked = false
 	zombies_hostile = false
+
+# ---------------------------------------------------------------------------------------
+func get_resolution() -> Vector2:
+	return Vector2(1920, 1080)
