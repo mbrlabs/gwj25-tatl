@@ -2,15 +2,20 @@ class_name AutomaticDoor
 extends Interactable
 
 # ---------------------------------------------------------------------------------------
-var _dialog = "That thing is massive! I can't get through it and i'm sure even the Godot-Cannon won't leave a skratch"
+var _dialog_castle = "That thing is massive! I can't get through it and i'm sure even the Godot-Cannon won't leave a skratch"
+var _dialog_mountain = "I guess there is no way back now..."
+var _door_open := false
 
 # ---------------------------------------------------------------------------------------
 func _is_interactable() -> bool:
-	return true
+	return !_door_open
 
 # ---------------------------------------------------------------------------------------
 func _on_interact() -> void:
-	get_node(dialog_box).show_message("Tatl:", _dialog, true)
+	if Global.state == Global.State.MONTAIN:
+		get_node(dialog_box).show_message("Tatl:", _dialog_mountain, false, 2)
+	else:
+		get_node(dialog_box).show_message("Tatl:", _dialog_castle, true)
 
 # ---------------------------------------------------------------------------------------
 func open_door(close_time: float) -> void:
@@ -18,8 +23,10 @@ func open_door(close_time: float) -> void:
 	$CloseTimer.start()
 	$AnimationPlayer.play("open")
 	$AudioStreamPlayer3D.play()
+	_door_open = true
 
 # ---------------------------------------------------------------------------------------
 func _on_CloseTimer_timeout():
 	$AnimationPlayer.play("close")
 	$AudioStreamPlayer3D.play()
+	_door_open = false

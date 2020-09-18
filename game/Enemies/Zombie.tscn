@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Materials/mat_palette.tres" type="Material" id=1]
 [ext_resource path="res://Enemies/Zombie.gd" type="Script" id=2]
@@ -9,6 +9,9 @@
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.598826
 height = 2.29311
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
 
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 0.2, 0.2, 0.2 )
@@ -45,9 +48,10 @@ shape = SubResource( 1 )
 
 [node name="DeathParticles" type="CPUParticles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.34505, 0.154291 )
+material_override = SubResource( 4 )
 emitting = false
 amount = 120
-lifetime = 0.3
+lifetime = 0.2
 one_shot = true
 explosiveness = 0.5
 mesh = SubResource( 2 )

@@ -18,6 +18,8 @@ onready var _death_timer: Timer = $DeathTimer
 export var hostile: bool = false
 export var navigation: NodePath
 export var player: NodePath
+export var min_speed := 1.0
+export var max_speed := 3.0
 export var life := 20
 
 # ---------------------------------------------------------------------------------------
@@ -35,7 +37,7 @@ func _ready():
 	_anim_player.get_animation(ANIM_WALK).loop = true
 	_anim_player.play(ANIM_IDLE)
 	_anim_player.advance(rand_range(0, 10))
-	_speed = rand_range(1.0, 5.0)
+	_speed = rand_range(min_speed, max_speed)
 	
 	if !player.is_empty():
 		_player = get_node(player)
@@ -54,7 +56,7 @@ func _physics_process(delta: float) -> void:
 		_death_sound.play()
 		_death_particles.emitting = true
 		_death_timer.start()
-		hide()
+		$zombie.hide()
 	
 	if hostile:
 		if _nav_path_update_timer.is_stopped():

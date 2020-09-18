@@ -26,6 +26,7 @@ var zombies_hostile := false
 
 # ---------------------------------------------------------------------------------------
 var _music: AudioStreamPlayer
+var _music_tween: Tween
 
 # ---------------------------------------------------------------------------------------
 func _ready():
@@ -33,6 +34,9 @@ func _ready():
 	_music.stream = preload("res://Assets/Audio/OtherWorlds-03.ogg")
 	_music.bus = AUDIOBUS_MUSIC
 	add_child(_music)
+	
+	_music_tween = Tween.new()
+	add_child(_music_tween)
 
 # ---------------------------------------------------------------------------------------
 func mute_audiobus(bus_name: String, mute: bool = true):
@@ -43,6 +47,9 @@ func mute_audiobus(bus_name: String, mute: bool = true):
 func play_music(play: bool = true) -> void:
 	if play:
 		if !_music.playing:
+			_music.volume_db = -35
+			_music_tween.interpolate_property(_music, "volume_db", _music.volume_db, 0, 1.2)
+			_music_tween.start()
 			_music.play()
 	else:
 		_music.stop()

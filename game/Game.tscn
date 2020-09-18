@@ -257,7 +257,7 @@ stream = ExtResource( 24 )
 bus = "AmbientSounds"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24973, 6.91815, 27.8929 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6284, 6.53722, -5.60931 )
 evirorment = ExtResource( 3 )
 speed = 4.0
 
@@ -1982,62 +1982,6 @@ player = NodePath("../../../Player")
 "zombie",
 ] instance=ExtResource( 45 )]
 transform = Transform( 0.181446, 0, 0.983401, 0, 1, 0, -0.983401, 0, 0.181446, -0.191904, 0.617807, -24.1244 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-
-[node name="Zombie20" parent="Castle/HiddenZombies" groups=[
-"zombie",
-] instance=ExtResource( 45 )]
-transform = Transform( 0.181446, 0, 0.983401, 0, 1, 0, -0.983401, 0, 0.181446, 4.37612, 0.617807, -25.0464 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-
-[node name="Zombie21" parent="Castle/HiddenZombies" groups=[
-"zombie",
-] instance=ExtResource( 45 )]
-transform = Transform( 0.830994, 0, 0.556281, 0, 1, 0, -0.556281, 0, 0.830994, 2.49024, 0.617807, -14.234 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-
-[node name="Zombie22" parent="Castle/HiddenZombies" groups=[
-"zombie",
-] instance=ExtResource( 45 )]
-transform = Transform( 0.830994, 0, 0.556281, 0, 1, 0, -0.556281, 0, 0.830994, 6.34582, 0.617807, -12.3482 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-
-[node name="Zombie23" parent="Castle/HiddenZombies" groups=[
-"zombie",
-] instance=ExtResource( 45 )]
-transform = Transform( 0.830994, 0, 0.556281, 0, 1, 0, -0.556281, 0, 0.830994, 3.57986, 0.617807, -8.07349 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-
-[node name="Zombie24" parent="Castle/HiddenZombies" groups=[
-"zombie",
-] instance=ExtResource( 45 )]
-transform = Transform( 0.830994, 0, 0.556281, 0, 1, 0, -0.556281, 0, 0.830994, 8.7346, 0.617807, -6.98387 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-
-[node name="Zombie25" parent="Castle/HiddenZombies" groups=[
-"zombie",
-] instance=ExtResource( 45 )]
-transform = Transform( 0.830994, 0, 0.556281, 0, 1, 0, -0.556281, 0, 0.830994, 18.7346, 0.617807, -6.98387 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-
-[node name="Zombie14" parent="Castle/HiddenZombies" groups=[
-"zombie",
-] instance=ExtResource( 45 )]
-transform = Transform( -0.21908, 0, 0.975707, 0, 1, 0, -0.975707, 0, -0.21908, 6.93254, 0.617807, -27.8962 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-
-[node name="Zombie15" parent="Castle/HiddenZombies" groups=[
-"zombie",
-] instance=ExtResource( 45 )]
-transform = Transform( 0.559945, 0, 0.82853, 0, 1, 0, -0.82853, 0, 0.559945, 4.87903, 0.617807, -20.1431 )
 navigation = NodePath("../../../Navigation")
 player = NodePath("../../../Player")
 

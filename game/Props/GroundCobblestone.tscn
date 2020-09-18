@@ -3,9 +3,6 @@
 [ext_resource path="res://Assets/Materials/mat_palette.tres" type="Material" id=1]
 [ext_resource path="res://Assets/Models/ground_cobblestone.glb" type="PackedScene" id=2]
 
-
-
-
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 5.27469, 0.362784, 5.0764 )
 
