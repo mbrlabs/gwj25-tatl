@@ -226,13 +226,38 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08252, 7.5402, 13.8191 )
 stream = ExtResource( 24 )
 bus = "AmbientSounds"
 
+[node name="CrowSound5" type="AudioStreamPlayer3D" parent="AmbientSounds/Crows"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4074, 7.5402, -26.5994 )
+stream = ExtResource( 24 )
+bus = "AmbientSounds"
+
+[node name="CrowSound6" type="AudioStreamPlayer3D" parent="AmbientSounds/Crows"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.754, 7.5402, -3.42445 )
+stream = ExtResource( 24 )
+bus = "AmbientSounds"
+
+[node name="CrowSound7" type="AudioStreamPlayer3D" parent="AmbientSounds/Crows"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2408, 7.5402, -3.42445 )
+stream = ExtResource( 24 )
+bus = "AmbientSounds"
+
+[node name="CrowSound8" type="AudioStreamPlayer3D" parent="AmbientSounds/Crows"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.3683, 7.5402, 4.63486 )
+stream = ExtResource( 24 )
+bus = "AmbientSounds"
+
+[node name="CrowSound9" type="AudioStreamPlayer3D" parent="AmbientSounds/Crows"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.3683, 7.5402, -23.616 )
+stream = ExtResource( 24 )
+bus = "AmbientSounds"
+
 [node name="CrowSound4" type="AudioStreamPlayer3D" parent="AmbientSounds/Crows"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.185, -13.4376, 27.1296 )
 stream = ExtResource( 24 )
 bus = "AmbientSounds"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4779, 6.91815, 0.495499 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.29236, 6.91815, 27.8665 )
 evirorment = ExtResource( 3 )
 speed = 4.0
 
@@ -273,6 +298,7 @@ shape = SubResource( 6 )
 [node name="POIForestWarning" type="Area" parent="Forest"]
 collision_layer = 2
 script = ExtResource( 17 )
+dialog_box = NodePath("../../UI/DialogBox")
 
 [node name="CollisionShape" type="CollisionShape" parent="Forest/POIForestWarning"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6343, 5.25615, 35.1173 )
@@ -323,6 +349,9 @@ __meta__ = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.48116, 0, 25.5019 )
 collision_layer = 2
 script = ExtResource( 28 )
+dialog_box = NodePath("../../../UI/DialogBox")
+one_shot = true
+disabled = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Forest/Graveyard/POIGraveyard"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05601, 0.163599 )
@@ -1221,6 +1250,8 @@ one_shot = true
 [node name="CrystalPOI" type="Area" parent="Mountain/Cave"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6288, 4.69061, 0 )
 script = ExtResource( 43 )
+dialog_box = NodePath("../../../UI/DialogBox")
+one_shot = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Mountain/Cave/CrystalPOI"]
 transform = Transform( 0.835999, 0, -0.548731, 0, 1, 0, 0.548731, 0, 0.835999, 17.8953, 0.0192871, 5.72104 )
@@ -2143,4 +2174,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.289997, 0 )
 navmesh = ExtResource( 57 )
 [connection signal="unpaused" from="UI/PauseMenu" to="." method="_on_PauseMenu_unpaused"]
 [connection signal="timeout" from="IntroStartTimer" to="." method="_on_IntroStartTimer_timeout"]
+[connection signal="the_end" from="Mountain/Cave/LightPortal" to="." method="_on_LightPortal_the_end"]
 [connection signal="body_entered" from="Castle/ExitCastleStateArea" to="." method="_on_ExitCastleStateArea_body_entered"]

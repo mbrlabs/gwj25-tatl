@@ -145,7 +145,7 @@ func _handle_mode() -> void:
 			speed_scale = SPEED_SCALE_NORMAL
 			hover_height = HOVER_HEIGHT_NORMAL
 			if !_is_ability_cooldown_active:
-				_ability_power = min(_ability_power+1, MAX_ABILITY_POWER)
+				_ability_power = int(min(_ability_power+1, MAX_ABILITY_POWER))
 	if _form == Form.BUFFED:
 		# aim with crosshair
 		var dist = _raycast_gun.global_transform.origin.distance_to(_raycast_gun.get_collision_point())
@@ -202,7 +202,7 @@ func _handle_mode() -> void:
 			_sound_cannon.stop()
 			_gun_impact_particles.emitting = false
 			if !_is_ability_cooldown_active:
-				_ability_power = min(_ability_power+2, MAX_ABILITY_POWER)
+				_ability_power = int(min(_ability_power+2, MAX_ABILITY_POWER))
 				
 # ---------------------------------------------------------------------------------------
 func _handle_movement_state(pre_move_velocity: Vector3) -> void:
