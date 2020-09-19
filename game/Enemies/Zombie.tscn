@@ -1,11 +1,12 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Assets/Materials/mat_palette.tres" type="Material" id=1]
+[ext_resource path="res://Materials/mat_palette.tres" type="Material" id=1]
 [ext_resource path="res://Enemies/Zombie.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Models/zombie.glb" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Audio/zombie.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Enemies/InteractableZombie.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Audio/zombie_hit.ogg" type="AudioStream" id=6]
+
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.598826

@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=95 format=2]
 
 [ext_resource path="res://Props/Grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -33,7 +33,7 @@
 [ext_resource path="res://UI/AbilityOverlay.tscn" type="PackedScene" id=31]
 [ext_resource path="res://Props/CastleWallMid.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Props/GroundCobblestone.tscn" type="PackedScene" id=33]
-[ext_resource path="res://Assets/Materials/mat_blue_dark.tres" type="Material" id=34]
+[ext_resource path="res://Materials/mat_blue_dark.tres" type="Material" id=34]
 [ext_resource path="res://Props/BrickBig.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Props/BrickSmall.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Props/BrickMid.tscn" type="PackedScene" id=37]
@@ -56,7 +56,7 @@
 [ext_resource path="res://Props/IncastleAnvil.tscn" type="PackedScene" id=54]
 [ext_resource path="res://Props/IncastleHammer.tscn" type="PackedScene" id=55]
 [ext_resource path="res://Props/IncastleSword.tscn" type="PackedScene" id=56]
-[ext_resource path="res://Assets/Navmeshes/navmesh_castle.tres" type="NavigationMesh" id=57]
+[ext_resource path="res://Assets/navmesh_castle.tres" type="NavigationMesh" id=57]
 [ext_resource path="res://Props/IncastleAxe.tscn" type="PackedScene" id=58]
 [ext_resource path="res://Props/IncastleSwordShort.tscn" type="PackedScene" id=59]
 [ext_resource path="res://Props/Cart.tscn" type="PackedScene" id=60]
@@ -64,6 +64,7 @@
 [ext_resource path="res://Props/IncastleMug.tscn" type="PackedScene" id=62]
 [ext_resource path="res://Props/DeadBranch.tscn" type="PackedScene" id=63]
 [ext_resource path="res://Props/DeadBranchSmall.tscn" type="PackedScene" id=64]
+[ext_resource path="res://Props/Letter.tscn" type="PackedScene" id=65]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 21.3831, 5.12716, 2.78075 )
@@ -243,6 +244,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.754, 7.5402, -3.42445 )
 stream = ExtResource( 24 )
 bus = "AmbientSounds"
 
+[node name="CrowSound10" type="AudioStreamPlayer3D" parent="AmbientSounds/Crows"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.509246, 4.90134, -7.89098 )
+stream = ExtResource( 24 )
+bus = "AmbientSounds"
+
 [node name="CrowSound7" type="AudioStreamPlayer3D" parent="AmbientSounds/Crows"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2408, 7.5402, -3.42445 )
 stream = ExtResource( 24 )
@@ -259,12 +265,12 @@ stream = ExtResource( 24 )
 bus = "AmbientSounds"
 
 [node name="CrowSound4" type="AudioStreamPlayer3D" parent="AmbientSounds/Crows"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.185, -13.4376, 27.1296 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.185, 5.18369, 27.1296 )
 stream = ExtResource( 24 )
 bus = "AmbientSounds"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.54934, 5.5808, 26.7576 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6064, 5.5808, 30.4892 )
 evirorment = ExtResource( 3 )
 dialog_box = NodePath("../UI/DialogBox")
 speed = 4.0
@@ -1903,10 +1909,13 @@ transform = Transform( 0.883791, 0, 0.467884, 0, 1, 0, -0.467884, 0, 0.883791, -
 transform = Transform( 0.135802, 0, 0.990736, 0, 1, 0, -0.990736, 0, 0.135802, 0.610508, 0.00539023, 0.206026 )
 
 [node name="IncastleSwordShort" parent="Castle/Village2/IncastleTable" instance=ExtResource( 59 )]
-transform = Transform( 0.824436, 0.241262, 0.511955, -0.182718, 0.969611, -0.162691, -0.535648, 0.040585, 0.843467, -1.50163, 1.64157, 0.204171 )
+transform = Transform( 0.824436, 0.241262, 0.511955, -0.182718, 0.969611, -0.162691, -0.535648, 0.040585, 0.843467, -0.733317, 1.64157, 0.181958 )
 
 [node name="IncastleMug" parent="Castle/Village2/IncastleTable" instance=ExtResource( 62 )]
 transform = Transform( 0.863598, 0, 0.504181, 0, 1, 0, -0.504181, 0, 0.863598, -1.84188, 1.89689, 0.0267069 )
+
+[node name="Letter" parent="Castle/Village2/IncastleTable" instance=ExtResource( 65 )]
+transform = Transform( 0.917706, 0, 0.39726, 0, 1, 0, -0.39726, 0, 0.917706, -0.663301, 1.87436, 0.191693 )
 
 [node name="Workshop" type="Spatial" parent="Castle"]
 

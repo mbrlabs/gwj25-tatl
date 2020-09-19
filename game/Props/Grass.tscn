@@ -1,8 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Props/Grass.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Materials/mat_grass_atlas.tres" type="Material" id=2]
+[ext_resource path="res://Materials/mat_grass.tres" type="Material" id=2]
 [ext_resource path="res://Assets/Models/grass.obj" type="ArrayMesh" id=3]
+
+
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.0627451, 0.121569, 0.196078, 1 )

@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Audio/superspeed.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Assets/Audio/move.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Audio/transformation_to_godot.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Assets/Materials/mat_white_glow.tres" type="Material" id=5]
+[ext_resource path="res://Materials/mat_white_glow.tres" type="Material" id=5]
 [ext_resource path="res://Player/GunImpactParticles.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Audio/godot_cannon.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Assets/Audio/transformation_to_normal.ogg" type="AudioStream" id=8]
@@ -127,7 +127,7 @@ radius = 0.214785
 radius = 0.537683
 
 [sub_resource type="SphereShape" id=13]
-radius = 1.28369
+radius = 1.63588
 
 [node name="Player" type="KinematicBody"]
 collision_mask = 10
@@ -238,7 +238,7 @@ light_energy = 0.35
 transform = Transform( 1, 0, 0, 0, 0.927184, -0.374606, 0, 0.374607, 0.927184, 0, -0.603269, -4.53862 )
 enabled = true
 cast_to = Vector3( 0, 0, -20 )
-collision_mask = 66
+collision_mask = 98
 
 [node name="Crosshair" parent="Gimbal/Camera/GunRayCast" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, -1.19209e-07, 0, 0, 1, 0, 6.46804e-07, -0.700844 )

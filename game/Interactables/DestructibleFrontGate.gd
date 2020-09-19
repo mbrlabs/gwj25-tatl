@@ -17,7 +17,7 @@ onready var _collsion_shape_intact: CollisionShape = $StaticBody/CollisionShape_
 onready var _collsion_shape_broken: CollisionPolygon = $StaticBody/CollisionShape_broken
 
 # ---------------------------------------------------------------------------------------
-export var required_projectile_count_per_stage: int = 75
+export var required_projectile_count_per_stage: int = 120
 
 # ---------------------------------------------------------------------------------------
 var _state = State.OK
@@ -41,7 +41,10 @@ func _on_interact() -> void:
 	if Global.state == Global.State.CRYPT:
 		dbox.show_message("Tatl", "That gate looks pretty tough. I don't think i can get through it :(", false)
 	if Global.state == Global.State.PRE_CASTLE:
-		dbox.show_message("Tatl", "I wonder what the Godot-Cannon does to that gate...", false)
+		if _state == State.OK:
+			dbox.show_message("Tatl", "I wonder what the Godot-Cannon does to that gate...", false)
+		if _state == State.DAMAGED:
+			dbox.show_message("Tatl", "I'm almost through it. One more time!", false)
 
 # ---------------------------------------------------------------------------------------
 func _on_DestructibleFrontGate_area_entered(area: Area):

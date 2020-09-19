@@ -10,4 +10,4 @@ func _get_dialog_title() -> String:
 
 # ---------------------------------------------------------------------------------------
 func _get_dialog_message() -> String:
-	return "Wow, look at all those crystals. They look just like the ones we have in the Forest of Light."
+	return "Wow, look at all those crystals. They look just like the ones we have at home. I wonder if..."

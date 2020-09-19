@@ -36,9 +36,9 @@ func _is_interactable() -> bool:
 
 # ---------------------------------------------------------------------------------------
 func _on_interact() -> void:
-	get_node(dialog_box).connect("message_confirmed", self, "_on_DialogBox_message_confirmed")
 	Global.state = Global.State.PRE_CASTLE
 	var db := get_node(dialog_box) as DialogBox
+	db.connect("message_confirmed", self, "_on_DialogBox_message_confirmed")
 	var msg = _dialogs[_dialog_index]
 	db.show_message(msg[0], msg[1], true)
 	_dialog_index += 1

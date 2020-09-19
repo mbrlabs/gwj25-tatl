@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/Materials/mat_palette.tres" type="Material" id=1]
+[ext_resource path="res://Materials/mat_palette.tres" type="Material" id=1]
 [ext_resource path="res://Assets/Models/wheel.glb" type="PackedScene" id=2]
+
 
 [node name="Wheel" instance=ExtResource( 2 )]
 
