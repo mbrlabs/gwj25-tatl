@@ -264,16 +264,12 @@ stream = ExtResource( 24 )
 bus = "AmbientSounds"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7004, 5.5808, -1.92243 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.54934, 5.5808, 26.7576 )
 evirorment = ExtResource( 3 )
 dialog_box = NodePath("../UI/DialogBox")
 speed = 4.0
 
 [node name="Forest" type="Spatial" parent="."]
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 
 [node name="StaticBody" type="StaticBody" parent="Forest"]
 collision_layer = 2
@@ -336,16 +332,16 @@ interact_overlay = NodePath("../../UI/InteractableOverlay")
 [node name="FriendlyZombies" type="Spatial" parent="Forest"]
 
 [node name="Zombie" parent="Forest/FriendlyZombies" instance=ExtResource( 45 )]
-transform = Transform( -0.991102, 0, 0.133103, 0, 1, 0, -0.133103, 0, -0.991102, 1.363, 0.573392, 51.3322 )
+transform = Transform( 0.999856, 0, 0.0169647, 0, 1, 0, -0.0169647, 0, 0.999856, 1.363, 0.573392, 51.3322 )
 
 [node name="Zombie2" parent="Forest/FriendlyZombies" instance=ExtResource( 45 )]
-transform = Transform( -0.83297, 0, 0.553318, 0, 1, 0, -0.553318, 0, -0.83297, -29.9249, 0.573392, 48.51 )
+transform = Transform( 0.863308, 0, -0.504678, 0, 1, 0, 0.504678, 0, 0.863308, -29.9249, 0.573392, 48.51 )
 
 [node name="Zombie4" parent="Forest/FriendlyZombies" instance=ExtResource( 45 )]
-transform = Transform( -0.526214, 0, 0.850352, 0, 1, 0, -0.850352, 0, -0.526214, -43.7944, 0.573392, 36.9676 )
+transform = Transform( 0.392482, 0, -0.91976, 0, 1, 0, 0.91976, 0, 0.392482, -43.7944, 0.573392, 36.9676 )
 
 [node name="Zombie3" parent="Forest/FriendlyZombies" instance=ExtResource( 45 )]
-transform = Transform( -0.045554, 0, -0.998962, 0, 1, 0, 0.998962, 0, -0.045554, 21.6873, 0.573392, 29.1158 )
+transform = Transform( 0.0455539, 0, 0.998962, 0, 1, 0, -0.998962, 0, 0.0455539, 21.6873, 0.573392, 29.1158 )
 
 [node name="Graveyard" type="Spatial" parent="Forest"]
 
@@ -1551,7 +1547,7 @@ interact_overlay = NodePath("../../UI/InteractableOverlay")
 interaction_prompt = "Press [E] to inspect"
 
 [node name="AutomaticLever" parent="Castle" instance=ExtResource( 41 )]
-transform = Transform( 8.74228e-08, 0, -1, 0, 1, 0, 1, 0, 8.74228e-08, -2.5115, 2.90977, -4.39535 )
+transform = Transform( 8.74228e-08, 0, -1, 0, 1, 0, 1, 0, 8.74228e-08, -2.57272, 2.89291, -4.39361 )
 dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 automatic_door = NodePath("../AutomaticDoor")
@@ -1775,7 +1771,7 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -33.975
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4136, -0.202539, 17.1262 )
 
 [node name="CastleWallCornerPiece" parent="Castle/Walls" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39556, -0.0913386, -3.7521 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.15089, -1.42073, -0.0472035, -3.84194 )
 
 [node name="CastleWallCornerPiece2" parent="Castle/Walls" instance=ExtResource( 11 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.6962, -0.255251, -9.73276 )

@@ -22,7 +22,7 @@ const MAX_ABILITY_POWER := 350 #200
 # ---------------------------------------------------------------------------------------
 enum Form {
 	NORMAL,
-	BUFFED
+	BUFFED,
 }
 
 enum MovementState {
@@ -139,7 +139,8 @@ func _input(e: InputEvent) -> void:
 
 # ---------------------------------------------------------------------------------------
 func _handle_form_ability() -> void:
-	if _form == Form.NORMAL:
+	# NORMAL
+	if _form == Form.NORMAL && !_is_transforming:
 		# player just moves faster
 		if Input.is_action_pressed("special_ability") && _ability_power > 0:
 			speed_scale = SPEED_SCALE_NORMAL_SUPERSPEED
@@ -148,15 +149,14 @@ func _handle_form_ability() -> void:
 			if _ability_power == 0:
 				_is_ability_cooldown_active = true
 				_ability_cooldown_timer.start()
-		elif Input.is_action_just_released("special_ability"):
-			_is_ability_cooldown_active = true
-			_ability_cooldown_timer.start()
 		else:
 			speed_scale = SPEED_SCALE_NORMAL
 			hover_height = HOVER_HEIGHT_NORMAL
 			if !_is_ability_cooldown_active:
 				_ability_power = int(min(_ability_power+1, MAX_ABILITY_POWER))
-	if _form == Form.BUFFED:
+	
+	# BUFFED
+	elif _form == Form.BUFFED && !_is_transforming:
 		# aim with crosshair
 		var dist = _raycast_gun.global_transform.origin.distance_to(_raycast_gun.get_collision_point())
 		if _raycast_gun.is_colliding() && dist < 10.0:
@@ -165,11 +165,14 @@ func _handle_form_ability() -> void:
 		else:
 			var offset = _raycast_gun.global_transform.basis.z*12
 			_crosshair.global_transform.origin = _raycast_gun.global_transform.origin - offset
-
+		
+		# change crosshair based on if we can fire or not
 		if _ability_power <= 0:
 			_crosshair.disable()
 		else:
 			_crosshair.enable()
+		
+		# fire!
 		if Input.is_action_pressed("special_ability") && _ability_power > 0:
 			var projectile := ProjectileFactory.instance() as Projectile
 			# projectile start position
@@ -203,17 +206,23 @@ func _handle_form_ability() -> void:
 			
 			if !_sound_cannon.playing:
 				_sound_cannon.play()
-		elif Input.is_action_just_released("special_ability"):
-			_gun_impact_particles.emitting = false
-			_is_ability_cooldown_active = true
-			_ability_cooldown_timer.start()
-			_sound_cannon.stop()
 		else:
 			_sound_cannon.stop()
 			_gun_impact_particles.emitting = false
 			if !_is_ability_cooldown_active:
 				_ability_power = int(min(_ability_power+1, MAX_ABILITY_POWER))
-				
+	
+	# stop doing it
+	if Input.is_action_just_released("special_ability"):
+		_stop_ability()
+
+# ---------------------------------------------------------------------------------------
+func _stop_ability() -> void:
+	_gun_impact_particles.emitting = false
+	_is_ability_cooldown_active = true
+	_ability_cooldown_timer.start()
+	_sound_cannon.stop()
+
 # ---------------------------------------------------------------------------------------
 func _handle_movement_state(pre_move_velocity: Vector3) -> void:
 	match _movement_state:
@@ -315,6 +324,7 @@ func _handle_transformation() -> void:
 		_ability_power = MAX_ABILITY_POWER
 		_is_ability_cooldown_active = false
 		_ability_cooldown_timer.stop()
+		_stop_ability()
 		
 		_is_transforming = true
 		if _form == Form.NORMAL:
