@@ -4,7 +4,7 @@ extends KinematicBody
 # ---------------------------------------------------------------------------------------
 const ANIM_IDLE = "idle"
 const ANIM_IDLE2 = "idle2"
-const ANIM_WALK = "walk"
+const ANIM_WALK = "walk2"
 const ANIM_ATTACK = "attack"
 
 # ---------------------------------------------------------------------------------------

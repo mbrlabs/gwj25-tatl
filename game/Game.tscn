@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://Props/Grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://Utils/AmbientJukebox.gd" type="Script" id=25]
 [ext_resource path="res://Interactables/GodotCrypt.tscn" type="PackedScene" id=26]
 [ext_resource path="res://UI/DialogBox.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Props/IncastleCrate.tscn" type="PackedScene" id=28]
 [ext_resource path="res://UI/InteractableOverlay.tscn" type="PackedScene" id=29]
 [ext_resource path="res://Interactables/LaughingGrave.tscn" type="PackedScene" id=30]
 [ext_resource path="res://UI/AbilityOverlay.tscn" type="PackedScene" id=31]
@@ -57,6 +58,7 @@
 [ext_resource path="res://Props/IncastleSword.tscn" type="PackedScene" id=56]
 [ext_resource path="res://Assets/Navmeshes/navmesh_castle.tres" type="NavigationMesh" id=57]
 [ext_resource path="res://Props/IncastleAxe.tscn" type="PackedScene" id=58]
+[ext_resource path="res://Props/IncastleSwordShort.tscn" type="PackedScene" id=59]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 21.3831, 5.12716, 2.78075 )
@@ -1757,13 +1759,13 @@ transform = Transform( -0.987707, 0, 0.156314, 0, 1, 0, -0.156314, 0, -0.987707,
 transform = Transform( -0.21753, 0, -0.976054, 0, 1, 0, 0.976054, 0, -0.21753, 14.1633, 0.330318, 9.92185 )
 
 [node name="IncastleHouseSmall2" parent="Castle/Village" instance=ExtResource( 48 )]
-transform = Transform( 0.980205, 0, 0.197983, 0, 1, 0, -0.197983, 0, 0.980205, 9.08295, 0.432156, -2.87342 )
+transform = Transform( 0.980205, 0, 0.197983, 0, 1, 0, -0.197983, 0, 0.980205, 9.02962, 0.432156, -2.8794 )
 
 [node name="IncastleWell" parent="Castle/Village" instance=ExtResource( 47 )]
 transform = Transform( 0.639815, 0, -0.768529, 0, 1, 0, 0.768529, 0, 0.639815, 6.96271, 0.43216, 5.22457 )
 
 [node name="IncastleBarrel10" parent="Castle/Village" instance=ExtResource( 50 )]
-transform = Transform( 0.961238, 0, -0.275721, 0, 1, 0, 0.275721, 0, 0.961238, 1.46337, 0.220553, -2.09852 )
+transform = Transform( 0.961238, 0, -0.275721, 0, 1, 0, 0.275721, 0, 0.961238, 1.47515, 0.220553, -2.08598 )
 
 [node name="IncastleBarrelTop" parent="Castle/Village/IncastleBarrel10" instance=ExtResource( 53 )]
 transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 2.04493, 0 )
@@ -1792,6 +1794,18 @@ transform = Transform( 0.888441, 0, 0.458991, 0, 1, 0, -0.458991, 0, 0.888441, 3
 [node name="IncastleBarrelTop" parent="Castle/Village/IncastleBarrel9" instance=ExtResource( 53 )]
 transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 2.04493, 0 )
 
+[node name="IncastleCrate" parent="Castle/Village" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09254, 0.515157, 14.7193 )
+
+[node name="IncastleCrate2" parent="Castle/Village" instance=ExtResource( 28 )]
+transform = Transform( -0.061728, 0, -0.998093, 0, 1, 0, 0.998093, 0, -0.061728, 0.618127, 0.515157, 14.7122 )
+
+[node name="IncastleCrate5" parent="Castle/Village" instance=ExtResource( 28 )]
+transform = Transform( 0.0528763, 0, -0.998601, 0, 1, 0, 0.998601, 0, 0.0528763, 1.5051, 1.60154, 14.8625 )
+
+[node name="IncastleSwordShort2" parent="Castle/Village" instance=ExtResource( 59 )]
+transform = Transform( 0.771293, 0.000416864, -0.636481, -0.180056, 0.959294, -0.217565, 0.610481, 0.282408, 0.739973, 3.4808, 1.431, -2.34476 )
+
 [node name="Village2" type="Spatial" parent="Castle"]
 
 [node name="IncastleHouseSmall3" parent="Castle/Village2" instance=ExtResource( 48 )]
@@ -1805,6 +1819,15 @@ transform = Transform( 2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, -4.83419,
 
 [node name="IncastleTable" parent="Castle/Village2" instance=ExtResource( 51 )]
 transform = Transform( -0.0288988, 0, -0.999582, 0, 1, 0, 0.999582, 0, -0.0288988, -3.30494, 0.448411, -8.93504 )
+
+[node name="IncastleCrate" parent="Castle/Village2/IncastleTable" instance=ExtResource( 28 )]
+transform = Transform( 0.883791, 0, 0.467884, 0, 1, 0, -0.467884, 0, 0.883791, -1.13105, 0.00539023, 0.656943 )
+
+[node name="IncastleCrate3" parent="Castle/Village2/IncastleTable" instance=ExtResource( 28 )]
+transform = Transform( 0.135802, 0, 0.990736, 0, 1, 0, -0.990736, 0, 0.135802, 0.610508, 0.00539023, 0.206026 )
+
+[node name="IncastleSwordShort" parent="Castle/Village2/IncastleTable" instance=ExtResource( 59 )]
+transform = Transform( 0.824436, 0.241262, 0.511955, -0.182718, 0.969611, -0.162691, -0.535648, 0.040585, 0.843467, -1.50163, 1.64157, 0.204171 )
 
 [node name="Workshop" type="Spatial" parent="Castle"]
 
@@ -1824,10 +1847,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1769, 0.359273, 13.1589 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0334, 0.525961, 14.1252 )
 
 [node name="IncastleSword3" parent="Castle/Workshop/IncastleTable" instance=ExtResource( 56 )]
-transform = Transform( 0.2177, -0.976015, 0.000681389, 0, -0.000698133, -1, 0.976016, 0.2177, -0.000151984, 1.29536, 1.91712, 0.117785 )
+transform = Transform( 0.343915, -0.93888, 0.0149985, 0.00314974, -0.0148193, -0.999885, 0.938996, 0.343923, -0.00213936, 1.30708, 1.96792, -0.338992 )
 
 [node name="IncastleAxe" parent="Castle/Workshop/IncastleTable" instance=ExtResource( 58 )]
 transform = Transform( -0.30558, -0.713075, 0.630987, 0.919156, -0.393894, 0, 0.248542, 0.579976, 0.775793, -8.89261, 2.3164, 0.641741 )
+
+[node name="IncastleCrate2" parent="Castle/Workshop/IncastleTable" instance=ExtResource( 28 )]
+transform = Transform( 0.982097, 0, 0.188376, 0, 1, 0, -0.188376, 0, 0.982097, -7.80899, 0.0798079, 0.604436 )
+
+[node name="IncastleCrate3" parent="Castle/Workshop/IncastleTable" instance=ExtResource( 28 )]
+transform = Transform( 0.464811, 0, -0.88541, 0, 1, 0, 0.88541, 0, 0.464811, -5.77522, 0.0798079, 0.410398 )
+
+[node name="IncastleSwordShort" parent="Castle/Workshop/IncastleTable" instance=ExtResource( 59 )]
+transform = Transform( 0.333654, 0.928977, -0.160252, -0.391793, -0.0179658, -0.919879, -0.857425, 0.369707, 0.357971, -0.43311, 2.01203, -0.291742 )
 
 [node name="IncastleTable2" parent="Castle/Workshop" instance=ExtResource( 51 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5232, 0.556144, 14.1252 )
