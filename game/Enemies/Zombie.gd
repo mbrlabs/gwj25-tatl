@@ -3,6 +3,7 @@ extends KinematicBody
 
 # ---------------------------------------------------------------------------------------
 const ANIM_IDLE = "idle"
+const ANIM_IDLE2 = "idle2"
 const ANIM_WALK = "walk"
 const ANIM_ATTACK = "attack"
 
@@ -24,6 +25,7 @@ export var interaction_overlay: NodePath
 export var min_speed := 1.0
 export var max_speed := 3.0
 export var life := 45
+export var use_alternative_idle_anim := false
 
 # ---------------------------------------------------------------------------------------
 var _path_nodes := []
@@ -42,8 +44,12 @@ func _ready():
 	_interactable.interact_overlay = "../"+interaction_overlay
 	
 	_anim_player.get_animation(ANIM_IDLE).loop = true
+	_anim_player.get_animation(ANIM_IDLE2).loop = true
 	_anim_player.get_animation(ANIM_WALK).loop = true
-	_anim_player.play(ANIM_IDLE)
+	if use_alternative_idle_anim:
+		_anim_player.play(ANIM_IDLE2)
+	else:
+		_anim_player.play(ANIM_IDLE)
 	_anim_player.advance(rand_range(0, 10))
 	_speed = rand_range(min_speed, max_speed)
 	

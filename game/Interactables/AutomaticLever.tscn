@@ -74,7 +74,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 material_override = ExtResource( 3 )
 
 [node name="lever" parent="lever" index="1"]
-transform = Transform( 1, 0, 0, 0, 0.156434, 0.987688, 0, -0.987688, 0.156434, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 0.173315, 0.984866, 0, -0.984866, 0.173315, 0, 0, 0.176341 )
 material_override = ExtResource( 3 )
 
 [node name="StaticBody" type="StaticBody" parent="."]

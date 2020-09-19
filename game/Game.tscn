@@ -1903,6 +1903,7 @@ navigation = NodePath("../../Navigation")
 player = NodePath("../../Player")
 dialog_box = NodePath("../../UI/DialogBox")
 interaction_overlay = NodePath("../../UI/InteractableOverlay")
+use_alternative_idle_anim = true
 
 [node name="LaughingGrave" parent="Castle" instance=ExtResource( 30 )]
 transform = Transform( -0.997716, 0, -0.0675452, 0, 1, 0, 0.0675452, 0, -0.997716, 22.5193, 0.151817, 12.4411 )
@@ -2040,6 +2041,7 @@ player = NodePath("../../../Player")
 dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 life = 10000
+use_alternative_idle_anim = true
 
 [node name="Zombie19" parent="Castle/EasterZombies" groups=[
 "easter_zombie",
@@ -2050,6 +2052,7 @@ player = NodePath("../../../Player")
 dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 life = 10000
+use_alternative_idle_anim = true
 
 [node name="Zombie20" parent="Castle/EasterZombies" groups=[
 "easter_zombie",
@@ -2060,6 +2063,7 @@ player = NodePath("../../../Player")
 dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 life = 10000
+use_alternative_idle_anim = true
 
 [node name="Zombie21" parent="Castle/EasterZombies" groups=[
 "easter_zombie",
