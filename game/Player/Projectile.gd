@@ -20,6 +20,9 @@ func _on_Area_body_entered(body):
 		body.life -= 1
 	elif body is RigidBody:
 		body.apply_central_impulse(direction*500)
+	else:
+		$Area/CollisionShape.disabled = true
+		hide()
 
 func _on_AutodestroyTimer_timeout():
 	queue_free()

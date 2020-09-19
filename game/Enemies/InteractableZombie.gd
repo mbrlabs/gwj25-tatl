@@ -2,7 +2,8 @@ extends Interactable
 
 # ---------------------------------------------------------------------------------------
 func _is_interactable() -> bool:
-	return get_parent().is_in_group("zombie")
+	var zombie = get_parent()
+	return zombie.is_in_group("zombie") && !zombie.hostile && !Global.zombies_hostile
 	
 # ---------------------------------------------------------------------------------------
 func _on_interact() -> void:

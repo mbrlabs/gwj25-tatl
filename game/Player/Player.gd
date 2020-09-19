@@ -85,7 +85,8 @@ var _is_ability_cooldown_active := false
 var _zombie_attack_dialogs = [
 	"Ouch!",
 	"Come one...that's all you got?",
-	"I think my little sister punches harder than you!",
+	"My 834 year old grandmother punches harder than you, come one!",
+	"Alright, now it's getting annoying.",
 ]
 var _zombie_attack_dialogs_index := 0
 
