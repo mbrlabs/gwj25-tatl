@@ -3,7 +3,6 @@
 [ext_resource path="res://Materials/mat_palette_metall.tres" type="Material" id=1]
 [ext_resource path="res://Assets/Models/incastle_sword.glb" type="PackedScene" id=2]
 
-
 [node name="IncastleSword" instance=ExtResource( 2 )]
 
 [node name="incastle_sword" parent="." index="0"]

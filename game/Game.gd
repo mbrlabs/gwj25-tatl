@@ -1,7 +1,5 @@
 extends Spatial
 
-const GLOWINESS_INCREASE = 0.25
-
 # ---------------------------------------------------------------------------------------
 enum IntroLevel {
 	HELLO,
@@ -45,21 +43,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug_reload"):
 		Global.reset()
 		get_tree().reload_current_scene()
-	if Input.is_action_just_pressed("debug_toggle_input"):
-		if _player.input_enabled:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		else: 
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		_player.input_enabled = !_player.input_enabled
-	
-	# incr/decr glowiness of player
-	if Input.is_action_just_pressed("debug_increase_glowiness"):
-		_player.glowiness += GLOWINESS_INCREASE
-	if Input.is_action_just_pressed("debug_decrease_glowiness"):
-		_player.glowiness -= GLOWINESS_INCREASE
-	if Input.is_action_just_pressed("shake"):
-		#_player.shake()
-		get_viewport().get_camera().add_trauma(0.75)
 
 # ---------------------------------------------------------------------------------------
 func _on_DialogBox_message_confirmed():
