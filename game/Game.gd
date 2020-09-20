@@ -10,7 +10,7 @@ enum IntroLevel {
 }
 
 # ---------------------------------------------------------------------------------------
-onready var _fps_label: Label = $UI/MarginContainer/FpsLabel
+onready var _fps_label: Label = $UI/DebugContainer/FpsLabel
 onready var _player: Player = $Player
 onready var _dialog_box: DialogBox = $UI/DialogBox
 onready var _pause_menu: PauseMenu = $UI/PauseMenu
@@ -27,22 +27,27 @@ var _intro_lvl = IntroLevel.HELLO
 
 # ---------------------------------------------------------------------------------------
 func _ready():
+	if Global.DEBUG:
+		$UI/DebugContainer.show()
+	
 	_dialog_box.connect("message_confirmed", self, "_on_DialogBox_message_confirmed")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Global.play_music()
 
 # ---------------------------------------------------------------------------------------
 func _process(delta: float) -> void:
-	_fps_label.text = str(Engine.get_frames_per_second())
+	if Global.DEBUG:
+		_fps_label.text = str(Engine.get_frames_per_second())
 	
 	if Input.is_action_just_pressed("pause") && !get_tree().paused && Global.state != Global.State.THE_END:
 		_pause_menu.handle_input = false
 		_pause()
 	
 	# basic debug stuff
-	if Input.is_action_just_pressed("debug_reload"):
-		Global.reset()
-		get_tree().reload_current_scene()
+	if Global.DEBUG:
+		if Input.is_action_just_pressed("debug_reload"):
+			Global.reset()
+			get_tree().reload_current_scene()
 
 # ---------------------------------------------------------------------------------------
 func _on_DialogBox_message_confirmed():

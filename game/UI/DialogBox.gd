@@ -2,7 +2,7 @@ class_name DialogBox
 extends Control
 
 const DEFAULT_READ_SPEED := 0.02
-const DEFAULT_FADE_OUT_TIME := 2.0
+const DEFAULT_FADE_OUT_TIME := 3.5
 
 # ---------------------------------------------------------------------------------------
 signal message_displayed

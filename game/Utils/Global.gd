@@ -1,11 +1,12 @@
 extends Node
 
 # ---------------------------------------------------------------------------------------
-const AUDIOBUS_MASTER = "Master"
-const AUDIOBUS_MUSIC = "Music"
-const AUDIOBUS_SOUND = "Sound"
-const AUDIOBUS_AMBIENT_SOUND = "AmbientSound"
-const AUDIOBUS_PLAYER_SOUND = "PlayerSound"
+const DEBUG := false
+const AUDIOBUS_MASTER := "Master"
+const AUDIOBUS_MUSIC := "Music"
+const AUDIOBUS_SOUND := "Sound"
+const AUDIOBUS_AMBIENT_SOUND := "AmbientSound"
+const AUDIOBUS_PLAYER_SOUND := "PlayerSound"
 
 # ---------------------------------------------------------------------------------------
 enum State {
