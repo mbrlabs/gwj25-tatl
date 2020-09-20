@@ -13,16 +13,14 @@ extents = Vector3( 2.05368, 4.27664, 0.234457 )
 extents = Vector3( 2.50806, 5.00771, 1.63088 )
 
 [sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.0666667, 0.113725, 0.180392, 1 )
-metallic = 0.19
-metallic_specular = 0.61
-roughness = 0.32
+albedo_color = Color( 0.105882, 0.168627, 0.254902, 1 )
+metallic_specular = 0.0
 
 [sub_resource type="CubeMesh" id=4]
-size = Vector3( 0.25, 2, 1 )
+size = Vector3( 0.15, 2, 1 )
 
 [sub_resource type="Curve" id=5]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.517241 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [node name="DestructibleFrontGate" type="Area"]
 collision_layer = 2
@@ -50,22 +48,23 @@ shape = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0539163, 2.22866, 0.434713 )
 material_override = SubResource( 3 )
 emitting = false
-amount = 20
+amount = 24
+lifetime = 0.8
 one_shot = true
 explosiveness = 0.5
 mesh = SubResource( 4 )
 flag_disable_z = true
 direction = Vector3( 1, 1, 1 )
 spread = 180.0
-flatness = 1.0
-gravity = Vector3( 0, -14, 0 )
+gravity = Vector3( 0, -20, 0 )
 initial_velocity = 10.0
 angular_velocity = 650.77
 angular_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 orbit_velocity_curve = null
-angle = 221.5
+linear_accel = 0.33
+angle = 720.0
 angle_random = 1.0
 scale_amount_curve = SubResource( 5 )
 

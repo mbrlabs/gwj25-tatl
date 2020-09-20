@@ -71,7 +71,8 @@ shape = SubResource( 3 )
 [node name="CastleExit" parent="." instance=ExtResource( 2 )]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( -0.999996, 0, -0.0026876, 0, 1, 0, 0.0026876, 0, -0.999996, 0, 0, 0.212479 )
 stream = ExtResource( 3 )
-unit_db = 10.0
+unit_db = 12.0
 bus = "AmbientSounds"
 [connection signal="timeout" from="CloseTimer" to="." method="_on_CloseTimer_timeout"]
