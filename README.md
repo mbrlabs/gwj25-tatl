@@ -5,6 +5,12 @@
 Tatl is a short little adventure game i made in Godot 3.2.3 for the 25th Godot Wild Jam. You can get it on [itch.io](https://mbrlabs.itch.io/tatl) or build it yourself.
 Unless otherwise noted all assets and code were created by me during the jam.
 
+### Controls
+- WASD/Arrow keys to move
+- Mouse for looking around
+- Left mouse button: special ability
+- Right mouse button: change form
+
 ### Third party assets
 
 - Gate sound: from 'LittleRobotSoundFactory' on freesound.org
