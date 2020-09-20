@@ -3,7 +3,6 @@
 [ext_resource path="res://Assets/Fonts/font_dialog.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/InteractableOverlay.gd" type="Script" id=2]
 
-
 [node name="InteractableOverlay" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0

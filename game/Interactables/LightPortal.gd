@@ -15,10 +15,10 @@ onready var _shake_timer: Timer = $ShakeTimer
 # ---------------------------------------------------------------------------------------
 var _dialogs = [
 	"Now will you look at that!",
-	"That's a freaking Light Portal! That explains why there are these crystals all over the place. It' probably also the reason why I ended up here.",
+	"That's a freaking Light Portal! That explains why there are these crystals all over the place. It's probably also the reason why I ended up here.",
 	"You see, Light Portals are Fae-made. We use them to travel to other worlds far beyond our own. This one must be malefunctening though. Let me have a look...",
 	"... ... ...",
-	"Ah, fixed it! The moist air must have caused a short circuit in the lighting network. Easy peasy ;)",
+	"Ah, fixed it! The humidity here must have caused a short circuit in the lightning network. Easy peasy ;)",
 	"Anyway, thank you for helping me! I wouldn't have made it without you.",
 	"I have to go home now. Goodbye, friend!"
 ]

@@ -2,7 +2,7 @@ class_name AutomaticDoor
 extends Interactable
 
 # ---------------------------------------------------------------------------------------
-var _dialog_castle = "That thing is massive! I can't get through it and i'm sure even the Godot-Cannon won't leave a skratch"
+var _dialog_castle = "That thing is massive! I can't get through it and i'm sure even the Godot-Cannon won't leave a skratch."
 var _dialog_mountain = "I guess there is no way back now..."
 var _door_open := false
 
@@ -15,7 +15,7 @@ func _on_interact() -> void:
 	if Global.state == Global.State.MONTAIN:
 		get_node(dialog_box).show_message("Tatl:", _dialog_mountain, false, 2)
 	else:
-		get_node(dialog_box).show_message("Tatl:", _dialog_castle, true)
+		get_node(dialog_box).show_message("Tatl:", _dialog_castle, false, 2)
 
 # ---------------------------------------------------------------------------------------
 func open_door(close_time: float) -> void:

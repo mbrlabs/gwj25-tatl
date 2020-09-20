@@ -87,7 +87,7 @@ extents = Vector3( 5.46344, 5.03565, 4.49733 )
 extents = Vector3( 11.8134, 5.03565, 1.4253 )
 
 [sub_resource type="BoxShape" id=7]
-extents = Vector3( 4.26495, 3.61119, 4.47658 )
+extents = Vector3( 20.9163, 3.61119, 0.831152 )
 
 [sub_resource type="BoxShape" id=8]
 extents = Vector3( 8.73184, 5.14599, 0.41265 )
@@ -271,24 +271,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.185, 5.18369, 27.1296 )
 stream = ExtResource( 24 )
 bus = "AmbientSounds"
 
+[node name="PlayerStartPosition" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.149436, 8.15568, 31.3752 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.88971, 5.5808, -3.9607 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.149436, 8.15568, 31.3752 )
 evirorment = ExtResource( 3 )
 dialog_box = NodePath("../UI/DialogBox")
 speed = 4.0
 
 [node name="Forest" type="Spatial" parent="."]
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 
 [node name="StaticBody" type="StaticBody" parent="Forest"]
 collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape" type="CollisionShape" parent="Forest/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00835, 5.11113, 38.0071 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00835, 5.15091, 38.0071 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Forest/StaticBody"]
@@ -317,7 +319,7 @@ script = ExtResource( 17 )
 dialog_box = NodePath("../../UI/DialogBox")
 
 [node name="CollisionShape" type="CollisionShape" parent="Forest/POIForestWarning"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6343, 5.25615, 35.1173 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6343, 3.83284, 35.361 )
 shape = SubResource( 7 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Forest/POIForestWarning"]
@@ -370,16 +372,25 @@ interact_overlay = NodePath("../../../UI/InteractableOverlay")
 grave_text = "Here lies Lumberyard. May you rest in peace!"
 
 [node name="ReadableGrave6" parent="Forest/Graveyard" instance=ExtResource( 16 )]
-transform = Transform( -0.0354577, 0, 0.999371, 0, 1, 0, -0.999371, 0, -0.0354577, -20.6062, 0.182783, 27.114 )
+transform = Transform( -0.0354577, 0, 0.999371, 0, 1, 0, -0.999371, 0, -0.0354577, -20.6062, 0.182783, 27.2634 )
 dialog_box = NodePath("../../../UI/DialogBox")
 interact_overlay = NodePath("../../../UI/InteractableOverlay")
 grave_text = "Rest in peace, CryEngine."
 
+[node name="ReadableGrave7" parent="Forest/Graveyard" instance=ExtResource( 16 )]
+transform = Transform( -0.0354577, 0, 0.999371, 0, 1, 0, -0.999371, 0, -0.0354577, -20.419, 0.182783, 22.5831 )
+dialog_box = NodePath("../../../UI/DialogBox")
+interact_overlay = NodePath("../../../UI/InteractableOverlay")
+grave_text = "Rest in peace, Unity."
+
 [node name="ReadableGrave5" parent="Forest/Graveyard" instance=ExtResource( 16 )]
-transform = Transform( 0.278354, 0, 0.960478, 0, 1, 0, -0.960478, 0, 0.278354, -20.3964, 0.182783, 20.9629 )
+transform = Transform( 0.14465, 0, 0.989482, 0, 1, 0, -0.989482, 0, 0.14465, -20.3964, 0.182783, 19.4108 )
 dialog_box = NodePath("../../../UI/DialogBox")
 interact_overlay = NodePath("../../../UI/InteractableOverlay")
 grave_text = "Rest in peace, GameMaker."
+
+[node name="IncastleSword2" parent="Forest/Graveyard/ReadableGrave5" instance=ExtResource( 56 )]
+transform = Transform( -0.270693, -0.334008, -0.902865, 0.0784309, 0.92711, -0.366492, 0.959466, -0.170019, -0.224766, 1.57715, -1.23359, -1.67407 )
 
 [node name="ReadableGrave" parent="Forest/Graveyard" instance=ExtResource( 18 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.9718, 0.118193, 30.3445 )
@@ -443,9 +454,6 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.9813
 
 [node name="IncastleSword" parent="Forest/Graveyard" instance=ExtResource( 56 )]
 transform = Transform( 0.725348, -0.305265, -0.616996, 0.0784309, 0.92711, -0.366492, 0.6839, 0.217443, 0.696419, -10.221, -1.43536, 30.6729 )
-
-[node name="IncastleSword2" parent="Forest/Graveyard" instance=ExtResource( 56 )]
-transform = Transform( 0.846197, -0.256272, -0.467199, 0.0784309, 0.92711, -0.366492, 0.527066, 0.273482, 0.804617, -21.5653, -1.05081, 18.9821 )
 
 [node name="DeadBranchSmall" parent="Forest/Graveyard" instance=ExtResource( 64 )]
 transform = Transform( -0.45109, -0.452378, -0.769332, -0.0364414, 0.870634, -0.490579, 0.891734, -0.19326, -0.40922, 5.92197, 0.118145, 31.13 )
@@ -1150,6 +1158,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -53.0031, 0, -19.0814 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13993, 2.91329, -5.88132 )
 collision_layer = 2
 script = ExtResource( 66 )
+dialog_box = NodePath("../../../UI/DialogBox")
+one_shot = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Mountain/Road/POIRoadBlock"]
 transform = Transform( 0.877356, 0, -0.479841, 0, 1, 0, 0.479841, 0, 0.877356, 0, 0, 0 )
@@ -2131,7 +2141,7 @@ interaction_overlay = NodePath("../../UI/InteractableOverlay")
 [node name="Zombie2" parent="Castle" groups=[
 "zombie",
 ] instance=ExtResource( 45 )]
-transform = Transform( 0.0630346, 0, -0.998011, 0, 1, 0, 0.998011, 0, 0.0630346, -21.3272, 0.742387, 0.42443 )
+transform = Transform( 0.0630346, 0, -0.998011, 0, 1, 0, 0.998011, 0, 0.0630346, -21.3272, 0.658696, 0.42443 )
 navigation = NodePath("../../Navigation")
 player = NodePath("../../Player")
 dialog_box = NodePath("../../UI/DialogBox")
@@ -2140,7 +2150,7 @@ interaction_overlay = NodePath("../../UI/InteractableOverlay")
 [node name="Zombie3" parent="Castle" groups=[
 "zombie",
 ] instance=ExtResource( 45 )]
-transform = Transform( -0.739161, 0, -0.673529, 0, 1, 0, 0.673529, 0, -0.739161, -18.742, 0.742389, -13.5304 )
+transform = Transform( -0.739161, 0, -0.673529, 0, 1, 0, 0.673529, 0, -0.739161, -18.742, 0.497585, -13.5304 )
 navigation = NodePath("../../Navigation")
 player = NodePath("../../Player")
 dialog_box = NodePath("../../UI/DialogBox")

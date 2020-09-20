@@ -56,8 +56,6 @@ export var evirorment: Environment
 export var dialog_box: NodePath
 export var input_enabled := true
 export(float, 0.0, 1.0) var glowiness = 1.0 setget _set_glowiness
-export var camera_zoom_increments := 0.1
-export var camera_max_zoom_increments := 10
 export var camera_lag := 8.0
 export var speed := 5.0
 export var speed_scale := 1.0
@@ -330,12 +328,8 @@ func _handle_transformation() -> void:
 		if _form == Form.NORMAL:
 			_crosshair.show()
 			_form = Form.BUFFED
-			if Global.god_mode_enabled:
-				speed_scale = 2.5
-				hover_height = 8.0
-			else:
-				speed_scale = SPEED_SCALE_BUFFED
-				hover_height = HOVER_HEIGHT_BUFFED
+			speed_scale = SPEED_SCALE_BUFFED
+			hover_height = HOVER_HEIGHT_BUFFED
 			_transformation_anim_player.play(ANIM_NORMAL_TO_BUFFED)
 		else:
 			_crosshair.hide()

@@ -19,8 +19,7 @@ enum State {
 
 # ---------------------------------------------------------------------------------------
 var state = State.INTRO
-var buffed_form_unlocked := true
-var god_mode_enabled := false
+var buffed_form_unlocked := false
 var mouse_sensitivity := 50
 var zombies_hostile := false
 

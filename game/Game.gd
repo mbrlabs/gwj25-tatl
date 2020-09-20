@@ -21,7 +21,7 @@ var _intro_dialogs = {
 	IntroLevel.HELLO: "Hello, my name is Tatl. I am a faerie from the Forest of Light. I don't know what happend, but i suddenly woke up in this otherworldly place. Can you help me find my way home again?",
 	IntroLevel.MOVEMENT: "Thanks! You can control me with [WASD] or [Arrow Keys]. Use your [Mouse] to look around.",
 	IntroLevel.ABILITIES: "I can also super-hover if you hold down your [Left Mouse Button] while moving. Try it!",
-	IntroLevel.GOOD_LUCK: "Great! So go on now and save me ;)"
+	IntroLevel.GOOD_LUCK: "Great! So go on now and save me. ;)"
 }
 var _intro_lvl = IntroLevel.HELLO
 

@@ -10,4 +10,4 @@ func _get_dialog_title() -> String:
 
 # ---------------------------------------------------------------------------------------
 func _get_dialog_message() -> String:
-	return "Wow, there is a path into the montain. But it's blocked..."
+	return "There leads a path into the mountain. But it's blocked..."
