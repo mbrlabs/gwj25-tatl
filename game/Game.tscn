@@ -29,7 +29,7 @@
 [ext_resource path="res://UI/DialogBox.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Props/IncastleCrate.tscn" type="PackedScene" id=28]
 [ext_resource path="res://UI/InteractableOverlay.tscn" type="PackedScene" id=29]
-[ext_resource path="res://Interactables/LaughingGrave.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Interactables/MysteryWall.tscn" type="PackedScene" id=30]
 [ext_resource path="res://UI/AbilityOverlay.tscn" type="PackedScene" id=31]
 [ext_resource path="res://Props/CastleWallMid.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Props/GroundCobblestone.tscn" type="PackedScene" id=33]
@@ -271,19 +271,23 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.185, 5.18369, 27.1296 )
 stream = ExtResource( 24 )
 bus = "AmbientSounds"
 
-[node name="PlayerStartPosition" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.149436, 8.15568, 31.3752 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.149436, 8.15568, 31.3752 )
 evirorment = ExtResource( 3 )
 dialog_box = NodePath("../UI/DialogBox")
 speed = 4.0
 
+[node name="PlayerStartPosition" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.149436, 8.15568, 31.3752 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Forest" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="StaticBody" type="StaticBody" parent="Forest"]
 collision_layer = 2
@@ -2157,11 +2161,6 @@ dialog_box = NodePath("../../UI/DialogBox")
 interaction_overlay = NodePath("../../UI/InteractableOverlay")
 use_alternative_idle_anim = true
 
-[node name="LaughingGrave" parent="Castle" instance=ExtResource( 30 )]
-transform = Transform( -0.997716, 0, -0.0675452, 0, 1, 0, 0.0675452, 0, -0.997716, 22.5193, 0.151817, 12.4411 )
-dialog_box = NodePath("../../UI/DialogBox")
-interact_overlay = NodePath("../../UI/InteractableOverlay")
-
 [node name="HiddenZombies" type="Spatial" parent="Castle"]
 
 [node name="Zombie4" parent="Castle/HiddenZombies" groups=[
@@ -2272,100 +2271,108 @@ player = NodePath("../../../Player")
 dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 
-[node name="EasterZombies" type="Spatial" parent="Castle"]
+[node name="Mystery" type="Spatial" parent="Castle"]
 
-[node name="Zombie17" parent="Castle/EasterZombies" groups=[
-"easter_zombie",
-] instance=ExtResource( 45 )]
-transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 24.7475, 0.617807, 6.2077 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
+[node name="MysteryWall" parent="Castle/Mystery" instance=ExtResource( 30 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.2945, 0.454366, 15.462 )
 dialog_box = NodePath("../../../UI/DialogBox")
-interaction_overlay = NodePath("../../../UI/InteractableOverlay")
+interact_overlay = NodePath("../../../UI/InteractableOverlay")
+
+[node name="MysteryZombies" type="Spatial" parent="Castle/Mystery"]
+
+[node name="Zombie17" parent="Castle/Mystery/MysteryZombies" groups=[
+"mystery_zombie",
+] instance=ExtResource( 45 )]
+transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 25.1082, 0.617807, 7.60938 )
+navigation = NodePath("../../../../Navigation")
+player = NodePath("../../../../Player")
+dialog_box = NodePath("../../../../UI/DialogBox")
+interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
 life = 10000
 
-[node name="Zombie18" parent="Castle/EasterZombies" groups=[
-"easter_zombie",
+[node name="Zombie18" parent="Castle/Mystery/MysteryZombies" groups=[
+"mystery_zombie",
 ] instance=ExtResource( 45 )]
-transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 22.8934, 0.617807, 6.20941 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
-interaction_overlay = NodePath("../../../UI/InteractableOverlay")
+transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 22.8386, 0.617807, 7.5904 )
+navigation = NodePath("../../../../Navigation")
+player = NodePath("../../../../Player")
+dialog_box = NodePath("../../../../UI/DialogBox")
+interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
+life = 10000
+
+[node name="Zombie19" parent="Castle/Mystery/MysteryZombies" groups=[
+"mystery_zombie",
+] instance=ExtResource( 45 )]
+transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 20.3366, 0.617807, 7.5904 )
+navigation = NodePath("../../../../Navigation")
+player = NodePath("../../../../Player")
+dialog_box = NodePath("../../../../UI/DialogBox")
+interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
+life = 10000
+
+[node name="Zombie20" parent="Castle/Mystery/MysteryZombies" groups=[
+"mystery_zombie",
+] instance=ExtResource( 45 )]
+transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 25.0892, 0.617807, 5.22812 )
+navigation = NodePath("../../../../Navigation")
+player = NodePath("../../../../Player")
+dialog_box = NodePath("../../../../UI/DialogBox")
+interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
+life = 10000
+
+[node name="Zombie21" parent="Castle/Mystery/MysteryZombies" groups=[
+"mystery_zombie",
+] instance=ExtResource( 45 )]
+transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 22.8386, 0.617807, 5.22812 )
+navigation = NodePath("../../../../Navigation")
+player = NodePath("../../../../Player")
+dialog_box = NodePath("../../../../UI/DialogBox")
+interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
+life = 10000
+
+[node name="Zombie22" parent="Castle/Mystery/MysteryZombies" groups=[
+"mystery_zombie",
+] instance=ExtResource( 45 )]
+transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 20.3366, 0.617807, 5.22812 )
+navigation = NodePath("../../../../Navigation")
+player = NodePath("../../../../Player")
+dialog_box = NodePath("../../../../UI/DialogBox")
+interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
+life = 10000
+
+[node name="Zombie23" parent="Castle/Mystery/MysteryZombies" groups=[
+"mystery_zombie",
+] instance=ExtResource( 45 )]
+transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 25.0892, 0.617807, 2.7619 )
+navigation = NodePath("../../../../Navigation")
+player = NodePath("../../../../Player")
+dialog_box = NodePath("../../../../UI/DialogBox")
+interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
+life = 10000
+
+[node name="Zombie24" parent="Castle/Mystery/MysteryZombies" groups=[
+"mystery_zombie",
+] instance=ExtResource( 45 )]
+transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 22.8386, 0.617807, 2.7619 )
+navigation = NodePath("../../../../Navigation")
+player = NodePath("../../../../Player")
+dialog_box = NodePath("../../../../UI/DialogBox")
+interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
 life = 10000
 use_alternative_idle_anim = true
 
-[node name="Zombie19" parent="Castle/EasterZombies" groups=[
-"easter_zombie",
+[node name="Zombie25" parent="Castle/Mystery/MysteryZombies" groups=[
+"mystery_zombie",
 ] instance=ExtResource( 45 )]
-transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 20.8665, 0.617807, 6.21129 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
-interaction_overlay = NodePath("../../../UI/InteractableOverlay")
-life = 10000
-use_alternative_idle_anim = true
-
-[node name="Zombie20" parent="Castle/EasterZombies" groups=[
-"easter_zombie",
-] instance=ExtResource( 45 )]
-transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 24.7475, 0.617807, 3.76391 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
-interaction_overlay = NodePath("../../../UI/InteractableOverlay")
-life = 10000
-use_alternative_idle_anim = true
-
-[node name="Zombie21" parent="Castle/EasterZombies" groups=[
-"easter_zombie",
-] instance=ExtResource( 45 )]
-transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 22.8934, 0.617807, 3.76563 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
-interaction_overlay = NodePath("../../../UI/InteractableOverlay")
+transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 20.3366, 0.617807, 2.7619 )
+navigation = NodePath("../../../../Navigation")
+player = NodePath("../../../../Player")
+dialog_box = NodePath("../../../../UI/DialogBox")
+interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
 life = 10000
 
-[node name="Zombie22" parent="Castle/EasterZombies" groups=[
-"easter_zombie",
-] instance=ExtResource( 45 )]
-transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 20.8665, 0.617807, 3.7675 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
-interaction_overlay = NodePath("../../../UI/InteractableOverlay")
-life = 10000
-
-[node name="Zombie23" parent="Castle/EasterZombies" groups=[
-"easter_zombie",
-] instance=ExtResource( 45 )]
-transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 24.7475, 0.617807, 1.58992 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
-interaction_overlay = NodePath("../../../UI/InteractableOverlay")
-life = 10000
-
-[node name="Zombie24" parent="Castle/EasterZombies" groups=[
-"easter_zombie",
-] instance=ExtResource( 45 )]
-transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 22.8934, 0.617807, 1.59164 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
-interaction_overlay = NodePath("../../../UI/InteractableOverlay")
-life = 10000
-
-[node name="Zombie25" parent="Castle/EasterZombies" groups=[
-"easter_zombie",
-] instance=ExtResource( 45 )]
-transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 20.8665, 0.617807, 1.59351 )
-navigation = NodePath("../../../Navigation")
-player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
-interaction_overlay = NodePath("../../../UI/InteractableOverlay")
-life = 10000
+[node name="IncastleCrate" parent="Castle/Mystery" instance=ExtResource( 28 )]
+transform = Transform( 0.993093, 0, 0.117329, 0, 1, 0, -0.117329, 0, 0.993093, 27.0816, 5.39693, 13.8146 )
 
 [node name="Navigation" type="Navigation" parent="."]
 __meta__ = {

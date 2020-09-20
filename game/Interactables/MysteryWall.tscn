@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Interactables/MysteryWall.gd" type="Script" id=1]
+[ext_resource path="res://Materials/mat_palette.tres" type="Material" id=2]
+[ext_resource path="res://Assets/Models/castle_mystery_wall.glb" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Models/castle_mystery_door.glb" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Audio/zombie_hit.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Textures/mystery.png" type="Texture" id=6]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 2.81869, 2.09346, 1.23466 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 5.0732, 3.38606, 0.581063 )
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
+albedo_texture = ExtResource( 6 )
+
+[sub_resource type="QuadMesh" id=4]
+size = Vector2( 2, 2 )
+
+[sub_resource type="Animation" id=5]
+length = 0.2
+tracks/0/type = "transform"
+tracks/0/path = NodePath("castle_mystery_door")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray(  )
+tracks/1/type = "value"
+tracks/1/path = NodePath("castle_mystery_door:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -153.418, 0 ) ]
+}
+
+[node name="MysteryWall" type="Area"]
+script = ExtResource( 1 )
+interaction_prompt = "Press [E] open"
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.797039, 2.09598, 2.04508 )
+shape = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+collision_layer = 2
+collision_mask = 117
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00579, 3.40698, 0.641718 )
+shape = SubResource( 2 )
+
+[node name="Mystery" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02361, 1.88936, 0.324895 )
+material_override = SubResource( 3 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="castle_mystery_wall" parent="." instance=ExtResource( 3 )]
+
+[node name="castle_mystery_wall" parent="castle_mystery_wall" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 2 )
+
+[node name="castle_mystery_door" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97947, 1.67012, 0.860025 )
+
+[node name="castle_mystery_wall_door" parent="castle_mystery_door" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/open = SubResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "AmbientSounds"
+
+[editable path="castle_mystery_wall"]
+
+[editable path="castle_mystery_door"]

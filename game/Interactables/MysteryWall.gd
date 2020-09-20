@@ -2,10 +2,10 @@ extends Interactable
 
 # ---------------------------------------------------------------------------------------
 func _is_interactable() -> bool:
-	return Global.state != Global.State.INTRO
+	return true
 
 # ---------------------------------------------------------------------------------------
 func _on_interact() -> void:
+	$AnimationPlayer.play("open")
 	$AudioStreamPlayer.play()
-	var dbox := get_node(dialog_box) as DialogBox
-	dbox.show_message("Creepy grave:", "Laughing...", false)
+	get_node(dialog_box).show_message("Tatl:", "Hmm, that's weird...", false, 2)

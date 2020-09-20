@@ -9,4 +9,4 @@ func _is_interactable() -> bool:
 
 # ---------------------------------------------------------------------------------------
 func _on_interact() -> void:
-	get_node(dialog_box).show_message("It says:", grave_text, false)
+	get_node(dialog_box).show_message("It says:", grave_text, false, 2.0)
