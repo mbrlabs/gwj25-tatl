@@ -366,4 +366,4 @@ func _on_ZombieDetectionArea_body_entered(body):
 			_zombie_attack_dialogs_index += 1
 			if _zombie_attack_dialogs_index == _zombie_attack_dialogs.size():
 				_zombie_attack_dialogs_index = 0
-			get_node(dialog_box).show_message("Tatl:", msg, false, .75)
+			DialogBox.show_message("Tatl:", msg, false, .75)

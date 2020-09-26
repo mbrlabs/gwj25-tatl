@@ -13,9 +13,9 @@ func _is_interactable() -> bool:
 # ---------------------------------------------------------------------------------------
 func _on_interact() -> void:
 	if Global.state == Global.State.MONTAIN:
-		get_node(dialog_box).show_message("Tatl:", _dialog_mountain, false, 2)
+		DialogBox.show_message("Tatl:", _dialog_mountain, false, 2)
 	else:
-		get_node(dialog_box).show_message("Tatl:", _dialog_castle, false, 2)
+		DialogBox.show_message("Tatl:", _dialog_castle, false, 2)
 
 # ---------------------------------------------------------------------------------------
 func open_door(close_time: float) -> void:

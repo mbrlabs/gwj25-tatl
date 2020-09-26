@@ -12,7 +12,6 @@ enum IntroLevel {
 # ---------------------------------------------------------------------------------------
 onready var _fps_label: Label = $UI/DebugContainer/FpsLabel
 onready var _player: Player = $Player
-onready var _dialog_box: DialogBox = $UI/DialogBox
 onready var _pause_menu: PauseMenu = $UI/PauseMenu
 onready var _end_overlay: TheEndOverlay = $UI/TheEndOverlay
 
@@ -30,7 +29,7 @@ func _ready():
 	if Global.DEBUG:
 		$UI/DebugContainer.show()
 	
-	_dialog_box.connect("message_confirmed", self, "_on_DialogBox_message_confirmed")
+	DialogBox.connect("message_confirmed", self, "_on_DialogBox_message_confirmed")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Global.play_music()
 
@@ -61,14 +60,14 @@ func _on_DialogBox_message_confirmed():
 		IntroLevel.GOOD_LUCK:
 			_intro_lvl = IntroLevel.DONE
 			Global.state = Global.State.CRYPT
-			_dialog_box.disconnect("message_confirmed", self, "_on_DialogBox_message_confirmed")
+			DialogBox.disconnect("message_confirmed", self, "_on_DialogBox_message_confirmed")
 	
 	if _intro_lvl != IntroLevel.DONE:
-		_dialog_box.show_message("Tatl:", _intro_dialogs[_intro_lvl], true)
+		DialogBox.show_message("Tatl:", _intro_dialogs[_intro_lvl], true)
 
 # ---------------------------------------------------------------------------------------
 func _on_IntroStartTimer_timeout():
-	_dialog_box.show_message("Tatl:", _intro_dialogs[_intro_lvl], true)
+	DialogBox.show_message("Tatl:", _intro_dialogs[_intro_lvl], true)
 
 # ---------------------------------------------------------------------------------------
 func _on_ExitCastleStateArea_body_entered(body):

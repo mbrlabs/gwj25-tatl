@@ -2,7 +2,6 @@ class_name POIArea
 extends Area
 
 # ---------------------------------------------------------------------------------------
-export var dialog_box: NodePath
 export var one_shot: bool = false
 export var disabled: bool = false
 
@@ -30,8 +29,7 @@ func _on_body_entered(body) -> void:
 	if _is_triggerable() && !disabled && body is Player:
 		if !one_shot || (one_shot && !_already_triggered_once):
 			_already_triggered_once = true
-			var box := get_node(dialog_box) as DialogBox
-			box.show_message(
+			DialogBox.show_message(
 				_get_dialog_title(), 
 				_get_dialog_message(), 
 				false

@@ -10,9 +10,9 @@ func _is_interactable() -> bool:
 # ---------------------------------------------------------------------------------------
 func _on_interact() -> void:
 	if get_parent().is_in_group("mystery_zombie"):
-		get_node(dialog_box).show_message("Cloaked figure:", ". . .", false, 1.5)
+		DialogBox.show_message("Cloaked figure:", ". . .", false, 1.5)
 	elif !Global.zombies_hostile:
-		get_node(dialog_box).show_message("Tatl:", "Oops...", false, 2)
+		DialogBox.show_message("Tatl:", "Oops...", false, 2)
 		Global.zombies_hostile = true
 		for z in get_tree().get_nodes_in_group("zombie"):
 			z.hostile = true

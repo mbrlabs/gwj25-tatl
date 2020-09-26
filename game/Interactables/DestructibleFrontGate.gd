@@ -37,14 +37,13 @@ func _is_interactable() -> bool:
 
 # ---------------------------------------------------------------------------------------
 func _on_interact() -> void:
-	var dbox := get_node(dialog_box) as DialogBox
 	if Global.state == Global.State.CRYPT:
-		dbox.show_message("Tatl:", "That gate looks pretty tough. I don't think i can get through it :(", false)
+		DialogBox.show_message("Tatl:", "That gate looks pretty tough. I don't think i can get through it :(", false)
 	if Global.state == Global.State.PRE_CASTLE:
 		if _state == State.OK:
-			dbox.show_message("Tatl:", "I wonder what the Godot-Cannon does to that gate...", false)
+			DialogBox.show_message("Tatl:", "I wonder what the Godot-Cannon does to that gate...", false)
 		if _state == State.DAMAGED:
-			dbox.show_message("Tatl:", "I'm almost through it. One more time!", false)
+			DialogBox.show_message("Tatl:", "I'm almost through it. One more time!", false)
 
 # ---------------------------------------------------------------------------------------
 func _on_DestructibleFrontGate_area_entered(area: Area):
@@ -66,5 +65,4 @@ func _on_DestructibleFrontGate_area_entered(area: Area):
 					_gate_model_broken.show()
 					_collsion_shape_intact.disabled = true
 					_collsion_shape_broken.disabled = false
-					var dbox := get_node(dialog_box)
-					dbox.show_message("Tatl:", "Alright, we're through. Let's see what's inside.", false)
+					DialogBox.show_message("Tatl:", "Alright, we're through. Let's see what's inside.", false)

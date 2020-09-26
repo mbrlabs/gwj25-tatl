@@ -1,4 +1,3 @@
-class_name DialogBox
 extends Control
 
 const DEFAULT_READ_SPEED := 0.02
@@ -50,7 +49,6 @@ func show_message(title: String, msg: String, confirmation_required: bool, wait_
 		_read_index = 0
 		_fade_out_timer.wait_time = wait_time
 		_read_timer.start()
-	#printerr("Called show_message while not in IDLE state. Check it in DialogBox.gd!")
 
 # ---------------------------------------------------------------------------------------
 func _input(e: InputEvent) -> void:

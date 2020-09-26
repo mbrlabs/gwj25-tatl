@@ -38,10 +38,9 @@ func _is_interactable() -> bool:
 # ---------------------------------------------------------------------------------------
 func _on_interact() -> void:
 	Global.state = Global.State.PRE_CASTLE
-	var db := get_node(dialog_box) as DialogBox
-	db.connect("message_confirmed", self, "_on_DialogBox_message_confirmed")
+	DialogBox.connect("message_confirmed", self, "_on_DialogBox_message_confirmed")
 	var msg = _dialogs[_dialog_index]
-	db.show_message(msg[0], msg[1], true)
+	DialogBox.show_message(msg[0], msg[1], true)
 	_dialog_index += 1
 	$ActivationSound.play()
 	_head._start_talking()
@@ -64,17 +63,16 @@ func _on_DialogBox_message_confirmed() -> void:
 		0, 2, 7:
 			stop_talking()
 	
-	var db := get_node(dialog_box) as DialogBox
 	if _dialog_index < _dialogs.size():
 		if _dialog_index == 3:
 			Global.buffed_form_unlocked = true
 		var msg = _dialogs[_dialog_index]
-		db.show_message(msg[0], msg[1], true)
+		DialogBox.show_message(msg[0], msg[1], true)
 		_dialog_index += 1
 	else:
 		stop_talking()
 		_godot_talk_sound.stop()
-		db.disconnect("message_confirmed", self, "_on_DialogBox_message_confirmed")
+		DialogBox.disconnect("message_confirmed", self, "_on_DialogBox_message_confirmed")
 
 # ---------------------------------------------------------------------------------------
 func start_talking(fade_in: bool = false) -> void:

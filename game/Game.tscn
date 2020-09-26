@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=2]
+[gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://Props/Grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -26,7 +26,6 @@
 [ext_resource path="res://Assets/Audio/crow.ogg" type="AudioStream" id=24]
 [ext_resource path="res://Utils/AmbientJukebox.gd" type="Script" id=25]
 [ext_resource path="res://Interactables/GodotCrypt.tscn" type="PackedScene" id=26]
-[ext_resource path="res://UI/DialogBox.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Props/IncastleCrate.tscn" type="PackedScene" id=28]
 [ext_resource path="res://UI/InteractableOverlay.tscn" type="PackedScene" id=29]
 [ext_resource path="res://Interactables/MysteryWall.tscn" type="PackedScene" id=30]
@@ -187,12 +186,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DialogBox" parent="UI" instance=ExtResource( 27 )]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 0.0
-margin_bottom = 0.0
-
 [node name="InteractableOverlay" parent="UI" instance=ExtResource( 29 )]
 visible = false
 
@@ -275,7 +268,6 @@ bus = "AmbientSounds"
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.149436, 8.15568, 31.3752 )
 evirorment = ExtResource( 3 )
-dialog_box = NodePath("../UI/DialogBox")
 speed = 4.0
 
 [node name="PlayerStartPosition" type="Position3D" parent="."]
@@ -321,7 +313,6 @@ shape = SubResource( 6 )
 [node name="POIForestWarning" type="Area" parent="Forest"]
 collision_layer = 2
 script = ExtResource( 17 )
-dialog_box = NodePath("../../UI/DialogBox")
 
 [node name="CollisionShape" type="CollisionShape" parent="Forest/POIForestWarning"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6343, 3.83284, 35.361 )
@@ -345,7 +336,6 @@ shape = SubResource( 10 )
 
 [node name="GodotCrypt" parent="Forest" instance=ExtResource( 26 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30.4109, 0.258159, 24.9455 )
-dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 
 [node name="FriendlyZombies" type="Spatial" parent="Forest"]
@@ -366,31 +356,26 @@ transform = Transform( 0.0455539, 0, 0.998962, 0, 1, 0, -0.998962, 0, 0.0455539,
 
 [node name="ReadableGrave1" parent="Forest/Graveyard" instance=ExtResource( 16 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.1963, 0.182783, 30.4966 )
-dialog_box = NodePath("../../../UI/DialogBox")
 interact_overlay = NodePath("../../../UI/InteractableOverlay")
 grave_text = "Rest in peace, Unreal."
 
 [node name="ReadableGrave4" parent="Forest/Graveyard" instance=ExtResource( 16 )]
 transform = Transform( 0.07195, 0, 0.997408, 0, 1, 0, -0.997408, 0, 0.07195, -13.4135, 0.182783, 23.3928 )
-dialog_box = NodePath("../../../UI/DialogBox")
 interact_overlay = NodePath("../../../UI/InteractableOverlay")
 grave_text = "Here lies Lumberyard. May you rest in peace!"
 
 [node name="ReadableGrave6" parent="Forest/Graveyard" instance=ExtResource( 16 )]
 transform = Transform( -0.0354577, 0, 0.999371, 0, 1, 0, -0.999371, 0, -0.0354577, -20.6062, 0.182783, 27.2634 )
-dialog_box = NodePath("../../../UI/DialogBox")
 interact_overlay = NodePath("../../../UI/InteractableOverlay")
 grave_text = "Rest in peace, CryEngine."
 
 [node name="ReadableGrave7" parent="Forest/Graveyard" instance=ExtResource( 16 )]
 transform = Transform( -0.0354577, 0, 0.999371, 0, 1, 0, -0.999371, 0, -0.0354577, -20.419, 0.182783, 22.5831 )
-dialog_box = NodePath("../../../UI/DialogBox")
 interact_overlay = NodePath("../../../UI/InteractableOverlay")
 grave_text = "Rest in peace, Unity."
 
 [node name="ReadableGrave5" parent="Forest/Graveyard" instance=ExtResource( 16 )]
 transform = Transform( 0.14465, 0, 0.989482, 0, 1, 0, -0.989482, 0, 0.14465, -20.3964, 0.182783, 19.4108 )
-dialog_box = NodePath("../../../UI/DialogBox")
 interact_overlay = NodePath("../../../UI/InteractableOverlay")
 grave_text = "Rest in peace, GameMaker."
 
@@ -399,19 +384,16 @@ transform = Transform( -0.270693, -0.334008, -0.902865, 0.0784309, 0.92711, -0.3
 
 [node name="ReadableGrave" parent="Forest/Graveyard" instance=ExtResource( 18 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.9718, 0.118193, 30.3445 )
-dialog_box = NodePath("../../../UI/DialogBox")
 interact_overlay = NodePath("../../../UI/InteractableOverlay")
 grave_text = "RIP RPGMaker."
 
 [node name="ReadableGrave2" parent="Forest/Graveyard" instance=ExtResource( 18 )]
 transform = Transform( -0.0285846, 0, 0.999591, 0, 1, 0, -0.999591, 0, -0.0285846, -12.938, 0.118193, 20.0747 )
-dialog_box = NodePath("../../../UI/DialogBox")
 interact_overlay = NodePath("../../../UI/InteractableOverlay")
 grave_text = "RIP, Construct."
 
 [node name="ReadableGrave3" parent="Forest/Graveyard" instance=ExtResource( 18 )]
 transform = Transform( -0.0238215, 0, 0.999716, 0, 1, 0, -0.999716, 0, -0.0238215, -13.1523, 0.118193, 26.9953 )
-dialog_box = NodePath("../../../UI/DialogBox")
 interact_overlay = NodePath("../../../UI/InteractableOverlay")
 grave_text = "Here lies Unity. May you rest in peace!"
 
@@ -1163,7 +1145,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -53.0031, 0, -19.0814 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13993, 2.91329, -5.88132 )
 collision_layer = 2
 script = ExtResource( 66 )
-dialog_box = NodePath("../../../UI/DialogBox")
 one_shot = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Mountain/Road/POIRoadBlock"]
@@ -1329,14 +1310,12 @@ shape = SubResource( 26 )
 
 [node name="LightPortal" parent="Mountain/Cave" instance=ExtResource( 38 )]
 transform = Transform( 0.972614, 0, -0.232427, 0, 1, 0, 0.232427, 0, 0.972614, -5.67992, -0.435664, 2.12708 )
-dialog_box = NodePath("../../../UI/DialogBox")
 interact_overlay = NodePath("../../../UI/InteractableOverlay")
 one_shot = true
 
 [node name="CrystalPOI" type="Area" parent="Mountain/Cave"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6288, 4.69061, 0 )
 script = ExtResource( 43 )
-dialog_box = NodePath("../../../UI/DialogBox")
 one_shot = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Mountain/Cave/CrystalPOI"]
@@ -1582,20 +1561,17 @@ shape = SubResource( 28 )
 
 [node name="DestructibleFrontGate" parent="Castle" instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.928, -0.102686, 17.53 )
-dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 interaction_prompt = "Press [E] to inspect"
 
 [node name="AutomaticLever" parent="Castle" instance=ExtResource( 41 )]
 transform = Transform( 8.74228e-08, 0, -1, 0, 1, 0, 1, 0, 8.74228e-08, -2.57272, 2.89291, -4.39361 )
-dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 automatic_door = NodePath("../AutomaticDoor")
 close_time = 3.2
 
 [node name="AutomaticDoor" parent="Castle" instance=ExtResource( 40 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.1926, 2.9016, -4.69016 )
-dialog_box = NodePath("../../UI/DialogBox")
 interact_overlay = NodePath("../../UI/InteractableOverlay")
 
 [node name="Cobblestone" type="Spatial" parent="Castle"]
@@ -2144,7 +2120,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2998, 2.59079, -15.571 )
 transform = Transform( -0.998079, 0, -0.0619545, 0, 1, 0, 0.0619545, 0, -0.998079, -12.4308, 0.617807, -17.6952 )
 navigation = NodePath("../../Navigation")
 player = NodePath("../../Player")
-dialog_box = NodePath("../../UI/DialogBox")
 interaction_overlay = NodePath("../../UI/InteractableOverlay")
 
 [node name="Zombie2" parent="Castle" groups=[
@@ -2153,7 +2128,6 @@ interaction_overlay = NodePath("../../UI/InteractableOverlay")
 transform = Transform( 0.0630346, 0, -0.998011, 0, 1, 0, 0.998011, 0, 0.0630346, -21.3272, 0.658696, 0.42443 )
 navigation = NodePath("../../Navigation")
 player = NodePath("../../Player")
-dialog_box = NodePath("../../UI/DialogBox")
 interaction_overlay = NodePath("../../UI/InteractableOverlay")
 
 [node name="Zombie3" parent="Castle" groups=[
@@ -2162,7 +2136,6 @@ interaction_overlay = NodePath("../../UI/InteractableOverlay")
 transform = Transform( -0.739161, 0, -0.673529, 0, 1, 0, 0.673529, 0, -0.739161, -18.742, 0.497585, -13.5304 )
 navigation = NodePath("../../Navigation")
 player = NodePath("../../Player")
-dialog_box = NodePath("../../UI/DialogBox")
 interaction_overlay = NodePath("../../UI/InteractableOverlay")
 use_alternative_idle_anim = true
 
@@ -2174,7 +2147,6 @@ use_alternative_idle_anim = true
 transform = Transform( -0.776101, 0, -0.630608, 0, 1, 0, 0.630608, 0, -0.776101, -25.8932, 0.617807, -26.2431 )
 navigation = NodePath("../../../Navigation")
 player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 
 [node name="Zombie5" parent="Castle/HiddenZombies" groups=[
@@ -2183,7 +2155,6 @@ interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 transform = Transform( -0.776101, 0, -0.630608, 0, 1, 0, 0.630608, 0, -0.776101, -29.0367, 0.617807, -29.2795 )
 navigation = NodePath("../../../Navigation")
 player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 
 [node name="Zombie6" parent="Castle/HiddenZombies" groups=[
@@ -2192,7 +2163,6 @@ interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 transform = Transform( -0.776101, 0, -0.630608, 0, 1, 0, 0.630608, 0, -0.776101, -30.1798, 0.617807, -25.3143 )
 navigation = NodePath("../../../Navigation")
 player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 
 [node name="Zombie7" parent="Castle/HiddenZombies" groups=[
@@ -2201,7 +2171,6 @@ interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 transform = Transform( -0.776101, 0, -0.630608, 0, 1, 0, 0.630608, 0, -0.776101, -22.4188, 0.617807, -29.5485 )
 navigation = NodePath("../../../Navigation")
 player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 
 [node name="Zombie8" parent="Castle/HiddenZombies" groups=[
@@ -2210,7 +2179,6 @@ interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 transform = Transform( -0.776101, 0, -0.630608, 0, 1, 0, 0.630608, 0, -0.776101, -19.9183, 0.617807, -25.0118 )
 navigation = NodePath("../../../Navigation")
 player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 
 [node name="Zombie10" parent="Castle/HiddenZombies" groups=[
@@ -2219,7 +2187,6 @@ interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 transform = Transform( -0.595861, 0, 0.803088, 0, 1, 0, -0.803088, 0, -0.595861, -5.87887, 0.617807, -25.2262 )
 navigation = NodePath("../../../Navigation")
 player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 
 [node name="Zombie11" parent="Castle/HiddenZombies" groups=[
@@ -2228,7 +2195,6 @@ interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 transform = Transform( -0.595861, 0, 0.803088, 0, 1, 0, -0.803088, 0, -0.595861, -1.61256, 0.617807, -25.8209 )
 navigation = NodePath("../../../Navigation")
 player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 
 [node name="Zombie12" parent="Castle/HiddenZombies" groups=[
@@ -2237,7 +2203,6 @@ interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 transform = Transform( -0.595861, 0, 0.803088, 0, 1, 0, -0.803088, 0, -0.595861, -2.46989, 0.617807, -29.8218 )
 navigation = NodePath("../../../Navigation")
 player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 
 [node name="Zombie13" parent="Castle/HiddenZombies" groups=[
@@ -2246,7 +2211,6 @@ interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 transform = Transform( -0.595861, 0, 0.803088, 0, 1, 0, -0.803088, 0, -0.595861, 1.30053, 0.617807, -30.1558 )
 navigation = NodePath("../../../Navigation")
 player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 
 [node name="Zombie14" parent="Castle/HiddenZombies" groups=[
@@ -2255,7 +2219,6 @@ interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 transform = Transform( -0.595861, 0, 0.803088, 0, 1, 0, -0.803088, 0, -0.595861, 2.01497, 0.617807, -24.9761 )
 navigation = NodePath("../../../Navigation")
 player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 
 [node name="Zombie15" parent="Castle/HiddenZombies" groups=[
@@ -2264,7 +2227,6 @@ interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 transform = Transform( -0.595861, 0, 0.803088, 0, 1, 0, -0.803088, 0, -0.595861, 6.01582, 0.617807, -29.5128 )
 navigation = NodePath("../../../Navigation")
 player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 
 [node name="Zombie16" parent="Castle/HiddenZombies" groups=[
@@ -2273,14 +2235,12 @@ interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 transform = Transform( 0.358808, 0, 0.933411, 0, 1, 0, -0.933411, 0, 0.358808, 7.33754, 0.617807, -23.4044 )
 navigation = NodePath("../../../Navigation")
 player = NodePath("../../../Player")
-dialog_box = NodePath("../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../UI/InteractableOverlay")
 
 [node name="Mystery" type="Spatial" parent="Castle"]
 
 [node name="MysteryWall" parent="Castle/Mystery" instance=ExtResource( 30 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.2945, 0.454366, 15.462 )
-dialog_box = NodePath("../../../UI/DialogBox")
 interact_overlay = NodePath("../../../UI/InteractableOverlay")
 
 [node name="MysteryZombies" type="Spatial" parent="Castle/Mystery"]
@@ -2291,7 +2251,6 @@ interact_overlay = NodePath("../../../UI/InteractableOverlay")
 transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 25.1082, 0.617807, 7.60938 )
 navigation = NodePath("../../../../Navigation")
 player = NodePath("../../../../Player")
-dialog_box = NodePath("../../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
 life = 10000
 
@@ -2301,7 +2260,6 @@ life = 10000
 transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 22.8386, 0.617807, 7.5904 )
 navigation = NodePath("../../../../Navigation")
 player = NodePath("../../../../Player")
-dialog_box = NodePath("../../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
 life = 10000
 
@@ -2311,7 +2269,6 @@ life = 10000
 transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 20.3366, 0.617807, 7.5904 )
 navigation = NodePath("../../../../Navigation")
 player = NodePath("../../../../Player")
-dialog_box = NodePath("../../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
 life = 10000
 
@@ -2321,7 +2278,6 @@ life = 10000
 transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 25.0892, 0.617807, 5.22812 )
 navigation = NodePath("../../../../Navigation")
 player = NodePath("../../../../Player")
-dialog_box = NodePath("../../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
 life = 10000
 
@@ -2331,7 +2287,6 @@ life = 10000
 transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 22.8386, 0.617807, 5.22812 )
 navigation = NodePath("../../../../Navigation")
 player = NodePath("../../../../Player")
-dialog_box = NodePath("../../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
 life = 10000
 
@@ -2341,7 +2296,6 @@ life = 10000
 transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 20.3366, 0.617807, 5.22812 )
 navigation = NodePath("../../../../Navigation")
 player = NodePath("../../../../Player")
-dialog_box = NodePath("../../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
 life = 10000
 
@@ -2351,7 +2305,6 @@ life = 10000
 transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 25.0892, 0.617807, 2.7619 )
 navigation = NodePath("../../../../Navigation")
 player = NodePath("../../../../Player")
-dialog_box = NodePath("../../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
 life = 10000
 
@@ -2361,7 +2314,6 @@ life = 10000
 transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 22.8386, 0.617807, 2.7619 )
 navigation = NodePath("../../../../Navigation")
 player = NodePath("../../../../Player")
-dialog_box = NodePath("../../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
 life = 10000
 use_alternative_idle_anim = true
@@ -2372,7 +2324,6 @@ use_alternative_idle_anim = true
 transform = Transform( 1, 0, 0.000925139, 0, 1, 0, -0.000925139, 0, 1, 20.3366, 0.617807, 2.7619 )
 navigation = NodePath("../../../../Navigation")
 player = NodePath("../../../../Player")
-dialog_box = NodePath("../../../../UI/DialogBox")
 interaction_overlay = NodePath("../../../../UI/InteractableOverlay")
 life = 10000
 

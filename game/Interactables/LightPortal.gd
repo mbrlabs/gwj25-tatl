@@ -30,20 +30,18 @@ func _is_interactable() -> bool:
 
 # ---------------------------------------------------------------------------------------
 func _on_interact() -> void:
-	var db = get_node(dialog_box)
-	db.connect("message_confirmed", self, "_on_DialogBox_message_confirmed")
+	DialogBox.connect("message_confirmed", self, "_on_DialogBox_message_confirmed")
 	Global.state = Global.State.THE_END
 	Global.buffed_form_unlocked = false
 	
-	db.show_message("Tatl:", _dialogs[0], true)
+	DialogBox.show_message("Tatl:", _dialogs[0], true)
 	_dialog_index += 1
 
 # ---------------------------------------------------------------------------------------
 func _on_DialogBox_message_confirmed() -> void:
 	# start end sequence
 	if _dialog_index < _dialogs.size():
-		var db = get_node(dialog_box)
-		db.show_message("Tatl:", _dialogs[_dialog_index], true)
+		DialogBox.show_message("Tatl:", _dialogs[_dialog_index], true)
 		_dialog_index += 1
 	else:
 		_particles_animator.play("boom")

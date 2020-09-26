@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Fonts/font_dialog.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/font_dialog_title.tres" type="DynamicFont" id=2]
-[ext_resource path="res://UI/DialogBox.gd" type="Script" id=3]
+[ext_resource path="res://Autoloads/DialogBox.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Audio/ui_click_light.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Audio/ui_click.ogg" type="AudioStream" id=5]
 
@@ -31,10 +31,6 @@ shadow_color = Color( 0, 0, 0, 0 )
 [node name="DialogBox" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.12244
-margin_top = -1.1225
-margin_right = -1.12244
-margin_bottom = -1.12256
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
