@@ -34,11 +34,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Interactables/Interactable.gd"
 }, {
-"base": "Control",
-"class": "InteractableOverlay",
-"language": "GDScript",
-"path": "res://UI/InteractableOverlay.gd"
-}, {
 "base": "Area",
 "class": "POIArea",
 "language": "GDScript",
@@ -80,7 +75,6 @@ _global_script_class_icons={
 "DestructibleFrontGate": "",
 "GodotHead": "",
 "Interactable": "",
-"InteractableOverlay": "",
 "POIArea": "",
 "PauseMenu": "",
 "Player": "",
@@ -106,6 +100,7 @@ default_bus_layout="res://Assets/audio_bus_layout.tres"
 
 Global="*res://Autoloads/Global.gd"
 DialogBox="*res://Autoloads/DialogBox.tscn"
+InteractableOverlay="*res://Autoloads/InteractableOverlay.tscn"
 
 [debug]
 

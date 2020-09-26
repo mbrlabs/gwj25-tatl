@@ -53,7 +53,6 @@ onready var _crosshair: Spatial = $Gimbal/Camera/GunRayCast/Crosshair
 
 # ---------------------------------------------------------------------------------------
 export var evirorment: Environment 
-export var dialog_box: NodePath
 export var input_enabled := true
 export(float, 0.0, 1.0) var glowiness = 1.0 setget _set_glowiness
 export var camera_lag := 8.0
